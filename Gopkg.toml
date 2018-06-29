@@ -23,8 +23,17 @@
 #   non-go = false
 #   go-tests = true
 #   unused-packages = true
+required = [
+    "github.com/spf13/viper",
+    "gopkg.in/urfave/cli.v2"
+
+]
 
 
 [prune]
   go-tests = true
   unused-packages = true
+
+[[constraint]]
+  branch = "v2"
+  name = "gopkg.in/urfave/cli.v2"
