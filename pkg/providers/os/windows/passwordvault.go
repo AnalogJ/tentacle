@@ -1,1 +1,2 @@
+// +build windows
 package providers
