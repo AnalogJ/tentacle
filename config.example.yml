@@ -1,0 +1,10 @@
+---
+providers:
+  keychainAlias:
+    type: keychain
+    service:
+    account:
+    accessGroup:
+    matchLimit:
+  keyringAlias:
+    type:
