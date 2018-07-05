@@ -4,9 +4,9 @@ import (
 	"github.com/spf13/viper"
 	"log"
 	"os"
-	"bytes"
-	"gopkg.in/yaml.v2"
-	"fmt"
+
+	"tentacle/pkg/utils"
+	"tentacle/pkg/errors"
 )
 
 // When initializing this class the following methods must be called:
@@ -29,7 +29,6 @@ type configuration struct {
 func (c *configuration) Init() error {
 	c.Viper = viper.New()
 	//set defaults
-	c.SetDefault("options.config_dir", "~/.ssh/drawbridge")
 
 	//if you want to load a non-standard location system config file (~/drawbridge.yml), use ReadConfig
 	c.SetConfigType("yaml")
@@ -37,9 +36,9 @@ func (c *configuration) Init() error {
 	//c.AddConfigPath("$HOME/")
 
 	//CLI options will be added via the `Set()` function
-
-	return c.ValidateConfig()
+	return nil
 }
+
 func (c *configuration) ReadConfig(configFilePath string) error {
 	configFilePath, err := utils.ExpandPath(configFilePath)
 	if err != nil {
@@ -49,13 +48,6 @@ func (c *configuration) ReadConfig(configFilePath string) error {
 	if !utils.FileExists(configFilePath) {
 		log.Printf("No configuration file found at %v. Skipping", configFilePath)
 		return errors.ConfigFileMissingError("The configuration file could not be found.")
-	}
-
-	//validate config file contents
-	err = c.ValidateConfigFile(configFilePath)
-	if err != nil {
-		log.Printf("Config file at `%v` is invalid: %s", configFilePath, err)
-		return err
 	}
 
 	log.Printf("Loading configuration file: %s", configFilePath)
@@ -71,5 +63,5 @@ func (c *configuration) ReadConfig(configFilePath string) error {
 		return err
 	}
 
-	return c.ValidateConfig()
+	return nil
 }
