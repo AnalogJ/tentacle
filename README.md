@@ -16,3 +16,13 @@
 [![Github All Releases](https://img.shields.io/github/downloads/analogj/tentacle/total.svg?style=flat-square)](https://github.com/AnalogJ/drawbridge/tentacle)
 
 Retrieve your secrets from wherever they live. Vault/Cyberark/Thycotic/Keychain/Keyring/etc.
+
+
+# References
+
+- https://github.com/keybase/go-keychain
+- https://github.com/99designs/keyring
+- https://github.com/tmc/keyring
+- https://github.com/sethvargo/vault-token-helper-osx-keychain
+- https://github.com/cloudflare/gokey
+- https://github.com/havoc-io/go-keytar

@@ -7,4 +7,5 @@ providers:
     accessGroup:
     matchLimit:
   keyringAlias:
-    type:
+    type: keyring
+
