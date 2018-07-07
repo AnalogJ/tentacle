@@ -28,6 +28,9 @@ required = [
     "gopkg.in/urfave/cli.v2",
     "github.com/mitchellh/go-homedir",
     "github.com/fatih/color",
+    "github.com/keybase/go-keychain",
+
+    #test
     "github.com/stretchr/testify/require"
 ]
 

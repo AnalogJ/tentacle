@@ -1,4 +1,4 @@
-package tentacle
+package main
 
 import (
 	"fmt"
@@ -12,6 +12,7 @@ import (
 	"tentacle/pkg/utils"
 	"tentacle/pkg/version"
 	"github.com/fatih/color"
+	"tentacle/pkg/providers/os/darwin/keychain"
 )
 
 var goos string
@@ -90,63 +91,38 @@ OPTIONS:
 		},
 
 		Commands: []*cli.Command{
+			keychain.Cli("keychain", keychain.ProviderConfig{
+				Service: "",
+				AccessGroup: "",
+			}),
 			//{
 			//	Name:  "create",
 			//	Usage: "Create a drawbridge managed ssh config & associated files",
 			//	//UsageText:   "doo - does the dooing",
 			//	Action: func(c *cli.Context) error {
-			//		fmt.Fprintln(c.App.Writer, c.Command.Usage)
+			//		fmt.Fprintln(c.App.Writer, c.Cli.Usage)
 			//		return nil
 			//	},
 			//
 			//	Flags: createFlags,
 			//},
-			//{
-			//	Name:      "list",
-			//	Usage:     "List all drawbridge managed ssh configs",
-			//	ArgsUsage: "[config_number]",
-			//	Action: func(c *cli.Context) error {
-			//		fmt.Fprintln(c.App.Writer, c.Command.Usage)
-			//
-			//		projectList, err := project.CreateProjectListFromConfigDir(config)
-			//		if err != nil {
-			//			return err
-			//		}
-			//
-			//		var answerData map[string]interface{}
-			//		if c.NArg() > 0 {
-			//
-			//			index, err := utils.StringToInt(c.Args().Get(0))
-			//			if err != nil {
-			//				return err
-			//			}
-			//			answerData, err = projectList.GetIndex(index - 1)
-			//			if err != nil {
-			//				return err
-			//			}
-			//
-			//		} else {
-			//			answerData, err = projectList.Prompt("Enter drawbridge config number to retrieve full info")
-			//			if err != nil {
-			//				return err
-			//			}
-			//		}
-			//
-			//		fmt.Print("\nAnswer Data:\n")
-			//		for k, v := range answerData {
-			//			fmt.Printf("\t%v: %v\n", color.YellowString(k), v)
-			//		}
-			//
-			//		return nil
-			//	},
-			//	Flags: nil,
-			//},
+			{
+				Name:      "list",
+				Usage:     "List all drawbridge managed ssh configs",
+				ArgsUsage: "[config_number]",
+				Action: func(c *cli.Context) error {
+					fmt.Fprintln(c.App.Writer, c.Command.Usage)
+
+					return nil
+				},
+				Flags: nil,
+			},
 			//{
 			//	Name:      "connect",
 			//	Usage:     "Connect to a drawbridge managed ssh config",
 			//	ArgsUsage: "[config_number] [dest_server_hostname]",
 			//	Action: func(c *cli.Context) error {
-			//		fmt.Fprintln(c.App.Writer, c.Command.Usage)
+			//		fmt.Fprintln(c.App.Writer, c.Cli.Usage)
 			//
 			//		projectList, err := project.CreateProjectListFromConfigDir(config)
 			//		if err != nil {
@@ -198,7 +174,7 @@ OPTIONS:
 			//	Usage:     "Download a file from an internal server using drawbridge managed ssh config, syntax is similar to scp command. ",
 			//	ArgsUsage: "[config_number] destination_hostname:remote_filepath local_filepath",
 			//	Action: func(c *cli.Context) error {
-			//		fmt.Fprintln(c.App.Writer, c.Command.Usage)
+			//		fmt.Fprintln(c.App.Writer, c.Cli.Usage)
 			//
 			//		// PARSE ARGS
 			//		if c.NArg() < 2 || c.NArg() > 3 {
@@ -260,7 +236,7 @@ OPTIONS:
 			//	Usage:     "Delete drawbridge managed ssh config(s)",
 			//	ArgsUsage: "[config_number]",
 			//	Action: func(c *cli.Context) error {
-			//		fmt.Fprintln(c.App.Writer, c.Command.Usage)
+			//		fmt.Fprintln(c.App.Writer, c.Cli.Usage)
 			//
 			//		projectList, err := project.CreateProjectListFromConfigDir(config)
 			//		if err != nil {
@@ -325,7 +301,7 @@ OPTIONS:
 			//	Name:  "proxy",
 			//	Usage: "Build/Rebuild a Proxy auto-config (PAC) file to access websites through Drawbridge tunnels",
 			//	Action: func(c *cli.Context) error {
-			//		fmt.Fprintln(c.App.Writer, c.Command.Usage)
+			//		fmt.Fprintln(c.App.Writer, c.Cli.Usage)
 			//
 			//		projectList, err := project.CreateProjectListFromConfigDir(config)
 			//		if err != nil {
@@ -341,7 +317,7 @@ OPTIONS:
 			//	Name:  "update",
 			//	Usage: "Update drawbridge to the latest version",
 			//	Action: func(c *cli.Context) error {
-			//		fmt.Fprintln(c.App.Writer, c.Command.Usage)
+			//		fmt.Fprintln(c.App.Writer, c.Cli.Usage)
 			//
 			//		if len(goos) == 0 && len(goarch) == 0 {
 			//			//dev mode,

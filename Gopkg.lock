@@ -37,6 +37,12 @@
   revision = "ef8a98b0bbce4a65b5aa4c368430a80ddc533168"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/keybase/go-keychain"
+  packages = ["."]
+  revision = "70b98e9c8d754db775c5bd3b2de3670cc76f1825"
+
+[[projects]]
   name = "github.com/magiconair/properties"
   packages = ["."]
   revision = "c2353362d570a7bfa228149c62842019201cfb71"
@@ -154,6 +160,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "02125fdedd99372d9246e181f91e293af4f8f05b2e7ca69de765520bc2749085"
+  inputs-digest = "0617292d8d0ff1f55bcfb60ab1e83fe3f9569e92790e75011bbdb250c38d624d"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -18,7 +18,7 @@ func (str ConfigValidationError) Error() string {
 	return fmt.Sprintf("ConfigValidationError: %q", string(str))
 }
 
-// Raised when a dependency (like ssh or ssh-agent) is missing
+// Raised when a dependency (like keychain) is missing
 type DependencyMissingError string
 
 func (str DependencyMissingError) Error() string {
