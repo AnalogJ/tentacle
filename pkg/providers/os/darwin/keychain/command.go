@@ -6,9 +6,9 @@ import (
 	"fmt"
 )
 
-func Cli(nameAlias string, providerConfig ProviderConfig) *cli.Command {
+func  (p *Provider) Command() *cli.Command {
 	return &cli.Command {
-		Name:      "keychain",
+		Name:      p.alias,
 		Usage:     "Access secrets and passwords stored on macOS keychain",
 		Subcommands: []*cli.Command{
 			{
@@ -23,9 +23,8 @@ func Cli(nameAlias string, providerConfig ProviderConfig) *cli.Command {
 				Action: func(c *cli.Context) error {
 					fmt.Println("secret id: ", c.String(c.FlagNames()[0]))
 
-					provider := Provider{ providerConfig:providerConfig }
-					provider.Authenticate()
-					return provider.Get(map[string]string { "id": c.String(c.FlagNames()[0])})
+					p.Authenticate()
+					return p.Get(map[string]string { "id": c.String(c.FlagNames()[0])})
 				},
 				Flags: []cli.Flag{
 					&cli.StringFlag{

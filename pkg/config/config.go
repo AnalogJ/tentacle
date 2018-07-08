@@ -7,6 +7,9 @@ import (
 
 	"tentacle/pkg/utils"
 	"tentacle/pkg/errors"
+	"tentacle/pkg/providers"
+	"tentacle/pkg/providers/os/darwin/keychain"
+	"fmt"
 )
 
 // When initializing this class the following methods must be called:
@@ -64,4 +67,33 @@ func (c *configuration) ReadConfig(configFilePath string) error {
 	}
 
 	return nil
+}
+
+
+func (c *configuration) GetProviders() []providers.Interface {
+
+	configs := c.GetStringMap("providers")
+
+	providers := []providers.Interface{}
+
+	for alias, config := range configs {
+
+		//stringify config keys for all provider config entries.
+		config = utils.StringifyYAMLMapKeys(config)
+
+		//begin switch for providers.
+		switch providerType := config.(map[string]interface{})["type"].(string); providerType {
+		case "keychain":
+			provider := keychain.Provider {}
+			provider.Init(alias, config.(map[string]interface{}))
+			providers = append(providers, &provider)
+		case "linux":
+			fmt.Println("Linux.")
+		default:
+			fmt.Errorf("%v is not supported", providerType)
+		}
+	}
+
+	return providers
+
 }

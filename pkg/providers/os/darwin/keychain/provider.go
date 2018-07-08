@@ -8,7 +8,15 @@ import (
 )
 
 type Provider struct {
-	providerConfig ProviderConfig
+	alias string
+	providerConfig map[string]interface{}
+}
+
+func (p *Provider) Init(alias string, config map[string]interface{}) error {
+	//validate the config and assign it to providerConfig
+	p.providerConfig = config
+	p.alias = alias
+	return nil
 }
 
 func (p *Provider) Authenticate() error {
@@ -26,9 +34,9 @@ func (p *Provider) Authenticate() error {
 func (p *Provider) Get(queryData map[string]string) error {
 	query := goKeychain.NewItem()
 	query.SetSecClass(goKeychain.SecClassGenericPassword)
-	query.SetService(p.providerConfig.Service)
+	query.SetService(p.providerConfig["service"].(string))
 	query.SetAccount(queryData["id"])
-	query.SetAccessGroup(p.providerConfig.AccessGroup)
+	query.SetAccessGroup(p.providerConfig["access_group"].(string))
 	query.SetMatchLimit(goKeychain.MatchLimitOne)
 	query.SetReturnAttributes(true)
 	query.UseKeychain(goKeychain.NewWithPath(""))
@@ -48,9 +56,9 @@ func (p *Provider) Get(queryData map[string]string) error {
 func (p *Provider) List(queryData map[string]string) error {
 	query := goKeychain.NewItem()
 	query.SetSecClass(goKeychain.SecClassGenericPassword)
-	query.SetService(p.providerConfig.Service)
+	query.SetService(p.providerConfig["service"].(string))
 	query.SetAccount(queryData["id"])
-	query.SetAccessGroup(p.providerConfig.AccessGroup)
+	query.SetAccessGroup(p.providerConfig["access_group"].(string))
 	query.SetMatchLimit(goKeychain.MatchLimitAll)
 	query.SetReturnAttributes(true)
 	results, err := goKeychain.QueryItem(query)

@@ -1,5 +1,7 @@
 package config
 
+import "tentacle/pkg/providers"
+
 // Create mock using:
 // mockgen -source=pkg/config/interface.go -destination=pkg/config/mock/mock_config.go
 type Interface interface {
@@ -15,6 +17,8 @@ type Interface interface {
 	GetString(key string) string
 	GetStringSlice(key string) []string
 	UnmarshalKey(key string, rawVal interface{}) error
+
+	GetProviders() []providers.Interface
 
 	//GetProvidedAnswerList() ([]map[string]interface{}, error)
 	//InternalQuestionKeys() []string
