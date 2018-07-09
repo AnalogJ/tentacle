@@ -26,3 +26,8 @@ Retrieve your secrets from wherever they live. Vault/Cyberark/Thycotic/Keychain/
 - https://github.com/sethvargo/vault-token-helper-osx-keychain
 - https://github.com/cloudflare/gokey
 - https://github.com/havoc-io/go-keytar
+- https://github.com/olekukonko/tablewriter
+- https://github.com/lastpass/lastpass-cli
+- https://github.com/cyberark/conjur-api-go
+- https://github.com/hoop33/go-cyberark
+

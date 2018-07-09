@@ -46,6 +46,7 @@ func (p *Provider) Get(queryData map[string]string) error {
 	query.SetSecClass(goKeychain.SecClassGenericPassword)
 	query.SetMatchLimit(goKeychain.MatchLimitOne)
 	query.SetReturnAttributes(true)
+	query.SetReturnData(true)
 
 	if service, serviceOk := queryData["service"]; serviceOk {
 		query.SetService(service)
@@ -79,6 +80,9 @@ func (p *Provider) Get(queryData map[string]string) error {
 		fmt.Print("Found Results!\n")
 		for _, r := range results {
 			fmt.Printf("%#v\n", r)
+
+			fmt.Printf( "secret: %v" ,string(r.Data))
+
 		}
 	}
 	return nil

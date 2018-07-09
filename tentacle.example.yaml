@@ -1,12 +1,19 @@
 ---
 providers:
-  keychainAlias:
+  keychainalias:
     type: keychain
 
     # by default you have access to all keychains configured on a machine that your user has access to.
     # If you would like to limit tentacle to a specific keychain, you can set a `location` key.
     # location: "~/Library/login.keychain"
 
-  keyringAlias:
+  keyringalias:
     type: keyring
+
+
+  cyberarkalias:
+    type: cyberark
+    host: cyberark.corp.example.com
+    safe: my_safe
+    appid: my_app_id
 

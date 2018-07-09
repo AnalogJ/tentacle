@@ -28,9 +28,13 @@ required = [
     "gopkg.in/urfave/cli.v2",
     "github.com/mitchellh/go-homedir",
     "github.com/fatih/color",
-    "github.com/keybase/go-keychain",
 
-    #test
+	# provider dependencies
+	"github.com/keybase/go-keychain",
+	"github.com/hoop33/go-cyberark",
+	"https://github.com/cyberark/conjur-api-go",
+
+    # test dependencies
     "github.com/stretchr/testify/require"
 ]
 
