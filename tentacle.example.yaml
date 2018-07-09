@@ -17,3 +17,9 @@ providers:
     safe: my_safe
     appid: my_app_id
 
+  thycoticalias:
+    type: thycotic
+    domain: "YOUR_AD_DOMAIN"
+    hosturl: "https://yoursecretserver.yourdomain.com/SecretServer/webservices/SSWebservice.asmx"
+    username: "username"
+    password: "pass"

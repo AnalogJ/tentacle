@@ -1,5 +1,5 @@
 package credentials
 
-type Secret struct {
+type Base struct {
 	Metadata map[string]string
 }

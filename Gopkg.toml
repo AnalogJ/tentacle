@@ -32,7 +32,8 @@ required = [
 	# provider dependencies
 	"github.com/keybase/go-keychain",
 	"github.com/hoop33/go-cyberark",
-	"https://github.com/cyberark/conjur-api-go",
+	"github.com/cyberark/conjur-api-go/conjurapi",
+	"github.com/gogosphere/xmlanswers",
 
     # test dependencies
     "github.com/stretchr/testify/require"

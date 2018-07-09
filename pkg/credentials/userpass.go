@@ -1,7 +1,7 @@
 package credentials
 
 type UserPass struct {
-	*Secret
+	*Base
 	Username string
 	Password string
 }

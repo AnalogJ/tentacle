@@ -1,6 +1,6 @@
 package credentials
 
 type Text struct {
-	*Secret
+	*Base
 	Data string
 }

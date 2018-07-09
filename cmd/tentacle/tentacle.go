@@ -54,7 +54,7 @@ OPTIONS:
 
 	app := &cli.App{
 		Name:     "tentacle",
-		Usage:    "Secret retrieval made simple",
+		Usage:    "Base retrieval made simple",
 		Version:  version.VERSION,
 		Compiled: time.Now(),
 		Authors: []*cli.Author{

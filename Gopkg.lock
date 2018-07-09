@@ -2,6 +2,22 @@
 
 
 [[projects]]
+  branch = "master"
+  name = "github.com/bgentry/go-netrc"
+  packages = ["netrc"]
+  revision = "9fd32a8b3d3d3f9d43c341bfe098430e07609480"
+
+[[projects]]
+  name = "github.com/cyberark/conjur-api-go"
+  packages = [
+    "conjurapi",
+    "conjurapi/authn",
+    "conjurapi/response"
+  ]
+  revision = "f1ab305f73250ebe61fb4f03792a6c55355bade1"
+  version = "v0.3.0"
+
+[[projects]]
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
   revision = "346938d642f2ec3594ed81d874461961cd0faa76"
@@ -21,6 +37,12 @@
 
 [[projects]]
   branch = "master"
+  name = "github.com/gogosphere/xmlanswers"
+  packages = ["."]
+  revision = "d34ff61d1d339aa9c22273518fd8ff22f5e205a5"
+
+[[projects]]
+  branch = "master"
   name = "github.com/hashicorp/hcl"
   packages = [
     ".",
@@ -35,6 +57,12 @@
     "json/token"
   ]
   revision = "ef8a98b0bbce4a65b5aa4c368430a80ddc533168"
+
+[[projects]]
+  name = "github.com/hoop33/go-cyberark"
+  packages = ["."]
+  revision = "01221d3b18d9b95cc91592fa1e24408845a45fdd"
+  version = "v0.1.0"
 
 [[projects]]
   branch = "master"
@@ -152,6 +180,12 @@
   revision = "d3ae77c26ac8db90639677e4831a728d33c36111"
 
 [[projects]]
+  branch = "v1"
+  name = "gopkg.in/yaml.v1"
+  packages = ["."]
+  revision = "9f9df34309c04878acc86042b16630b0f696e1de"
+
+[[projects]]
   name = "gopkg.in/yaml.v2"
   packages = ["."]
   revision = "5420a8b6744d3b0345ab293f6fcba19c978f1183"
@@ -160,6 +194,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "0617292d8d0ff1f55bcfb60ab1e83fe3f9569e92790e75011bbdb250c38d624d"
+  inputs-digest = "411646546048c322451348579a8ac2ea682b0f808317466dbc5a6709879505ef"
   solver-name = "gps-cdcl"
   solver-version = 1
