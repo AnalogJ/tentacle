@@ -339,11 +339,11 @@ OPTIONS:
 }
 
 func ConfiguredProviderCommands(config config.Interface) []*cli.Command {
-	providers := config.GetProviders()
+	providerList := config.GetProviders()
 
 	commands := []*cli.Command{}
 
-	for _, provider := range providers {
+	for _, provider := range providerList {
 		commands = append(commands, provider.Command())
 	}
 	return commands

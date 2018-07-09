@@ -1,11 +1,11 @@
 package providers
 
 import (
-	"tentacle/pkg/providers/os/darwin/keychain"
-	"fmt"
 	"tentacle/pkg/utils"
 	"tentacle/pkg/providers/cyberark"
 	"tentacle/pkg/providers/thycotic"
+	"tentacle/pkg/providers/os/darwin/keychain"
+	"log"
 )
 
 func Create(alias string, config interface{}) (Interface, error) {
@@ -14,10 +14,15 @@ func Create(alias string, config interface{}) (Interface, error) {
 
 	//begin switch for providers.
 	switch providerType := config.(map[string]interface{})["type"].(string); providerType {
+
+	//os specific providers
 	case "keychain":
 		provider := keychain.Provider {}
 		provider.Init(alias, config.(map[string]interface{}))
 		return &provider, nil
+
+
+	//alphabetical list of common providers
 	case "cyberark":
 		provider := cyberark.Provider {}
 		provider.Init(alias, config.(map[string]interface{}))
@@ -26,8 +31,10 @@ func Create(alias string, config interface{}) (Interface, error) {
 		provider := thycotic.Provider {}
 		provider.Init(alias, config.(map[string]interface{}))
 		return &provider, nil
+
+	//fall back error message
 	default:
-		fmt.Errorf("%v is not supported", providerType)
+		log.Fatalf("%v type is not supported by tentacle", providerType)
 		return nil, nil
 	}
 }
