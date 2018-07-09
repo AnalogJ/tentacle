@@ -2,9 +2,11 @@ package thycotic
 
 import (
 	"tentacle/pkg/providers/thycotic/api"
+	"tentacle/pkg/providers/base"
 )
 
 type Provider struct {
+	*base.Provider
 	alias string
 	providerConfig map[string]interface{}
 }

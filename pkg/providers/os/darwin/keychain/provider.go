@@ -6,9 +6,11 @@ import (
 	goKeychain "github.com/keybase/go-keychain"
 	"log"
 	"tentacle/pkg/utils"
+	"tentacle/pkg/providers/base"
 )
 
 type Provider struct {
+	*base.Provider
 	alias string
 	providerConfig map[string]interface{}
 }

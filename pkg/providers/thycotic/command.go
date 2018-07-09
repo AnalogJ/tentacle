@@ -20,14 +20,8 @@ func  (p *Provider) Command() *cli.Command {
 					return nil
 				},
 				Action: func(c *cli.Context) error {
-					fmt.Println("secret id: ", c.String(c.FlagNames()[0]))
-
 					p.Authenticate()
-
-					queryData := map[string]string{}
-					for _, flagName := range c.FlagNames() {
-						queryData[flagName] = c.String(flagName)
-					}
+					queryData := p.CommandFlagsToQueryData(c)
 
 					return p.Get(queryData)
 				},
@@ -42,13 +36,8 @@ func  (p *Provider) Command() *cli.Command {
 				Name:  "list",
 				Usage: "list all available secrets in thycotic secret server",
 				Action: func(c *cli.Context) error {
-
 					p.Authenticate()
-
-					queryData := map[string]string{}
-					for _, flagName := range c.FlagNames() {
-						queryData[flagName] = c.String(flagName)
-					}
+					queryData := p.CommandFlagsToQueryData(c)
 
 					return p.List(queryData)
 				},

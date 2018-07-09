@@ -4,9 +4,11 @@ package cyberark
 import (
 	"log"
 	"tentacle/pkg/providers/cyberark/api"
+	"tentacle/pkg/providers/base"
 )
 
 type Provider struct {
+	*base.Provider
 	alias string
 	providerConfig map[string]interface{}
 }
