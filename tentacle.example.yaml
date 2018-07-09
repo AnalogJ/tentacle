@@ -2,10 +2,11 @@
 providers:
   keychainAlias:
     type: keychain
-    service:
-    account:
-    accessGroup:
-    matchLimit:
+
+    # by default you have access to all keychains configured on a machine that your user has access to.
+    # If you would like to limit tentacle to a specific keychain, you can set a `location` key.
+    # location: "~/Library/login.keychain"
+
   keyringAlias:
     type: keyring
 
