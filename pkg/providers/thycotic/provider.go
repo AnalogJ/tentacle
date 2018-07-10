@@ -3,6 +3,7 @@ package thycotic
 import (
 	"tentacle/pkg/providers/thycotic/api"
 	"tentacle/pkg/providers/base"
+	"tentacle/pkg/credentials"
 )
 
 type Provider struct {
@@ -17,7 +18,7 @@ func (p *Provider) Init(alias string, config map[string]interface{}) error {
 	return nil
 }
 
-func (p *Provider) Get(queryData map[string]string) error {
+func (p *Provider) Get(queryData map[string]string) (credentials.Interface, error) {
 
 	client := api.Client {
 		Domain: p.ProviderConfig["domain"].(string),
@@ -28,10 +29,10 @@ func (p *Provider) Get(queryData map[string]string) error {
 
 	client.Get(queryData["secretId"])
 
-	return nil
+	return nil, nil
 }
 
-func (p *Provider) List(queryData map[string]string) error {
+func (p *Provider) List(queryData map[string]string) ([]credentials.Interface, error) {
 	client := api.Client {
 		Domain: p.ProviderConfig["domain"].(string),
 		Hosturl: p.ProviderConfig["hosturl"].(string),
@@ -41,5 +42,5 @@ func (p *Provider) List(queryData map[string]string) error {
 
 	client.List(queryData["criteria"])
 
-	return nil
+	return nil, nil
 }

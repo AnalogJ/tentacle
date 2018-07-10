@@ -86,13 +86,29 @@ OPTIONS:
 
 			`), subtitle))
 
+
+
 			return nil
+		},
+
+		//TODO: add global flag for output type "json, table, raw"
+		//TODO: add global flag for debug log level "--debug"
+		Flags: []cli.Flag {
+			&cli.BoolFlag{
+				Name: "debug",
+				Value: false,
+				Usage: "Enable Debug mode, with extra logging",
+			},
+			&cli.StringFlag{
+				Name: "output",
+				Value: "table",
+				Usage: "Specify output type. Allowed: 'json', 'table', 'raw'",
+			},
 		},
 
 		Commands: ConfiguredProviderCommands(config),
 
-		//TODO: add global flag for output type "json, table"
-		//TODO: add global flag for debug log level "--debug"
+
 	}
 
 	err = app.Run(os.Args)

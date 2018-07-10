@@ -4,9 +4,10 @@ package keychain
 import "fmt"
 import (
 	goKeychain "github.com/keybase/go-keychain"
-	"log"
 	"tentacle/pkg/utils"
 	"tentacle/pkg/providers/base"
+	"tentacle/pkg/credentials"
+	"tentacle/pkg/errors"
 )
 
 type Provider struct {
@@ -29,19 +30,22 @@ func (p *Provider) Authenticate() error {
 		k := goKeychain.NewWithPath(locationPath)
 
 		if err := k.Status(); err == goKeychain.ErrorNoSuchKeychain {
-			log.Fatalf("Keychain does not exist")
+			if p.DebugMode {
+				fmt.Printf("DEBUG: no keychain found at %v for %v\n", p.ProviderConfig["location"], p.Alias)
+			}
+			return errors.ConfigInvalidError(fmt.Sprintf("Specified keychain does not exist for %v", p.Alias))
 		} else {
-			fmt.Printf("Status: %#v\n", k.Status())
+			if p.DebugMode {
+				fmt.Printf("DEBUG: keychain status: %#v\n", k.Status())
+			}
 		}
-	} else {
-		fmt.Printf("No keychain path specified. Querying all.")
+	} else if p.DebugMode {
+		fmt.Println("DEBUG: No keychain path specified. Querying all.")
 	}
 	return nil
 }
 
-func (p *Provider) Get(queryData map[string]string) error {
-
-	fmt.Printf("query data: %v", queryData)
+func (p *Provider) Get(queryData map[string]string) (credentials.Interface, error) {
 
 	query := goKeychain.NewItem()
 	query.SetSecClass(goKeychain.SecClassGenericPassword)
@@ -86,10 +90,10 @@ func (p *Provider) Get(queryData map[string]string) error {
 
 		}
 	}
-	return nil
+	return nil, nil
 }
 
-func (p *Provider) List(queryData map[string]string) error {
+func (p *Provider) List(queryData map[string]string) ([]credentials.Interface, error) {
 	query := goKeychain.NewItem()
 	query.SetSecClass(goKeychain.SecClassGenericPassword)
 	query.SetMatchLimit(goKeychain.MatchLimitAll)
@@ -125,5 +129,5 @@ func (p *Provider) List(queryData map[string]string) error {
 			fmt.Printf("%#v\n", r)
 		}
 	}
-	return nil
+	return nil, nil
 }

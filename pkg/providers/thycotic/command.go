@@ -9,6 +9,9 @@ func  (p *Provider) Command() *cli.Command {
 	return &cli.Command {
 		Name:      p.Alias,
 		Usage:     "Access secrets and passwords stored in thycotic secret server",
+		Before: func (ctx *cli.Context) error {
+			return p.CommandProcessGlobalFlags(ctx)
+		},
 		Subcommands: []*cli.Command{
 			{
 				Name:  "get",
@@ -21,9 +24,11 @@ func  (p *Provider) Command() *cli.Command {
 				},
 				Action: func(c *cli.Context) error {
 					p.Authenticate()
-					queryData := p.CommandFlagsToQueryData(c)
+					queryData := p.CommandProcessFlagsToQueryData(c)
 
-					return p.Get(queryData)
+					secret, err := p.Get(queryData)
+					return p.CommandOutputHelper(c, "get", secret, err)
+
 				},
 				Flags: []cli.Flag{
 					&cli.StringFlag{
@@ -37,9 +42,10 @@ func  (p *Provider) Command() *cli.Command {
 				Usage: "list all available secrets in thycotic secret server",
 				Action: func(c *cli.Context) error {
 					p.Authenticate()
-					queryData := p.CommandFlagsToQueryData(c)
+					queryData := p.CommandProcessFlagsToQueryData(c)
 
-					return p.List(queryData)
+					secrets, err := p.List(queryData)
+					return p.CommandOutputHelper(c, "list", secrets, err)
 				},
 				Flags: []cli.Flag{
 					&cli.StringFlag{

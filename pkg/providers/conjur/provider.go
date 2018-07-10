@@ -4,6 +4,7 @@ import (
 	"tentacle/pkg/providers/cyberark/api"
 	"log"
 	"tentacle/pkg/providers/base"
+	"tentacle/pkg/credentials"
 )
 
 type Provider struct {
@@ -18,7 +19,7 @@ func (p *Provider) Init(alias string, config map[string]interface{}) error {
 	return nil
 }
 
-func (p *Provider) Get(queryData map[string]string) error {
+func (p *Provider) Get(queryData map[string]string) (credentials.Interface, error) {
 
 
 	client, err := api.NewClient(
@@ -44,9 +45,9 @@ func (p *Provider) Get(queryData map[string]string) error {
 	log.Println(ret.UserName)
 	log.Println(ret.Content)
 
-	return nil
+	return nil, nil
 }
 
-func (p *Provider) List(queryData map[string]string) error {
-	return nil
+func (p *Provider) List(queryData map[string]string) ([]credentials.Interface, error) {
+	return nil, nil
 }
