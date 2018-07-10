@@ -17,20 +17,20 @@ func Create(alias string, config interface{}) (Interface, error) {
 
 	//os specific providers
 	case "keychain":
-		provider := keychain.Provider {}
+		provider := new(keychain.Provider)
 		provider.Init(alias, config.(map[string]interface{}))
-		return &provider, nil
+		return provider, nil
 
 
 	//alphabetical list of common providers
 	case "cyberark":
-		provider := cyberark.Provider {}
+		provider := new(cyberark.Provider)
 		provider.Init(alias, config.(map[string]interface{}))
-		return &provider, nil
+		return provider, nil
 	case "thycotic":
-		provider := thycotic.Provider {}
+		provider := new(thycotic.Provider)
 		provider.Init(alias, config.(map[string]interface{}))
-		return &provider, nil
+		return provider, nil
 
 	//fall back error message
 	default:

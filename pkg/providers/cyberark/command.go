@@ -7,7 +7,7 @@ import (
 
 func  (p *Provider) Command() *cli.Command {
 	return &cli.Command {
-		Name:      p.alias,
+		Name:      p.Alias,
 		Usage:     "Access secrets and passwords stored in cyberark vault",
 		Subcommands: []*cli.Command{
 			{

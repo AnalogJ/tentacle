@@ -1,9 +1,8 @@
-// +build darwin
-package cyberark
+package conjur
 
 import (
-	"log"
 	"tentacle/pkg/providers/cyberark/api"
+	"log"
 	"tentacle/pkg/providers/base"
 )
 
@@ -31,7 +30,7 @@ func (p *Provider) Get(queryData map[string]string) error {
 
 	ret, err := client.GetPassword().
 		AppID(p.ProviderConfig["appid"].(string)).
-		Safe((p.ProviderConfig["safe"].(string))).
+		Safe(p.ProviderConfig["safe"].(string)).
 		Object(queryData["id"]).
 		Do()
 	if err != nil {

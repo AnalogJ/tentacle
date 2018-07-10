@@ -11,20 +11,19 @@ import (
 
 type Provider struct {
 	*base.Provider
-	alias string
-	providerConfig map[string]interface{}
 }
 
 func (p *Provider) Init(alias string, config map[string]interface{}) error {
-	//validate the config and assign it to providerConfig
-	p.providerConfig = config
-	p.alias = alias
+	//validate the config and assign it to ProviderConfig
+	p.Provider = new(base.Provider)
+	p.ProviderConfig = config
+	p.Alias = alias
 	return nil
 }
 
 func (p *Provider) Authenticate() error {
 
-	if location, ok := p.providerConfig["location"]; ok {
+	if location, ok := p.ProviderConfig["location"]; ok {
 		//ensure that we can authenticate to this secret store.
 		locationPath, _ := utils.ExpandPath(location.(string))
 		k := goKeychain.NewWithPath(locationPath)
@@ -66,7 +65,7 @@ func (p *Provider) Get(queryData map[string]string) error {
 		query.SetDescription(description)
 	}
 
-	if location, ok := p.providerConfig["location"]; ok {
+	if location, ok := p.ProviderConfig["location"]; ok {
 		//ensure that we can authenticate to this secret store.
 		locationPath, _ := utils.ExpandPath(location.(string))
 		k := goKeychain.NewWithPath(locationPath)
@@ -112,7 +111,7 @@ func (p *Provider) List(queryData map[string]string) error {
 		query.SetDescription(description)
 	}
 
-	if location, ok := p.providerConfig["location"]; ok {
+	if location, ok := p.ProviderConfig["location"]; ok {
 		//ensure that we can authenticate to this secret store.
 		locationPath, _ := utils.ExpandPath(location.(string))
 		k := goKeychain.NewWithPath(locationPath)
