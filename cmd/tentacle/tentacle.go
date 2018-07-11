@@ -9,9 +9,9 @@ import (
 	"log"
 	"tentacle/pkg/config"
 	"tentacle/pkg/errors"
-	"tentacle/pkg/utils"
 	"tentacle/pkg/version"
 	"github.com/fatih/color"
+	"tentacle/pkg/utils"
 )
 
 var goos string
@@ -52,6 +52,8 @@ OPTIONS:
    {{end}}{{end}}
 `
 
+	cli.AppHelpTemplate = fmt.Sprintf("%s %s", CustomizeHelpTemplate(), cli.AppHelpTemplate)
+
 	app := &cli.App{
 		Name:     "tentacle",
 		Usage:    "Base retrieval made simple",
@@ -62,33 +64,6 @@ OPTIONS:
 				Name:  "Jason Kulatunga",
 				Email: "jason@thesparktree.com",
 			},
-		},
-		Before: func(c *cli.Context) error {
-
-			drawbridge := "github.com/AnalogJ/tentacle"
-
-			var versionInfo string
-			if len(goos) > 0 && len(goarch) > 0 {
-				versionInfo = fmt.Sprintf("%s.%s-%s", goos, goarch, version.VERSION)
-			} else {
-				versionInfo = fmt.Sprintf("dev-%s", version.VERSION)
-			}
-
-			subtitle := drawbridge + utils.LeftPad2Len(versionInfo, " ", 65-len(drawbridge))
-
-			color.New(color.FgGreen).Fprintf(c.App.Writer, fmt.Sprintf(utils.StripIndent(
-				`
-			 ____  ____  __ _  ____  __    ___  __    ____ 
-			(_  _)(  __)(  ( \(_  _)/ _\  / __)(  )  (  __)
-			  )(   ) _) /    /  )( /    \( (__ / (_/\ ) _) 
-			 (__) (____)\_)__) (__)\_/\_/ \___)\____/(____)
-			%s
-
-			`), subtitle))
-
-
-
-			return nil
 		},
 
 		//TODO: add global flag for output type "json, table, raw"
@@ -126,4 +101,27 @@ func ConfiguredProviderCommands(config config.Interface) []*cli.Command {
 		commands = append(commands, provider.Command())
 	}
 	return commands
+}
+
+func CustomizeHelpTemplate() string {
+	tentacle := "github.com/AnalogJ/tentacle"
+
+	var versionInfo string
+	if len(goos) > 0 && len(goarch) > 0 {
+		versionInfo = fmt.Sprintf("%s.%s-%s", goos, goarch, version.VERSION)
+	} else {
+		versionInfo = fmt.Sprintf("dev-%s", version.VERSION)
+	}
+
+	subtitle := tentacle + utils.LeftPad2Len(versionInfo, " ", 65-len(tentacle))
+
+	return fmt.Sprintf(utils.StripIndent(
+	`
+		 ____  ____  __ _  ____  __    ___  __    ____
+		(_  _)(  __)(  ( \(_  _)/ _\  / __)(  )  (  __)
+		  )(   ) _) /    /  )( /    \( (__ / (_/\ ) _)
+		 (__) (____)\_)__) (__)\_/\_/ \___)\____/(____)
+		%s
+	
+		`), subtitle)
 }

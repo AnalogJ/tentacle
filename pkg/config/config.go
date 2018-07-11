@@ -51,7 +51,7 @@ func (c *configuration) ReadConfig(configFilePath string) error {
 		return errors.ConfigFileMissingError("The configuration file could not be found.")
 	}
 
-	log.Printf("Loading configuration file: %s", configFilePath)
+	//log.Printf("Loading configuration file: %s", configFilePath)
 
 	config_data, err := os.Open(configFilePath)
 	if err != nil {

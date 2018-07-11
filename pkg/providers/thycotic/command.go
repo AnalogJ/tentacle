@@ -27,7 +27,7 @@ func  (p *Provider) Command() *cli.Command {
 					queryData := p.CommandProcessFlagsToQueryData(c)
 
 					secret, err := p.Get(queryData)
-					return p.CommandOutputHelper(c, "get", secret, err)
+					return p.CommandPrintCredentials(c, "get", secret, err)
 
 				},
 				Flags: []cli.Flag{
@@ -45,7 +45,7 @@ func  (p *Provider) Command() *cli.Command {
 					queryData := p.CommandProcessFlagsToQueryData(c)
 
 					secrets, err := p.List(queryData)
-					return p.CommandOutputHelper(c, "list", secrets, err)
+					return p.CommandPrintCredentials(c, "list", secrets, err)
 				},
 				Flags: []cli.Flag{
 					&cli.StringFlag{

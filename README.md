@@ -17,6 +17,28 @@
 
 Retrieve your secrets from wherever they live. Vault/Cyberark/Thycotic/Keychain/Keyring/etc.
 
+# Current Providers
+
+- Cyberark
+- MacOS - keychain
+- Thycotic
+
+# Future Providers
+
+- Chrome
+- Firefox
+- Conjur
+- Lastpass
+- OnePass
+- Bitwarden
+- PasswordStore (Pass)
+- Vault
+- Linux - Keyring
+- Linux - Secretservice
+- Windows - Password vault
+- AWS 
+- Chef
+- keypass
 
 # References
 
@@ -30,4 +52,15 @@ Retrieve your secrets from wherever they live. Vault/Cyberark/Thycotic/Keychain/
 - https://github.com/lastpass/lastpass-cli
 - https://github.com/cyberark/conjur-api-go
 - https://github.com/hoop33/go-cyberark
+- https://cla-assistant.io/
+- https://github.com/cyberark/summon
+- https://medium.com/learning-the-go-programming-language/writing-modular-go-programs-with-plugins-ec46381ee1a9
 
+# Possible Names
+- Seer
+- invoke
+- incant
+- despell
+- arcane
+- shroud
+- keyhole - https://thenounproject.com/search/?q=keyhole&i=200437

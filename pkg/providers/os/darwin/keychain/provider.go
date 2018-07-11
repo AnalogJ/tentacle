@@ -77,20 +77,22 @@ func (p *Provider) Get(queryData map[string]string) (credentials.Interface, erro
 	}
 
 
+
 	results, err := goKeychain.QueryItem(query)
 	if err != nil {
 		// handle error
-		fmt.Printf("%#v\n", err)
-	} else {
-		fmt.Print("Found Results!\n")
-		for _, r := range results {
-			fmt.Printf("%#v\n", r)
-
-			fmt.Printf( "secret: %v" ,string(r.Data))
-
+		return nil, err
+	} else if len(results) == 1 {
+		if p.DebugMode {
+			fmt.Println("DEBUG: found secret")
 		}
+		return PopulateCredential(results[0]), nil
+	} else {
+		if p.DebugMode {
+			fmt.Println("DEBUG: no secrets found")
+		}
+		return nil, nil
 	}
-	return nil, nil
 }
 
 func (p *Provider) List(queryData map[string]string) ([]credentials.Interface, error) {
@@ -122,12 +124,45 @@ func (p *Provider) List(queryData map[string]string) ([]credentials.Interface, e
 		query.UseKeychain(k)
 	}
 	results, err := goKeychain.QueryItem(query)
+
 	if err != nil {
 		// handle error
-	} else {
-		for _, r := range results {
-			fmt.Printf("%#v\n", r)
+		return nil, err
+	} else if len(results) >= 1 {
+		if p.DebugMode {
+			fmt.Println("DEBUG: found secrets")
 		}
+
+		secrets := []credentials.Interface{}
+		for _, r := range results {
+			secrets = append(secrets, PopulateCredential(r))
+		}
+
+		return secrets, nil
+	} else {
+		if p.DebugMode {
+			fmt.Println("DEBUG: no secrets found")
+		}
+		return nil, nil
 	}
+
 	return nil, nil
+}
+
+func PopulateCredential(queryResult goKeychain.QueryResult) credentials.Interface {
+	//TODO: handle non-password credentials.
+	// As of now, we can only read password credentials from Keychain, so we only have to worry about password data here
+
+	secret := new(credentials.Text)
+	secret.Init()
+	secret.Data = string(queryResult.Data)
+
+	//parse metadata
+	secret.Metadata["service"] = queryResult.Service
+	secret.Metadata["account"] = queryResult.Account
+	secret.Metadata["accessGroup"] = queryResult.AccessGroup
+	secret.Metadata["label"] = queryResult.Label
+	secret.Metadata["description"] = queryResult.Description
+
+	return secret
 }
