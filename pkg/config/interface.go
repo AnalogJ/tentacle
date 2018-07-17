@@ -1,6 +1,6 @@
 package config
 
-import "tentacle/pkg/providers"
+import "github.com/analogj/tentacle/pkg/providers"
 
 // Create mock using:
 // mockgen -source=pkg/config/interface.go -destination=pkg/config/mock/mock_config.go

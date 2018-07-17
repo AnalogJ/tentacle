@@ -2,7 +2,7 @@ package providers
 
 import (
 	"gopkg.in/urfave/cli.v2"
-	"tentacle/pkg/credentials"
+	"github.com/analogj/tentacle/pkg/credentials"
 )
 
 // Create mock using:

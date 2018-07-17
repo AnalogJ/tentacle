@@ -1,10 +1,10 @@
 package conjur
 
 import (
-	"tentacle/pkg/providers/cyberark/api"
+	"github.com/analogj/tentacle/pkg/providers/cyberark/api"
 	"log"
-	"tentacle/pkg/providers/base"
-	"tentacle/pkg/credentials"
+	"github.com/analogj/tentacle/pkg/providers/base"
+	"github.com/analogj/tentacle/pkg/credentials"
 )
 
 type Provider struct {
@@ -20,7 +20,6 @@ func (p *Provider) Init(alias string, config map[string]interface{}) error {
 }
 
 func (p *Provider) Get(queryData map[string]string) (credentials.Interface, error) {
-
 
 	client, err := api.NewClient(
 		api.SetHost(p.ProviderConfig["host"].(string)),

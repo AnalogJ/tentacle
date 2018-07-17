@@ -5,9 +5,9 @@ import (
 	"log"
 	"os"
 
-	"tentacle/pkg/utils"
-	"tentacle/pkg/errors"
-	"tentacle/pkg/providers"
+	"github.com/analogj/tentacle/pkg/utils"
+	"github.com/analogj/tentacle/pkg/errors"
+	"github.com/analogj/tentacle/pkg/providers"
 )
 
 // When initializing this class the following methods must be called:

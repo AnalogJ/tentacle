@@ -3,9 +3,9 @@ package cyberark
 
 import (
 	"log"
-	"tentacle/pkg/providers/cyberark/api"
-	"tentacle/pkg/providers/base"
-	"tentacle/pkg/credentials"
+	"github.com/analogj/tentacle/pkg/providers/cyberark/api"
+	"github.com/analogj/tentacle/pkg/providers/base"
+	"github.com/analogj/tentacle/pkg/credentials"
 )
 
 type Provider struct {

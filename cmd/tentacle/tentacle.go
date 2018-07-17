@@ -7,11 +7,11 @@ import (
 
 	"gopkg.in/urfave/cli.v2"
 	"log"
-	"tentacle/pkg/config"
-	"tentacle/pkg/errors"
-	"tentacle/pkg/version"
+	"github.com/analogj/tentacle/pkg/config"
+	"github.com/analogj/tentacle/pkg/errors"
+	"github.com/analogj/tentacle/pkg/version"
 	"github.com/fatih/color"
-	"tentacle/pkg/utils"
+	"github.com/analogj/tentacle/pkg/utils"
 )
 
 var goos string

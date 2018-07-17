@@ -1,9 +1,9 @@
 package thycotic
 
 import (
-	"tentacle/pkg/providers/thycotic/api"
-	"tentacle/pkg/providers/base"
-	"tentacle/pkg/credentials"
+	"github.com/analogj/tentacle/pkg/providers/thycotic/api"
+	"github.com/analogj/tentacle/pkg/providers/base"
+	"github.com/analogj/tentacle/pkg/credentials"
 )
 
 type Provider struct {

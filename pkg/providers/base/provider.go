@@ -3,9 +3,9 @@ package base
 import (
 	"gopkg.in/urfave/cli.v2"
 	"fmt"
-	"tentacle/pkg/utils"
-	"tentacle/pkg/errors"
-	"tentacle/pkg/credentials"
+	"github.com/analogj/tentacle/pkg/utils"
+	"github.com/analogj/tentacle/pkg/errors"
+	"github.com/analogj/tentacle/pkg/credentials"
 	"encoding/json"
 )
 

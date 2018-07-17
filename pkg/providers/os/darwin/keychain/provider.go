@@ -4,10 +4,10 @@ package keychain
 import "fmt"
 import (
 	goKeychain "github.com/keybase/go-keychain"
-	"tentacle/pkg/utils"
-	"tentacle/pkg/providers/base"
-	"tentacle/pkg/credentials"
-	"tentacle/pkg/errors"
+	"github.com/analogj/tentacle/pkg/utils"
+	"github.com/analogj/tentacle/pkg/providers/base"
+	"github.com/analogj/tentacle/pkg/credentials"
+	"github.com/analogj/tentacle/pkg/errors"
 )
 
 type Provider struct {

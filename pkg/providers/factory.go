@@ -1,10 +1,10 @@
 package providers
 
 import (
-	"tentacle/pkg/utils"
-	"tentacle/pkg/providers/cyberark"
-	"tentacle/pkg/providers/thycotic"
-	"tentacle/pkg/providers/os/darwin/keychain"
+	"github.com/analogj/tentacle/pkg/utils"
+	"github.com/analogj/tentacle/pkg/providers/cyberark"
+	"github.com/analogj/tentacle/pkg/providers/thycotic"
+	"github.com/analogj/tentacle/pkg/providers/os/darwin/keychain"
 	"log"
 )
 
