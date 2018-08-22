@@ -71,6 +71,12 @@
   revision = "70b98e9c8d754db775c5bd3b2de3670cc76f1825"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/kvz/logstreamer"
+  packages = ["."]
+  revision = "a635b98146f0f465f3413a0b8ec481f3698d3fc2"
+
+[[projects]]
   name = "github.com/magiconair/properties"
   packages = ["."]
   revision = "c2353362d570a7bfa228149c62842019201cfb71"
@@ -194,6 +200,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "411646546048c322451348579a8ac2ea682b0f808317466dbc5a6709879505ef"
+  inputs-digest = "95f2719bbd510ef91f9e7bd66fb64360a9cf24d0bddc9d79cb6322de13ef121d"
   solver-name = "gps-cdcl"
   solver-version = 1

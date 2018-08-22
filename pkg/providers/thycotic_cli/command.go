@@ -1,4 +1,4 @@
-package thycotic
+package thycotic_cli
 
 import (
 	"gopkg.in/urfave/cli.v2"
@@ -8,14 +8,14 @@ import (
 func  (p *Provider) Command() *cli.Command {
 	return &cli.Command {
 		Name:      p.Alias,
-		Usage:     "Access secrets and passwords stored in thycotic secret server",
+		Usage:     "Access secrets and passwords stored in thycotic secret server via cli",
 		Before: func (ctx *cli.Context) error {
 			return p.CommandProcessGlobalFlags(ctx)
 		},
 		Subcommands: []*cli.Command{
 			{
 				Name:  "get",
-				Usage: "retrieve a specific secret in thycotic secret server",
+				Usage: "retrieve a specific secret in thycotic secret server via cli",
 				Before: func (ctx *cli.Context) error{
 					if !ctx.IsSet("name"){
 						return fmt.Errorf("`name` is required argument")
@@ -23,7 +23,10 @@ func  (p *Provider) Command() *cli.Command {
 					return nil
 				},
 				Action: func(c *cli.Context) error {
-					p.Authenticate()
+					err := p.Authenticate()
+					if err != nil {
+						return err
+					}
 					queryData := p.CommandProcessFlagsToQueryData(c)
 
 					secret, err := p.Get(queryData)
@@ -35,23 +38,10 @@ func  (p *Provider) Command() *cli.Command {
 						Name:    "secretId",
 						Usage:   "Specify the thycotic secret id",
 					},
-				},
-			},
-			{
-				Name:  "list",
-				Usage: "list all available secrets in thycotic secret server",
-				Action: func(c *cli.Context) error {
-					p.Authenticate()
-					queryData := p.CommandProcessFlagsToQueryData(c)
-
-					secrets, err := p.List(queryData)
-					return p.CommandPrintCredentials(c, "list", secrets, err)
-				},
-				Flags: []cli.Flag{
 					&cli.StringFlag{
-						Name:    "criteria",
-						Aliases: []string{"searchTerm"},
-						Usage:   "Specify the thycotic search term",
+						Name:    "fieldName",
+						Usage:   "Specify the thycotic secret field name you would like to retrieve",
+						Value:   "password",
 					},
 				},
 			},

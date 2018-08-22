@@ -18,8 +18,17 @@ providers:
     appid: my_app_id
 
   thycoticalias:
-    type: thycotic
+    type: thycotic_rest
     domain: "YOUR_AD_DOMAIN"
     hosturl: "https://yoursecretserver.yourdomain.com/SecretServer/webservices/SSWebservice.asmx"
     username: "username"
     password: "pass"
+
+  thycotic2:
+    type: thycotic_cli
+
+    #this is the directory containing the secretserver-jconsole.jar and the *.dat files created after Console was "installed"
+    cli_home: ''
+
+    #this is the name of the jar file (if you renamed it). defaults to secretserver-jconsole.jar if not specified.
+    cli_filename: ''

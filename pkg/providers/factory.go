@@ -3,7 +3,7 @@ package providers
 import (
 	"github.com/analogj/tentacle/pkg/utils"
 	"github.com/analogj/tentacle/pkg/providers/cyberark"
-	"github.com/analogj/tentacle/pkg/providers/thycotic"
+	"github.com/analogj/tentacle/pkg/providers/thycotic_rest"
 	"github.com/analogj/tentacle/pkg/providers/os/darwin/keychain"
 	"log"
 )
@@ -28,7 +28,7 @@ func Create(alias string, config interface{}) (Interface, error) {
 		provider.Init(alias, config.(map[string]interface{}))
 		return provider, nil
 	case "thycotic":
-		provider := new(thycotic.Provider)
+		provider := new(thycotic_rest.Provider)
 		provider.Init(alias, config.(map[string]interface{}))
 		return provider, nil
 

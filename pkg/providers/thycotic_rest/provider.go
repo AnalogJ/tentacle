@@ -1,7 +1,7 @@
-package thycotic
+package thycotic_rest
 
 import (
-	"github.com/analogj/tentacle/pkg/providers/thycotic/api"
+	"github.com/analogj/tentacle/pkg/providers/thycotic_rest/api"
 	"github.com/analogj/tentacle/pkg/providers/base"
 	"github.com/analogj/tentacle/pkg/credentials"
 )
