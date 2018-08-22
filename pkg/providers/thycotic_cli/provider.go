@@ -67,7 +67,7 @@ func (p *Provider) Init(alias string, config map[string]interface{}) error {
 func (p *Provider) Authenticate() error {
 
 	// simple test to ensure that the java + jar combination works. Thycotic CLI does not have a method to test authentication works.
-	err := utils.CmdExec("java",[]string{"-java", p.CliJarPath, "-version"}, p.CliHome , []string{}, "")
+	err := utils.CmdExec("java",[]string{"-jar", p.CliJarPath, "-version"}, p.CliHome , []string{}, "")
 	if err != nil {
 		return err
 	}
