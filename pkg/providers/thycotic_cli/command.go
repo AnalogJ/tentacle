@@ -17,8 +17,8 @@ func  (p *Provider) Command() *cli.Command {
 				Name:  "get",
 				Usage: "retrieve a specific secret in thycotic secret server via cli",
 				Before: func (ctx *cli.Context) error{
-					if !ctx.IsSet("name"){
-						return fmt.Errorf("`name` is required argument")
+					if !ctx.IsSet("secretId"){
+						return fmt.Errorf("`secretId` is required argument")
 					}
 					return nil
 				},

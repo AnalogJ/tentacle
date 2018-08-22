@@ -65,9 +65,6 @@ OPTIONS:
 				Email: "jason@thesparktree.com",
 			},
 		},
-
-		//TODO: add global flag for output type "json, table, raw"
-		//TODO: add global flag for debug log level "--debug"
 		Flags: []cli.Flag {
 			&cli.BoolFlag{
 				Name: "debug",
