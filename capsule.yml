@@ -1,0 +1,19 @@
+---
+engine_enable_code_mutation: true
+engine_cmd_compile:
+  - 'GOOS=darwin GOARCH=amd64 go build -ldflags "-X main.goos=darwin -X main.goarch=amd64" -o tentacle-darwin-amd64 -tags "darwin" $(go list ./cmd/...)'
+  - 'chmod +x tentacle-darwin-amd64'
+  - 'GOOS=linux GOARCH=amd64 go build -ldflags "-X main.goos=linux -X main.goarch=amd64" -o tentacle-linux-amd64 -tags "linux" $(go list ./cmd/...)'
+  - 'chmod +x tentacle-linux-amd64'
+  - 'GOOS=windows GOARCH=amd64 go build -ldflags "-X main.goos=windows -X main.goarch=amd64" -o tentacle-windows-amd64.exe -tags "windows" $(go list ./cmd/...)'
+
+engine_cmd_test: 'go test -v -tags "static" $(glide novendor)'
+engine_cmd_lint: 'gometalinter.v1 --vendor --config=gometalinter.json ./...'
+scm_enable_branch_cleanup: true
+scm_release_assets:
+  - local_path: drawbridge-linux-amd64
+    artifact_name: drawbridge-linux-amd64
+  - local_path: drawbridge-darwin-amd64
+    artifact_name: drawbridge-darwin-amd64
+  - local_path: drawbridge-windows-amd64.exe
+    artifact_name: drawbridge-windows-amd64.exe
