@@ -26,9 +26,10 @@ func (p *Provider) Get(queryData map[string]string) error {
 	return errors.NotImplementedError("Get function not implemented")
 }
 
-func (p *Provider) List(queryData map[string]string) error {
-	return errors.NotImplementedError("List function not implemented")
+func (p *Provider) List(queryData map[string]string)  ([]credentials.Interface, error) {
+	return nil, errors.NotImplementedError("List function not implemented")
 }
+
 
 //utility/helper functions
 
