@@ -77,8 +77,15 @@ func (p *Provider) Authenticate() error {
 
 func (p *Provider) Get(queryData map[string]string) (credentials.Interface, error) {
 
+	var fieldName string
+	if fn, ok := p.ProviderConfig["fieldName"]; ok {
+		fieldName = fn.(string)
+	} else {
+		fieldName = "password"
+	}
+
 	// secret retieval
-	err := utils.CmdExec("java",[]string{"-jar", p.CliJarPath, "-s", queryData["secretId"], queryData["fieldName"]}, p.CliHome , []string{}, "")
+	err := utils.CmdExec("java",[]string{"-jar", p.CliJarPath, "-s", queryData["secretId"], fieldName}, p.CliHome , []string{}, "")
 	if err != nil {
 		return nil, err
 	}

@@ -40,8 +40,7 @@ func  (p *Provider) Command() *cli.Command {
 					},
 					&cli.StringFlag{
 						Name:    "fieldName",
-						Usage:   "Specify the thycotic secret field name you would like to retrieve",
-						Value:   "password",
+						Usage:   "Specify the thycotic secret field name you would like to retrieve (default: 'password')",
 					},
 				},
 			},
