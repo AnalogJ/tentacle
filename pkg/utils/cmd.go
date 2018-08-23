@@ -12,6 +12,9 @@ import (
 
 func SimpleCmdExec(cmdName string, cmdArgs []string, workingDir string, environ []string, silent bool) (string, error) {
 
+	if !silent {
+		fmt.Printf("DEBUG: EXTERNAL COMMAND: %v %v\n", cmdName, strings.Join( cmdArgs, " "))
+	}
 	cmd := exec.Command(cmdName, cmdArgs...)
 	//cmd.Stdout = logStreamerOut
 	//cmd.Stderr = logStreamerErr
@@ -29,7 +32,7 @@ func SimpleCmdExec(cmdName string, cmdArgs []string, workingDir string, environ 
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Error running Cmd", err)
 		if eerr, ok := err.(*exec.ExitError); ok && !silent {
-			fmt.Printf("DEBUG: STDERR: %v", string(eerr.Stderr))
+			fmt.Printf("DEBUG: STDERR: %v\n", string(eerr.Stderr))
 		}
 
 		return "", err
@@ -37,7 +40,7 @@ func SimpleCmdExec(cmdName string, cmdArgs []string, workingDir string, environ 
 
 	stdoutStr := strings.TrimSpace(string(stdoutBytes))
 	if !silent {
-		fmt.Printf("DEBUG: STDERR: %v", stdoutStr)
+		fmt.Printf("DEBUG: STDOUT: %v\n", stdoutStr)
 	}
 	return stdoutStr, nil
 }

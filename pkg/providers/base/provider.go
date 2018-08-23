@@ -70,6 +70,9 @@ func (p *Provider) CommandProcessGlobalFlags(c *cli.Context) error {
 
 func (p *Provider) CommandPrintCredentials(c *cli.Context, commandType string, credentialData interface{}, credentialError error) error {
 
+	if credentialError != nil {
+		return credentialError
+	}
 	switch commandType {
 	case "get":
 		return PrintCredential(p.OutputMode, credentialData.(credentials.Interface))

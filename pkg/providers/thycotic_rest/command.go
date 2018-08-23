@@ -23,7 +23,10 @@ func  (p *Provider) Command() *cli.Command {
 					return nil
 				},
 				Action: func(c *cli.Context) error {
-					p.Authenticate()
+					err := p.Authenticate()
+					if err != nil{
+						return err
+					}
 					queryData := p.CommandProcessFlagsToQueryData(c)
 
 					secret, err := p.Get(queryData)
@@ -41,7 +44,10 @@ func  (p *Provider) Command() *cli.Command {
 				Name:  "list",
 				Usage: "list all available secrets in thycotic secret server",
 				Action: func(c *cli.Context) error {
-					p.Authenticate()
+					err := p.Authenticate()
+					if err != nil{
+						return err
+					}
 					queryData := p.CommandProcessFlagsToQueryData(c)
 
 					secrets, err := p.List(queryData)

@@ -81,8 +81,8 @@ func (p *Provider) Authenticate() error {
 func (p *Provider) Get(queryData map[string]string) (credentials.Interface, error) {
 
 	var fieldName string
-	if fn, ok := p.ProviderConfig["fieldName"]; ok {
-		fieldName = fn.(string)
+	if fn, ok := queryData["fieldName"]; ok {
+		fieldName = fn
 	} else {
 		fieldName = "password"
 	}
