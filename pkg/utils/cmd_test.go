@@ -1,88 +1,66 @@
 package utils_test
 
 import (
-	"github.com/analogj/tentacle/pkg/utils"
-	"github.com/stretchr/testify/require"
-	"path/filepath"
-	"testing"
+
+"path/filepath"
+"testing"
+
+"github.com/analogj/tentacle/pkg/utils"
+"github.com/stretchr/testify/require"
+
 )
 
-func TestBashCmdExec(t *testing.T) {
+
+func TestSimpleCmdExec_Date(t *testing.T) {
 	t.Parallel()
 
 	//test
-	cerr := utils.BashCmdExec("echo 'hello from bash'", "", nil, "")
+	dateStr, cerr := utils.SimpleCmdExec("date", []string{}, "", nil, true)
 
 	//assert
 	require.NoError(t, cerr)
+	require.NotEmpty(t, dateStr)
 }
 
-func TestBashCmdExec_StdErr(t *testing.T) {
+func TestSimpleCmdExec_Echo(t *testing.T) {
 	t.Parallel()
 
 	//test
-	cerr := utils.BashCmdExec("(>&2 echo 'test writing to stderr')", "", nil, "")
+	resp, cerr := utils.SimpleCmdExec("echo", []string{"hello", "world"}, "", nil, true)
 
 	//assert
 	require.NoError(t, cerr)
+	require.Equal(t, "hello world", resp)
 }
 
-func TestBashCmdExec_Prefix(t *testing.T) {
+func TestSimpleCmdExec_Error(t *testing.T) {
 	t.Parallel()
 
 	//test
-	cerr := utils.BashCmdExec("echo 'hello from bash with custom prefix'", "", nil, "cust_prefix")
-
-	//assert
-	require.NoError(t, cerr)
-}
-
-func TestCmdExec_Date(t *testing.T) {
-	t.Parallel()
-
-	//test
-	cerr := utils.CmdExec("date", []string{}, "", nil, "")
-
-	//assert
-	require.NoError(t, cerr)
-}
-
-func TestCmdExec_Echo(t *testing.T) {
-	t.Parallel()
-
-	//test
-	cerr := utils.CmdExec("echo", []string{"hello", "world"}, "", nil, "")
-
-	//assert
-	require.NoError(t, cerr)
-}
-
-func TestCmdExec_Error(t *testing.T) {
-	t.Parallel()
-
-	//test
-	cerr := utils.CmdExec("/bin/bash", []string{"exit", "1"}, "", nil, "")
+	_, cerr := utils.SimpleCmdExec("/bin/bash", []string{"exit", "1"}, "", nil, true)
 
 	//assert
 	require.Error(t, cerr)
+
 }
 
-func TestCmdExec_WorkingDirRelative(t *testing.T) {
+func TestSimpleCmdExec_ErrorWorkingDirRelative(t *testing.T) {
 	t.Parallel()
 
 	//test
-	cerr := utils.CmdExec("ls", []string{}, "testdata", nil, "")
+	_, cerr := utils.SimpleCmdExec("ls", []string{}, "testdata", nil, true)
 
 	//assert
 	require.Error(t, cerr)
+
 }
 
-func TestCmdExec_WorkingDirAbsolute(t *testing.T) {
+func TestSimpleCmdExec_WorkingDirAbsolute(t *testing.T) {
 	t.Parallel()
 
 	//test
 	absPath, aerr := filepath.Abs(".")
-	cerr := utils.CmdExec("ls", []string{}, absPath, nil, "")
+	_, cerr := utils.SimpleCmdExec("ls", []string{}, absPath, nil, true)
 
 	//assert
 	require.NoError(t, aerr)

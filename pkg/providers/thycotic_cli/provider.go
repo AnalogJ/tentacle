@@ -1,13 +1,16 @@
 package thycotic_cli
 
 import (
-	"github.com/analogj/tentacle/pkg/providers/base"
-	"github.com/analogj/tentacle/pkg/credentials"
-	"github.com/analogj/tentacle/pkg/utils"
-	"fmt"
-	"github.com/analogj/tentacle/pkg/errors"
-	"os/exec"
-	"path"
+
+"fmt"
+"os/exec"
+"path"
+
+"github.com/analogj/tentacle/pkg/credentials"
+"github.com/analogj/tentacle/pkg/errors"
+"github.com/analogj/tentacle/pkg/providers/base"
+"github.com/analogj/tentacle/pkg/utils"
+
 )
 
 type Provider struct {
@@ -67,7 +70,7 @@ func (p *Provider) Init(alias string, config map[string]interface{}) error {
 func (p *Provider) Authenticate() error {
 
 	// simple test to ensure that the java + jar combination works. Thycotic CLI does not have a method to test authentication works.
-	err := utils.CmdExec("java",[]string{"-jar", p.CliJarPath, "-version"}, p.CliHome , []string{}, "")
+	_, err := utils.SimpleCmdExec("java",[]string{"-jar", p.CliJarPath, "-version"}, p.CliHome , []string{}, !p.DebugMode)
 	if err != nil {
 		return err
 	}
@@ -85,10 +88,25 @@ func (p *Provider) Get(queryData map[string]string) (credentials.Interface, erro
 	}
 
 	// secret retieval
-	err := utils.CmdExec("java",[]string{"-jar", p.CliJarPath, "-s", queryData["secretId"], fieldName}, p.CliHome , []string{}, "")
+	result, err := utils.SimpleCmdExec("java",[]string{"-jar", p.CliJarPath, "-s", queryData["secretId"], fieldName}, p.CliHome , []string{}, !p.DebugMode)
 	if err != nil {
 		return nil, err
 	}
 
-	return nil, nil
+	return PopulateCredential(queryData, result), nil
+}
+
+
+func PopulateCredential(queryData map[string]string, result string) credentials.Interface {
+	//TODO: handle non-text credentials.
+	// As of now, theres no way to determine what type of credential we've recieved, always return a Text type.
+
+	secret := new(credentials.Text)
+	secret.Init()
+	secret.Data = result
+
+	//set metadata
+	secret.Metadata = queryData //sets secretId & fieldName
+
+	return secret
 }
