@@ -55,6 +55,8 @@ Retrieve your secrets from wherever they live. Vault/Cyberark/Thycotic/Keychain/
 - https://cla-assistant.io/
 - https://github.com/cyberark/summon
 - https://medium.com/learning-the-go-programming-language/writing-modular-go-programs-with-plugins-ec46381ee1a9
+- https://thycotic.force.com/support/s/article/Accessing-Secret-Server-programmatically-Curl
+- https://thycotic.com/wp-content/uploads/2014/04/SS_WebServicesGuide.pdf
 
 # Possible Names
 - Seer

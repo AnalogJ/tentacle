@@ -103,7 +103,7 @@ func PopulateCredential(queryData map[string]string, result string) credentials.
 
 	secret := new(credentials.Text)
 	secret.Init()
-	secret.Data = result
+	secret.SetText(result)
 
 	//set metadata
 	secret.Metadata = queryData //sets secretId & fieldName

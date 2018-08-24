@@ -18,11 +18,14 @@ providers:
     appid: my_app_id
 
   thycoticalias:
-    type: thycotic_rest
+    type: thycotic_ws
     domain: "YOUR_AD_DOMAIN"
-    hosturl: "https://yoursecretserver.yourdomain.com/SecretServer/webservices/SSWebservice.asmx"
-    username: "username"
-    password: "pass"
+    server: "yoursecretserver.yourdomain.com"
+
+    # tokens can be retrieved by using:
+    # curl -v -H "Content-Type: application/x-www-form-urlencoded" -d "username={NAME}&password={PASSWORD}&organization=&domain=" --url "http://yoursecretserver.yourdomain.com/webservices/sswebservice.asmx/Authenticate"
+    # and parsing the xml output for the token
+    token: "token"
 
   thycotic2:
     type: thycotic_cli

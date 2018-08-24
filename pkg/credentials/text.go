@@ -6,14 +6,25 @@ import (
 )
 
 type Text struct {
-	*Base
-	Data string
+	*Generic
 }
 
 func (t *Text) Init() {
-	t.Base = new(Base)
-	t.Base.Init()
-	t.Type = "text"
+	t.Generic = new(Generic)
+	t.Generic.Init()
+	t.secretType = "text"
+}
+
+func (t *Text)Text() string {
+
+	if x, found := t.Data["text"]; found {
+		return x
+	} else {
+		return ""
+	}
+}
+func (t *Text)SetText(text string) {
+	t.Data["text"] = text
 }
 
 func (t *Text) ToJsonString() (string, error) {
@@ -27,7 +38,7 @@ func (t *Text) ToJsonString() (string, error) {
 
 func (t *Text) ToRawString() (string, error) {
 	//nothing to print for a base rawstring
-	return t.Data, nil
+	return t.Text(), nil
 }
 
 func (t *Text) ToTableString() (string, error) {

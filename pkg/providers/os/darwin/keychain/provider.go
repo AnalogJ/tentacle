@@ -155,14 +155,14 @@ func PopulateCredential(queryResult goKeychain.QueryResult) credentials.Interfac
 
 	secret := new(credentials.Text)
 	secret.Init()
-	secret.Data = string(queryResult.Data)
+	secret.SetText(string(queryResult.Data))
 
 	//parse metadata
 	secret.Metadata["service"] = queryResult.Service
 	secret.Metadata["account"] = queryResult.Account
 	secret.Metadata["accessGroup"] = queryResult.AccessGroup
 	secret.Metadata["label"] = queryResult.Label
-	secret.Metadata["description"] = queryResult.Description
+	secret.Description = queryResult.Description
 
 	return secret
 }

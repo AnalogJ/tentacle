@@ -37,12 +37,6 @@
 
 [[projects]]
   branch = "master"
-  name = "github.com/gogosphere/xmlanswers"
-  packages = ["."]
-  revision = "d34ff61d1d339aa9c22273518fd8ff22f5e205a5"
-
-[[projects]]
-  branch = "master"
   name = "github.com/hashicorp/hcl"
   packages = [
     ".",
@@ -161,6 +155,12 @@
   version = "v1.2.2"
 
 [[projects]]
+  name = "github.com/tiaguinho/gosoap"
+  packages = ["."]
+  revision = "eda446c474d0360cfd4a67108653f75239994b8f"
+  version = "v1.1.0"
+
+[[projects]]
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
@@ -200,6 +200,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "95f2719bbd510ef91f9e7bd66fb64360a9cf24d0bddc9d79cb6322de13ef121d"
+  inputs-digest = "b28c78355f27e46b99f06c86accd0ef713a2045407bd3e139fc4b6d40b19aabb"
   solver-name = "gps-cdcl"
   solver-version = 1

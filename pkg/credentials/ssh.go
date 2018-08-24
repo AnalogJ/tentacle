@@ -6,14 +6,27 @@ import (
 )
 
 type Ssh struct {
-	*Text
+	*Generic
 }
 
 func (s *Ssh) Init() {
-	s.Text = new(Text)
-	s.Text.Init()
-	s.Type = "ssh"
+	s.Generic = new(Generic)
+	s.Generic.Init()
+	s.secretType = "ssh"
 }
+
+func (s *Ssh)Key() string {
+
+	if x, found := s.Data["key"]; found {
+		return x
+	} else {
+		return ""
+	}
+}
+func (s *Ssh)SetKey(key string) {
+	s.Data["key"] = key
+}
+
 
 func (s *Ssh) ToJsonString() (string, error) {
 
@@ -24,9 +37,9 @@ func (s *Ssh) ToJsonString() (string, error) {
 	return 	fmt.Sprintf(string(jsonBytes)), nil
 }
 
+//for Ssh secrets, we expect that the key is the primary data, so we'll return that when Raw is requested. All other data is available in the JSON response.
 func (s *Ssh) ToRawString() (string, error) {
-	//nothing to print for a base rawstring
-	return s.Data, nil
+	return s.Key(), nil
 }
 
 func (s *Ssh) ToTableString() (string, error) {
