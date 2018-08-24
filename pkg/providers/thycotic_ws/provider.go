@@ -47,7 +47,7 @@ func (p *Provider) Get(queryData map[string]string) (credentials.Interface, erro
 		Token:  p.ProviderConfig["token"].(string),
 	}
 
-	resp, err := client.Get(queryData["secretId"])
+	resp, err := client.Get(queryData["secretid"])
 	if err != nil {
 		return nil, err
 	}
