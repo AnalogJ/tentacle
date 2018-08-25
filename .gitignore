@@ -1,3 +1,5 @@
 .idea
 vendor
 *.iml
+
+tentacle-*-amd64

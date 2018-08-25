@@ -73,7 +73,7 @@ OPTIONS:
 			},
 			&cli.StringFlag{
 				Name: "output",
-				Value: "table",
+				Value: "raw",
 				Usage: "Specify output type. Allowed: 'json', 'table', 'raw'",
 			},
 		},
