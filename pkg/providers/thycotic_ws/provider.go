@@ -42,7 +42,7 @@ func (p *Provider) Authenticate() error {
 	return nil
 }
 
-func (p *Provider) Get(queryData map[string]string) (credentials.Interface, error) {
+func (p *Provider) Get(queryData map[string]string) (credentials.BaseInterface, error) {
 
 	resp, err := p.client.Get(queryData["secretid"])
 	if err != nil {
@@ -53,7 +53,7 @@ func (p *Provider) Get(queryData map[string]string) (credentials.Interface, erro
 	return PopulateCredential(queryData, resp), nil
 }
 
-func (p *Provider) List(queryData map[string]string) ([]credentials.Interface, error) {
+func (p *Provider) List(queryData map[string]string) ([]credentials.BaseInterface, error) {
 
 	resp, err := p.client.List(queryData["criteria"])
 	if err != nil {
@@ -65,11 +65,11 @@ func (p *Provider) List(queryData map[string]string) ([]credentials.Interface, e
 }
 
 
-func PopulateSummaryList(queryData map[string]string, result api.SearchSecretsResponse) []credentials.Interface {
+func PopulateSummaryList(queryData map[string]string, result api.SearchSecretsResponse) []credentials.BaseInterface {
 	// As of now, theres no way to determine what type of credential we've recieved, always return a Text type.
 
 
-	secrets := []credentials.Interface{}
+	secrets := []credentials.BaseInterface{}
 
 	for _, secret := range result.SearchSecretsResult.SecretSummaries {
 
@@ -87,7 +87,7 @@ func PopulateSummaryList(queryData map[string]string, result api.SearchSecretsRe
 	return secrets
 }
 
-func PopulateCredential(queryData map[string]string, result api.GetSecretResponse) credentials.Interface {
+func PopulateCredential(queryData map[string]string, result api.GetSecretResponse) credentials.BaseInterface {
 	// As of now, theres no way to determine what type of credential we've recieved, always return a Text type.
 
 	metadata := map[string]string{}

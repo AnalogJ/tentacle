@@ -20,7 +20,7 @@ func (p *Provider) Init(alias string, config map[string]interface{}) error {
 	return nil
 }
 
-func (p *Provider) Get(queryData map[string]string) (credentials.Interface, error) {
+func (p *Provider) Get(queryData map[string]string) (credentials.BaseInterface, error) {
 
 
 	client, err := api.NewClient(
@@ -49,6 +49,6 @@ func (p *Provider) Get(queryData map[string]string) (credentials.Interface, erro
 	return nil, nil
 }
 
-func (p *Provider) List(queryData map[string]string) ([]credentials.Interface, error) {
+func (p *Provider) List(queryData map[string]string) ([]credentials.BaseInterface, error) {
 	return nil, nil
 }
