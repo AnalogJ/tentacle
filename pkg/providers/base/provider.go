@@ -26,7 +26,7 @@ func (p *Provider) Get(queryData map[string]string) error {
 	return errors.NotImplementedError("Get function not implemented")
 }
 
-func (p *Provider) List(queryData map[string]string)  ([]credentials.BaseInterface, error) {
+func (p *Provider) List(queryData map[string]string)  ([]credentials.Interface, error) {
 	return nil, errors.NotImplementedError("List function not implemented")
 }
 
@@ -75,9 +75,9 @@ func (p *Provider) CommandPrintCredentials(c *cli.Context, commandType string, c
 	}
 	switch commandType {
 	case "get":
-		return PrintCredential(p.OutputMode, credentialData.(credentials.BaseInterface))
+		return PrintCredential(p.OutputMode, credentialData.(credentials.Interface))
 	case "list":
-		return PrintCredentials(p.OutputMode, credentialData.([]credentials.BaseInterface))
+		return PrintCredentials(p.OutputMode, credentialData.([]credentials.Interface))
 	default:
 		return errors.InvalidArgumentsError(fmt.Sprintf("command type is invalid (%v)", commandType))
 	}
@@ -85,7 +85,7 @@ func (p *Provider) CommandPrintCredentials(c *cli.Context, commandType string, c
 	return nil
 }
 
-func PrintCredential(outputMode string, credential credentials.BaseInterface) error {
+func PrintCredential(outputMode string, credential credentials.Interface) error {
 
 	switch outputMode {
 	case "json":
@@ -113,7 +113,7 @@ func PrintCredential(outputMode string, credential credentials.BaseInterface) er
 	return nil
 }
 
-func PrintCredentials(outputMode string, credentials []credentials.BaseInterface) error {
+func PrintCredentials(outputMode string, credentials []credentials.Interface) error {
 
 	switch outputMode {
 	case "json":
