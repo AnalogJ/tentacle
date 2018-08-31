@@ -12,6 +12,7 @@ import (
 
 type Provider struct {
 	*base.Provider
+	client api.Client
 }
 
 func (p *Provider) Init(alias string, config map[string]interface{}) error {
@@ -26,7 +27,7 @@ func (p *Provider) Init(alias string, config map[string]interface{}) error {
 
 func (p *Provider) Authenticate() error {
 
-	client := api.Client {
+	p.client = api.Client {
 		Domain: p.ProviderConfig["domain"].(string),
 		Server: p.ProviderConfig["server"].(string),
 		Token:  p.ProviderConfig["token"].(string),
@@ -34,20 +35,14 @@ func (p *Provider) Authenticate() error {
 		//Password: p.ProviderConfig["password"].(string),
 	}
 
-	client.Test()
+	p.client.Test()
 
 	return nil
 }
 
 func (p *Provider) Get(queryData map[string]string) (credentials.Interface, error) {
 
-	client := api.Client {
-		Domain: p.ProviderConfig["domain"].(string),
-		Server: p.ProviderConfig["server"].(string),
-		Token:  p.ProviderConfig["token"].(string),
-	}
-
-	resp, err := client.Get(queryData["secretid"])
+	resp, err := p.client.Get(queryData["secretid"])
 	if err != nil {
 		return nil, err
 	}
@@ -57,13 +52,8 @@ func (p *Provider) Get(queryData map[string]string) (credentials.Interface, erro
 }
 
 func (p *Provider) List(queryData map[string]string) ([]credentials.Interface, error) {
-	client := api.Client {
-		Domain: p.ProviderConfig["domain"].(string),
-		Server: p.ProviderConfig["server"].(string),
-		Token:  p.ProviderConfig["token"].(string),
-	}
 
-	resp, err := client.List(queryData["criteria"])
+	resp, err := p.client.List(queryData["criteria"])
 	if err != nil {
 		return nil, err
 	}
