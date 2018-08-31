@@ -45,7 +45,7 @@ func (p *Provider) Authenticate() error {
 	return nil
 }
 
-func (p *Provider) Get(queryData map[string]string) (credentials.Interface, error) {
+func (p *Provider) Get(queryData map[string]string) (credentials.BaseInterface, error) {
 
 	query := goKeychain.NewItem()
 	query.SetSecClass(goKeychain.SecClassGenericPassword)
@@ -95,7 +95,7 @@ func (p *Provider) Get(queryData map[string]string) (credentials.Interface, erro
 	}
 }
 
-func (p *Provider) List(queryData map[string]string) ([]credentials.Interface, error) {
+func (p *Provider) List(queryData map[string]string) ([]credentials.BaseInterface, error) {
 	query := goKeychain.NewItem()
 	query.SetSecClass(goKeychain.SecClassGenericPassword)
 	query.SetMatchLimit(goKeychain.MatchLimitAll)
@@ -133,7 +133,7 @@ func (p *Provider) List(queryData map[string]string) ([]credentials.Interface, e
 			fmt.Println("DEBUG: found secrets")
 		}
 
-		secrets := []credentials.Interface{}
+		secrets := []credentials.BaseInterface{}
 		for _, r := range results {
 			secrets = append(secrets, PopulateCredential(r))
 		}
@@ -149,7 +149,7 @@ func (p *Provider) List(queryData map[string]string) ([]credentials.Interface, e
 	return nil, nil
 }
 
-func PopulateCredential(queryResult goKeychain.QueryResult) credentials.Interface {
+func PopulateCredential(queryResult goKeychain.QueryResult) credentials.BaseInterface {
 	//TODO: handle non-password credentials.
 	// As of now, we can only read password credentials from Keychain, so we only have to worry about password data here
 

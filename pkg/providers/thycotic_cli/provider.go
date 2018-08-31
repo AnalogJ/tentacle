@@ -78,7 +78,7 @@ func (p *Provider) Authenticate() error {
 	return nil
 }
 
-func (p *Provider) Get(queryData map[string]string) (credentials.Interface, error) {
+func (p *Provider) Get(queryData map[string]string) (credentials.BaseInterface, error) {
 
 	var fieldName string
 	if fn, ok := queryData["fieldName"]; ok {
@@ -97,7 +97,7 @@ func (p *Provider) Get(queryData map[string]string) (credentials.Interface, erro
 }
 
 
-func PopulateCredential(queryData map[string]string, result string) credentials.Interface {
+func PopulateCredential(queryData map[string]string, result string) credentials.BaseInterface {
 	//TODO: handle non-text credentials.
 	// As of now, theres no way to determine what type of credential we've recieved, always return a Text type.
 

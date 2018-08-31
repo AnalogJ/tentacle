@@ -30,11 +30,11 @@ type Interface interface {
 	/*
 	This function should attempt to retrieve a credential specified via queryData
 	 */
-	Get(queryData map[string]string) (credentials.Interface, error)
+	Get(queryData map[string]string) (credentials.BaseInterface, error)
 
 	/*
 	This function should attempt to retrieve a list of credentials available.
 	This may not be available in all providers.
 	 */
-	List(queryData map[string]string) ([]credentials.Interface, error)
+	List(queryData map[string]string) ([]credentials.BaseInterface, error)
 }

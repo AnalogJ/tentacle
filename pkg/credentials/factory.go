@@ -4,7 +4,7 @@ import (
 	"log"
 )
 
-func Create(secretType string) (Interface, error) {
+func Create(secretType string) (BaseInterface, error) {
 
 	//begin switch for providers.
 	switch secretType {
