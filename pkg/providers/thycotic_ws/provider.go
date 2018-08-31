@@ -21,12 +21,6 @@ func (p *Provider) Init(alias string, config map[string]interface{}) error {
 	p.ProviderConfig = config
 	p.Alias = alias
 
-	//TODO: validate the required configuration is present.
-	return nil
-}
-
-func (p *Provider) Authenticate() error {
-
 	p.client = &api.Client {
 		Domain: p.ProviderConfig["domain"].(string),
 		Server: p.ProviderConfig["server"].(string),
@@ -34,6 +28,14 @@ func (p *Provider) Authenticate() error {
 		//Username: p.ProviderConfig["username"].(string),
 		//Password: p.ProviderConfig["password"].(string),
 	}
+
+	//TODO: validate the required configuration is present.
+	return nil
+}
+
+func (p *Provider) Authenticate() error {
+
+
 
 	p.client.Test()
 
