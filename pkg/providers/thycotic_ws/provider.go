@@ -12,7 +12,7 @@ import (
 
 type Provider struct {
 	*base.Provider
-	client api.Client
+	client *api.Client
 }
 
 func (p *Provider) Init(alias string, config map[string]interface{}) error {
@@ -27,7 +27,7 @@ func (p *Provider) Init(alias string, config map[string]interface{}) error {
 
 func (p *Provider) Authenticate() error {
 
-	p.client = api.Client {
+	p.client = &api.Client {
 		Domain: p.ProviderConfig["domain"].(string),
 		Server: p.ProviderConfig["server"].(string),
 		Token:  p.ProviderConfig["token"].(string),
