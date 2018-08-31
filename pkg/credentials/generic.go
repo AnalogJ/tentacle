@@ -18,6 +18,10 @@ func (g *Generic) Init() {
 	g.Data = map[string]string {}
 }
 
+func (b *Generic)GetData() map[string]string {
+	return b.Data
+}
+
 func (g *Generic) ToJsonString() (string, error) {
 
 	jsonBytes, err := json.MarshalIndent(g, "", "    ")
