@@ -7,7 +7,6 @@ import (
 	"github.com/analogj/tentacle/pkg/credentials"
 "github.com/analogj/tentacle/pkg/providers/base"
 "github.com/analogj/tentacle/pkg/providers/thycotic_ws/api"
-
 )
 
 type Provider struct {
@@ -99,40 +98,48 @@ func PopulateCredential(queryData map[string]string, result api.GetSecretRespons
 
 
 	// its kind of hard to determine what kind of secret this is, so lets just do some simple/naive processing
-	var cred string
-	var username string
+	genericSecret := new(credentials.Generic)
+	genericSecret.Init()
 
-	secretComponents := len(result.GetSecretResult.Secret.Items)
-	if secretComponents > 2 {
-		for _, item := range result.GetSecretResult.Secret.Items {
-			if item.IsNotes && len(item.Value) >0 {
-				metadata["Notes"] = item.Value
-			} else if item.IsPassword && len(item.Value) > 0 {
-				cred = item.Value
-			} else if strings.Contains(strings.ToLower(item.FieldName), "user") && len(item.Value) > 0{
-				username = item.Value
-			}
+	secretComponentsNumb := len(result.GetSecretResult.Secret.Items)
+
+	secretdata := map[string]string{}
+
+	for _, item := range result.GetSecretResult.Secret.Items {
+		if item.IsNotes && len(item.Value) >0 {
+			metadata["Notes"] = item.Value
+		} else {
+			// fieldname is always lowercased.
+			secretdata[strings.ToLower(item.FieldName)] = item.Value
 		}
-	} else if secretComponents == 1 {
-		cred = result.GetSecretResult.Secret.Items[0].Value
 	}
 
-	if len(cred) >0 && len(username) >0 {
-		secret := new(credentials.UserPass)
-		secret.Init()
-		secret.Id = strconv.Itoa(result.GetSecretResult.Secret.Id)
-		secret.Name = result.GetSecretResult.Secret.Name
-		secret.SetUsername(username)
-		secret.SetPassword(cred)
-		secret.Metadata = metadata
-		return secret
+	_, hasUsername := secretdata["username"]
+	_, hasPassword := secretdata["password"]
+
+	if secretComponentsNumb == 1 {
+		textSecret := new(credentials.Text)
+		textSecret.Init()
+		textSecret.Id = strconv.Itoa(result.GetSecretResult.Secret.Id)
+		textSecret.Name = result.GetSecretResult.Secret.Name
+		textSecret.Data = secretdata
+		textSecret.Metadata = metadata
+		textSecret.SetText(result.GetSecretResult.Secret.Items[0].Value)
+		return textSecret
+	} else if hasUsername && hasPassword {
+		//this is a username and password secret.
+		userpassSecret := new(credentials.UserPass)
+		userpassSecret.Init()
+		userpassSecret.Id = strconv.Itoa(result.GetSecretResult.Secret.Id)
+		userpassSecret.Name = result.GetSecretResult.Secret.Name
+		userpassSecret.Data = secretdata
+		userpassSecret.Metadata = metadata
+		return userpassSecret
 	} else {
-		secret := new(credentials.Text)
-		secret.Init()
-		secret.Id = strconv.Itoa(result.GetSecretResult.Secret.Id)
-		secret.Name = result.GetSecretResult.Secret.Name
-		secret.SetText(cred)
-		secret.Metadata = metadata
-		return secret
+		//this is an unknown secret type. Generic.
+		genericSecret.Id = strconv.Itoa(result.GetSecretResult.Secret.Id)
+		genericSecret.Name = result.GetSecretResult.Secret.Name
+		genericSecret.Metadata = metadata
+		return genericSecret
 	}
 }
