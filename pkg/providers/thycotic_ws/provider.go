@@ -20,13 +20,8 @@ func (p *Provider) Init(alias string, config map[string]interface{}) error {
 	p.ProviderConfig = config
 	p.Alias = alias
 
-	p.client = &api.Client {
-		Domain: p.ProviderConfig["domain"].(string),
-		Server: p.ProviderConfig["server"].(string),
-		Token:  p.ProviderConfig["token"].(string),
-		//Username: p.ProviderConfig["username"].(string),
-		//Password: p.ProviderConfig["password"].(string),
-	}
+	p.client = new(api.Client)
+	p.client.Init(p.ProviderConfig["domain"].(string), p.ProviderConfig["server"].(string), p.ProviderConfig["token"].(string))
 
 	//TODO: validate the required configuration is present.
 	return nil
@@ -43,9 +38,18 @@ func (p *Provider) Authenticate() error {
 
 func (p *Provider) Get(queryData map[string]string) (credentials.BaseInterface, error) {
 
-	resp, err := p.client.Get(queryData["secretid"])
-	if err != nil {
-		return nil, err
+	var resp api.GetSecretResponse
+	var err error
+	if val, ok := queryData["secretid"]; ok {
+		resp, err = p.client.GetById(val)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		resp, err = p.client.GetByPath(queryData["secretpath"])
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	//determine what type of secret this is, and return that credential type.
@@ -98,16 +102,13 @@ func PopulateCredential(queryData map[string]string, result api.GetSecretRespons
 
 
 	// its kind of hard to determine what kind of secret this is, so lets just do some simple/naive processing
-	genericSecret := new(credentials.Generic)
-	genericSecret.Init()
-
 	secretComponentsNumb := len(result.GetSecretResult.Secret.Items)
 
 	secretdata := map[string]string{}
 
 	for _, item := range result.GetSecretResult.Secret.Items {
 		if item.IsNotes && len(item.Value) >0 {
-			metadata["Notes"] = item.Value
+			metadata["notes"] = item.Value
 		} else {
 			// fieldname is always lowercased.
 			secretdata[strings.ToLower(item.FieldName)] = item.Value
@@ -137,8 +138,11 @@ func PopulateCredential(queryData map[string]string, result api.GetSecretRespons
 		return userpassSecret
 	} else {
 		//this is an unknown secret type. Generic.
+		genericSecret := new(credentials.Generic)
+		genericSecret.Init()
 		genericSecret.Id = strconv.Itoa(result.GetSecretResult.Secret.Id)
 		genericSecret.Name = result.GetSecretResult.Secret.Name
+		genericSecret.Data = secretdata
 		genericSecret.Metadata = metadata
 		return genericSecret
 	}
