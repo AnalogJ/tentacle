@@ -6,7 +6,7 @@ import (
 	"github.com/analogj/tentacle/pkg/providers/thycotic_ws"
 	"log"
 	"github.com/analogj/tentacle/pkg/providers/thycotic_cli"
-	"github.com/analogj/tentacle/pkg/providers/os/darwin/keychain"
+
 )
 
 func Create(alias string, config interface{}) (Interface, error) {
@@ -16,11 +16,11 @@ func Create(alias string, config interface{}) (Interface, error) {
 	//begin switch for providers.
 	switch providerType := config.(map[string]interface{})["type"].(string); providerType {
 
-	//os specific providers
-	case "keychain":
-		provider := new(keychain.Provider)
-		provider.Init(alias, config.(map[string]interface{}))
-		return provider, nil
+	////os specific providers
+	//case "keychain":
+	//	provider := new(keychain.Provider)
+	//	provider.Init(alias, config.(map[string]interface{}))
+	//	return provider, nil
 
 
 	//alphabetical list of common providers
