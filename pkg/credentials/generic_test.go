@@ -17,7 +17,7 @@ func TestGeneric_Init(t *testing.T) {
 	//assert
 	require.Empty(t, generic.Id)
 	require.Empty(t, generic.Metadata)
-	require.Equal(t, generic.SecretType(), "generic")
+	require.Equal(t, generic.GetSecretType(), "generic")
 }
 
 func TestGeneric_ToJsonString(t *testing.T) {

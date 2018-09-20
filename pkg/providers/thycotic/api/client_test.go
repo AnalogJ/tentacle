@@ -3,7 +3,7 @@ package api_test
 import (
 	"testing"
 
-	"github.com/analogj/tentacle/pkg/providers/thycotic_ws/api"
+	"github.com/analogj/tentacle/pkg/providers/thycotic/api"
 	"github.com/stretchr/testify/require"
 )
 
@@ -12,7 +12,7 @@ func TestClient_GetFolderSubfolders(t *testing.T) {
 
 	//test
 	client := new(api.Client)
-	client.Init("YOUR_AD_DOMAIN", "", "")
+	client.Init("YOUR_AD_DOMAIN", "YOUR_THYCOTIC_SERVER", "")
 	resp, err := client.GetFolderSubfolders("-1")
 
 
@@ -29,7 +29,7 @@ func TestClient_GetFolderSecrets(t *testing.T) {
 
 	//test
 	client := new(api.Client)
-	client.Init("YOUR_AD_DOMAIN", "", "")
+	client.Init("YOUR_AD_DOMAIN", "YOUR_THYCOTIC_SERVER", "")
 	resp, err := client.GetFolderSecrets("-1")
 
 

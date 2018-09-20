@@ -17,7 +17,7 @@ func TestSsh_Init(t *testing.T) {
 	//assert
 	require.Empty(t, generic.Id)
 	require.Empty(t, generic.Metadata)
-	require.Equal(t, generic.SecretType(), "ssh")
+	require.Equal(t, generic.GetSecretType(), "ssh")
 }
 
 func TestSsh_ToJsonString(t *testing.T) {

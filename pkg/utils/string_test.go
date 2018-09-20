@@ -1,9 +1,9 @@
 package utils_test
 
 import (
-	"drawbridge/pkg/utils"
 	"github.com/stretchr/testify/require"
 	"testing"
+	"github.com/analogj/tentacle/pkg/utils"
 )
 
 var snakeCaseTests = []struct {

@@ -1,18 +1,31 @@
 package credentials
 
-type BaseInterface interface {
-	SecretType() string
-
+type SummaryInterface interface {
+	//Constructor
 	Init()
+
+	//Getters
+	GetSecretType() string
+	GetSecretId() string
+	GetMetaData() (map[string]string)
+
+	//Output
 	ToRawString() (string, error)
 	ToJsonString() (string, error)
 	ToTableString() (string, error)
 }
 
 type GenericInterface interface {
-	SecretType() string
+	//Constructor
 	Init()
+
+	//Getters
+	GetSecretType() string
+	GetSecretId() string
 	GetData() (map[string]string)
+	GetMetaData() (map[string]string)
+
+	//Output
 	ToRawString() (string, error)
 	ToJsonString() (string, error)
 	ToTableString() (string, error)

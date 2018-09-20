@@ -11,20 +11,20 @@ func TestBase_Init(t *testing.T) {
 	t.Parallel()
 
 	//test
-	base := credentials.Base {}
+	base := credentials.Summary{}
 	base.Init()
 
 	//assert
 	require.Empty(t, base.Id)
 	require.Empty(t, base.Metadata)
-	require.Equal(t, base.SecretType(), "base")
+	require.Equal(t, base.GetSecretType(), "summary")
 }
 
 func TestBase_ToJsonString(t *testing.T) {
 	t.Parallel()
 
 	//test
-	base := credentials.Base {}
+	base := credentials.Summary{}
 	base.Init()
 	base.Id = "test-id"
 	base.Name = "test cred name"
@@ -39,7 +39,7 @@ func TestBase_ToRawString(t *testing.T) {
 	t.Parallel()
 
 	//test
-	base := credentials.Base {}
+	base := credentials.Summary{}
 	base.Init()
 	base.Id = "test-id"
 	base.Name = "test cred name"

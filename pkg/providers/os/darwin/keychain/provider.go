@@ -1,4 +1,5 @@
 // +build darwin
+
 package keychain
 
 import "fmt"
@@ -45,7 +46,7 @@ func (p *Provider) Authenticate() error {
 	return nil
 }
 
-func (p *Provider) Get(queryData map[string]string) (credentials.BaseInterface, error) {
+func (p *Provider) Get(queryData map[string]string) (credentials.GenericInterface, error) {
 
 	query := goKeychain.NewItem()
 	query.SetSecClass(goKeychain.SecClassGenericPassword)
@@ -95,7 +96,7 @@ func (p *Provider) Get(queryData map[string]string) (credentials.BaseInterface, 
 	}
 }
 
-func (p *Provider) List(queryData map[string]string) ([]credentials.BaseInterface, error) {
+func (p *Provider) List(queryData map[string]string) ([]credentials.SummaryInterface, error) {
 	query := goKeychain.NewItem()
 	query.SetSecClass(goKeychain.SecClassGenericPassword)
 	query.SetMatchLimit(goKeychain.MatchLimitAll)
@@ -133,9 +134,9 @@ func (p *Provider) List(queryData map[string]string) ([]credentials.BaseInterfac
 			fmt.Println("DEBUG: found secrets")
 		}
 
-		secrets := []credentials.BaseInterface{}
+		secrets := []credentials.SummaryInterface{}
 		for _, r := range results {
-			secrets = append(secrets, PopulateCredential(r))
+			secrets = append(secrets, PopulateSummary(r))
 		}
 
 		return secrets, nil
@@ -149,7 +150,26 @@ func (p *Provider) List(queryData map[string]string) ([]credentials.BaseInterfac
 	return nil, nil
 }
 
-func PopulateCredential(queryResult goKeychain.QueryResult) credentials.BaseInterface {
+func PopulateCredential(queryResult goKeychain.QueryResult) credentials.GenericInterface {
+	//TODO: handle non-password credentials.
+	// As of now, we can only read password credentials from Keychain, so we only have to worry about password data here
+
+	secret := new(credentials.Text)
+	secret.Init()
+	secret.SetText(string(queryResult.Data))
+
+	//parse metadata
+	secret.Metadata["service"] = queryResult.Service
+	secret.Metadata["account"] = queryResult.Account
+	secret.Metadata["accessGroup"] = queryResult.AccessGroup
+	secret.Metadata["label"] = queryResult.Label
+	secret.Description = queryResult.Description
+
+	return secret
+}
+
+
+func PopulateSummary(queryResult goKeychain.QueryResult) credentials.SummaryInterface {
 	//TODO: handle non-password credentials.
 	// As of now, we can only read password credentials from Keychain, so we only have to worry about password data here
 

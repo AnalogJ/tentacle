@@ -1,4 +1,4 @@
-package thycotic_ws
+package thycotic
 
 import (
 	"gopkg.in/urfave/cli.v2"

@@ -18,7 +18,7 @@ func TestUserPass_Init(t *testing.T) {
 	require.Empty(t, generic.Id)
 	require.Empty(t, generic.Metadata)
 	require.Empty(t, generic.Data)
-	require.Equal(t, generic.SecretType(), "userpass")
+	require.Equal(t, generic.GetSecretType(), "userpass")
 }
 
 func TestUserPass_ToJsonString(t *testing.T) {

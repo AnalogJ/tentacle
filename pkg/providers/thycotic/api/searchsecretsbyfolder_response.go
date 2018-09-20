@@ -11,7 +11,7 @@ type SearchSecretsByFolderResult struct {
 }
 
 //type SecretSummary struct {
-//	SecretId int
+//	GetSecretId int
 //	SecretName string
 //	SecretTypeName string
 //	SecretTypeId int

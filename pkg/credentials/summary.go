@@ -7,7 +7,7 @@ import (
 )
 
 // The base class is used during list operations. It does not include any secret data.
-type Base struct {
+type Summary struct {
 	Metadata map[string]string `json:"metadata"`
 	Id string `json:"id"`//id should be a unique identifier used to differentiate between secrets/credentials. Can be just a name on some systems.
 	Name string `json:"name"`// used to visually differentiate between credentails.
@@ -15,41 +15,48 @@ type Base struct {
 	secretType string `json:"secretType"`//this value will change depending on the secret type (base, ssh, text, userpass, generic, etc)
 }
 
-func (b *Base) Init() {
+func (s *Summary) Init() {
 	//do nothing
-	b.Metadata = map[string]string{}
-	b.secretType = "base"
-	b.Id = ""
-	b.Name = ""
-	b.Description = ""
+	s.Metadata = map[string]string{}
+	s.secretType = "summary"
+	s.Id = ""
+	s.Name = ""
+	s.Description = ""
 }
 
-func (b *Base)SecretType() string {
-	return b.secretType
+func (s *Summary)GetSecretType() string {
+	return s.secretType
 }
 
+func (s *Summary)GetSecretId() string {
+	return s.Id
+}
 
-func (b *Base) ToJsonString() (string, error) {
+func (s *Summary)GetMetaData() map[string]string {
+	return s.Metadata
+}
 
-	jsonBytes, err := json.MarshalIndent(b, "", "    ")
+func (s *Summary) ToJsonString() (string, error) {
+
+	jsonBytes, err := json.MarshalIndent(s, "", "    ")
 	if err != nil {
 		return "", err
 	}
 	return 	fmt.Sprintf(string(jsonBytes)), nil
 }
 
-func (b *Base) ToRawString() (string, error) {
+func (s *Summary) ToRawString() (string, error) {
 	params := url.Values{}
-	if len(b.Id) >0 {
-		params.Add("id", b.Id)
+	if len(s.Id) >0 {
+		params.Add("id", s.Id)
 	}
-	if len(b.Name) >0 {
-		params.Add("name", b.Name)
+	if len(s.Name) >0 {
+		params.Add("name", s.Name)
 	}
 	return params.Encode(), nil
 }
 
-func (b *Base) ToTableString() (string, error) {
+func (s *Summary) ToTableString() (string, error) {
 	//nothing to print for a base tablestring
 	return "", nil
 }

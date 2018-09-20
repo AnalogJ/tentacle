@@ -7,13 +7,13 @@ import (
 )
 
 type Generic struct {
-	*Base
+	*Summary
 	Data map[string]string `json:"data"`//this map should contain lowercase keys which map to secrets. ie. username, password, token, etc.
 }
 
 func (g *Generic) Init() {
-	g.Base = new(Base)
-	g.Base.Init()
+	g.Summary = new(Summary)
+	g.Summary.Init()
 	g.secretType = "generic"
 	g.Data = map[string]string {}
 }

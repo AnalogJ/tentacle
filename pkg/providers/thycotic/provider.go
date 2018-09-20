@@ -1,4 +1,4 @@
-package thycotic_ws
+package thycotic
 
 import (
 	"strconv"
@@ -6,7 +6,7 @@ import (
 
 	"github.com/analogj/tentacle/pkg/credentials"
 "github.com/analogj/tentacle/pkg/providers/base"
-"github.com/analogj/tentacle/pkg/providers/thycotic_ws/api"
+"github.com/analogj/tentacle/pkg/providers/thycotic/api"
 )
 
 type Provider struct {
@@ -36,7 +36,7 @@ func (p *Provider) Authenticate() error {
 	return nil
 }
 
-func (p *Provider) Get(queryData map[string]string) (credentials.BaseInterface, error) {
+func (p *Provider) Get(queryData map[string]string) (credentials.GenericInterface, error) {
 
 	var resp api.GetSecretResponse
 	var err error
@@ -56,7 +56,7 @@ func (p *Provider) Get(queryData map[string]string) (credentials.BaseInterface, 
 	return PopulateCredential(queryData, resp), nil
 }
 
-func (p *Provider) List(queryData map[string]string) ([]credentials.BaseInterface, error) {
+func (p *Provider) List(queryData map[string]string) ([]credentials.SummaryInterface, error) {
 
 	resp, err := p.client.List(queryData["criteria"])
 	if err != nil {
@@ -68,16 +68,17 @@ func (p *Provider) List(queryData map[string]string) ([]credentials.BaseInterfac
 }
 
 
-func PopulateSummaryList(queryData map[string]string, result api.SearchSecretsResponse) []credentials.BaseInterface {
+func PopulateSummaryList(queryData map[string]string, result api.SearchSecretsResponse) []credentials.SummaryInterface {
 	// As of now, theres no way to determine what type of credential we've recieved, always return a Text type.
 
 
-	secrets := []credentials.BaseInterface{}
+	secrets := []credentials.SummaryInterface{}
 
 	for _, secret := range result.SearchSecretsResult.SecretSummaries {
 
 
-		base := new(credentials.Base)
+		//base := credentials.CreateSummary()
+		base := new(credentials.Summary)
 		base.Init()
 		base.Id = strconv.Itoa(secret.SecretId)
 		base.Name = secret.SecretName
@@ -90,7 +91,7 @@ func PopulateSummaryList(queryData map[string]string, result api.SearchSecretsRe
 	return secrets
 }
 
-func PopulateCredential(queryData map[string]string, result api.GetSecretResponse) credentials.BaseInterface {
+func PopulateCredential(queryData map[string]string, result api.GetSecretResponse) credentials.GenericInterface {
 	// As of now, theres no way to determine what type of credential we've recieved, always return a Text type.
 
 	metadata := map[string]string{}

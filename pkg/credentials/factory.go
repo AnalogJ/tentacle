@@ -4,16 +4,16 @@ import (
 	"log"
 )
 
-func Create(secretType string) (BaseInterface, error) {
+func CreateSummary() (SummaryInterface){
+	summary := new(Summary)
+	summary.Init()
+	return summary
+}
 
-	//begin switch for providers.
+func Create(secretType string) (GenericInterface, error) {
+
+	//begin switch for credential types.
 	switch secretType {
-
-	//os specific providers
-	case "base":
-		secret := new(Base)
-		secret.Init()
-		return secret, nil
 
 	case "generic":
 		secret := new(Generic)
