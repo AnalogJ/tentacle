@@ -18,7 +18,7 @@ providers:
     appid: my_app_id
 
   thycoticalias:
-    type: thycotic_ws
+    type: thycotic
     domain: "YOUR_AD_DOMAIN"
     server: "yoursecretserver.yourdomain.com"
 
@@ -26,12 +26,3 @@ providers:
     # curl -v -H "Content-Type: application/x-www-form-urlencoded" -d "username={NAME}&password={PASSWORD}&organization=&domain=" --url "http://yoursecretserver.yourdomain.com/webservices/sswebservice.asmx/Authenticate"
     # and parsing the xml output for the token
     token: "token"
-
-  thycotic2:
-    type: thycotic_cli
-
-    #this is the directory containing the secretserver-jconsole.jar and the *.dat files created after Console was "installed"
-    cli_home: ''
-
-    #this is the name of the jar file (if you renamed it). defaults to secretserver-jconsole.jar if not specified.
-    cli_filename: ''
