@@ -94,6 +94,12 @@ func PrintCredential(outputMode string, credential credentials.GenericInterface)
 			return err
 		}
 		fmt.Println(secret)
+	case "yaml":
+		secret, err := credential.ToYamlString()
+		if err != nil {
+			return err
+		}
+		fmt.Println(secret)
 	case "raw":
 		secret, err := credential.ToRawString()
 		if err != nil {

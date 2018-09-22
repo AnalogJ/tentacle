@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"encoding/json"
 	"net/url"
+
+	"gopkg.in/yaml.v2"
 )
 
 type UserPass struct {
@@ -48,6 +50,15 @@ func (u *UserPass) ToJsonString() (string, error) {
 		return "", err
 	}
 	return 	fmt.Sprintf(string(jsonBytes)), nil
+}
+
+func (u *UserPass) ToYamlString() (string, error) {
+
+	yamlBytes, err := yaml.Marshal(u)
+	if err != nil {
+		return "", err
+	}
+	return 	fmt.Sprintf(string(yamlBytes)), nil
 }
 
 func (u *UserPass) ToRawString() (string, error) {

@@ -35,6 +35,21 @@ func TestBase_ToJsonString(t *testing.T) {
 	require.Equal(t,json, "{\n    \"metadata\": {},\n    \"id\": \"test-id\",\n    \"name\": \"test cred name\",\n    \"description\": \"\"\n}")
 }
 
+func TestBase_ToYamlString(t *testing.T) {
+	t.Parallel()
+
+	//test
+	base := credentials.Summary {}
+	base.Init()
+	base.Id = "test-id"
+	base.Name = "test cred name"
+	yml, err := base.ToYamlString()
+
+	//assert
+	require.NoError(t,err)
+	require.Equal(t,"metadata: {}\nid: test-id\nname: test cred name\ndescription: \"\"\n", yml)
+}
+
 func TestBase_ToRawString(t *testing.T) {
 	t.Parallel()
 

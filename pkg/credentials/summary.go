@@ -4,15 +4,17 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/url"
+
+	"gopkg.in/yaml.v2"
 )
 
 // The base class is used during list operations. It does not include any secret data.
 type Summary struct {
-	Metadata map[string]string `json:"metadata"`
-	Id string `json:"id"`//id should be a unique identifier used to differentiate between secrets/credentials. Can be just a name on some systems.
-	Name string `json:"name"`// used to visually differentiate between credentails.
-	Description string `json:"description"`
-	secretType string `json:"secretType"`//this value will change depending on the secret type (base, ssh, text, userpass, generic, etc)
+	Metadata map[string]string `json:"metadata" yaml:"metadata"`
+	Id string `json:"id" yaml:"id"`//id should be a unique identifier used to differentiate between secrets/credentials. Can be just a name on some systems.
+	Name string `json:"name" yaml:"name"`// used to visually differentiate between credentails.
+	Description string `json:"description" yaml:"description"`
+	secretType string `json:"secretType" yaml:"secretType"`//this value will change depending on the secret type (base, ssh, text, userpass, generic, etc)
 }
 
 func (s *Summary) Init() {
@@ -43,6 +45,15 @@ func (s *Summary) ToJsonString() (string, error) {
 		return "", err
 	}
 	return 	fmt.Sprintf(string(jsonBytes)), nil
+}
+
+func (g *Summary) ToYamlString() (string, error) {
+
+	yamlBytes, err := yaml.Marshal(g)
+	if err != nil {
+		return "", err
+	}
+	return 	fmt.Sprintf(string(yamlBytes)), nil
 }
 
 func (s *Summary) ToRawString() (string, error) {

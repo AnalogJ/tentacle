@@ -5,6 +5,7 @@ package api
 
 import (
 	"bytes"
+	"encoding/base64"
 	"errors"
 	"fmt"
 	"io/ioutil"
@@ -113,6 +114,24 @@ func (c *Client) GetByPath(secretPath string) (GetSecretResponse, error){
 	}
 
 	return c.GetById(secretId)
+}
+
+
+func (c *Client) GetSecretAttachment(secretId string, secretAttachmentId string) (string, error){
+
+	resp := DownloadFileAttachmentByItemIdResponse{}
+	err := c.soapRequest("DownloadFileAttachmentByItemId",
+		map[string]string{
+			"secretItemId": secretAttachmentId,
+			"secretId": secretId,
+			"token": c.Token,
+		},
+		&resp)
+	if err != nil {
+		return "", err
+	}
+	decodedBytes, derr := base64.StdEncoding.DecodeString(resp.DownloadFileAttachmentByItemIdResult.FileAttachment)
+	return string(decodedBytes), derr
 }
 
 

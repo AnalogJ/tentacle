@@ -29,6 +29,7 @@ type Secret struct {
 }
 
 type SecretItem struct {
+	Id int
 	FieldDisplayName string
 	FieldName string
 	IsFile bool

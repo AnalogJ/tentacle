@@ -3,6 +3,8 @@ package credentials
 import (
 	"encoding/json"
 	"fmt"
+
+	"gopkg.in/yaml.v2"
 )
 
 type Text struct {
@@ -34,6 +36,15 @@ func (t *Text) ToJsonString() (string, error) {
 		return "", err
 	}
 	return 	fmt.Sprintf(string(jsonBytes)), nil
+}
+
+func (t *Text) ToYamlString() (string, error) {
+
+	yamlBytes, err := yaml.Marshal(t)
+	if err != nil {
+		return "", err
+	}
+	return 	fmt.Sprintf(string(yamlBytes)), nil
 }
 
 func (t *Text) ToRawString() (string, error) {

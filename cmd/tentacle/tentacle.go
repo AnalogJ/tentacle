@@ -73,8 +73,8 @@ OPTIONS:
 			},
 			&cli.StringFlag{
 				Name: "output",
-				Value: "raw",
-				Usage: "Specify output type. Allowed: 'json', 'table', 'raw'",
+				Value: "yaml",
+				Usage: "Specify output type. Allowed: 'json', 'yaml', 'table', 'raw'",
 			},
 		},
 

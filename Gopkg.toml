@@ -35,6 +35,7 @@ required = [
 	"github.com/hoop33/go-cyberark",
 	"github.com/cyberark/conjur-api-go/conjurapi",
 	"github.com/tiaguinho/gosoap",
+	"gopkg.in/yaml.v2",
 
     # test dependencies
     "github.com/stretchr/testify/require"

@@ -53,7 +53,7 @@ func (p *Provider) Get(queryData map[string]string) (credentials.GenericInterfac
 	}
 
 	//determine what type of secret this is, and return that credential type.
-	return PopulateCredential(queryData, resp), nil
+	return p.populateCredential(queryData, resp), nil
 }
 
 func (p *Provider) List(queryData map[string]string) ([]credentials.SummaryInterface, error) {
@@ -64,11 +64,11 @@ func (p *Provider) List(queryData map[string]string) ([]credentials.SummaryInter
 	}
 
 
-	return PopulateSummaryList(queryData, resp), nil
+	return p.populateSummaryList(queryData, resp), nil
 }
 
 
-func PopulateSummaryList(queryData map[string]string, result api.SearchSecretsResponse) []credentials.SummaryInterface {
+func (p *Provider) populateSummaryList(queryData map[string]string, result api.SearchSecretsResponse) []credentials.SummaryInterface {
 	// As of now, theres no way to determine what type of credential we've recieved, always return a Text type.
 
 
@@ -91,7 +91,7 @@ func PopulateSummaryList(queryData map[string]string, result api.SearchSecretsRe
 	return secrets
 }
 
-func PopulateCredential(queryData map[string]string, result api.GetSecretResponse) credentials.GenericInterface {
+func (p *Provider) populateCredential(queryData map[string]string, result api.GetSecretResponse) credentials.GenericInterface {
 	// As of now, theres no way to determine what type of credential we've recieved, always return a Text type.
 
 	metadata := map[string]string{}
@@ -110,7 +110,14 @@ func PopulateCredential(queryData map[string]string, result api.GetSecretRespons
 	for _, item := range result.GetSecretResult.Secret.Items {
 		if item.IsNotes && len(item.Value) >0 {
 			metadata["notes"] = item.Value
-		} else {
+		} else if item.IsFile {
+			 secretFile, err := p.client.GetSecretAttachment(strconv.Itoa(result.GetSecretResult.Secret.Id), strconv.Itoa(item.Id))
+			 if err != nil {
+			 	//TODO: we shouldn't skip
+			 	continue
+			 }
+			 secretdata[strings.ToLower(item.FieldName)] = secretFile
+		 } else {
 			// fieldname is always lowercased.
 			secretdata[strings.ToLower(item.FieldName)] = item.Value
 		}

@@ -12,7 +12,8 @@ type SummaryInterface interface {
 	//Output
 	ToRawString() (string, error)
 	ToJsonString() (string, error)
-	ToTableString() (string, error)
+	ToYamlString() (string, error)
+ 	ToTableString() (string, error)
 }
 
 type GenericInterface interface {
@@ -28,5 +29,6 @@ type GenericInterface interface {
 	//Output
 	ToRawString() (string, error)
 	ToJsonString() (string, error)
+	ToYamlString() (string, error)
 	ToTableString() (string, error)
 }

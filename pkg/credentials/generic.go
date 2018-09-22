@@ -4,11 +4,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/url"
+
+	"gopkg.in/yaml.v2"
 )
 
 type Generic struct {
 	*Summary
-	Data map[string]string `json:"data"`//this map should contain lowercase keys which map to secrets. ie. username, password, token, etc.
+	Data map[string]string `json:"data" yaml:"data"`//this map should contain lowercase keys which map to secrets. ie. username, password, token, etc.
 }
 
 func (g *Generic) Init() {
@@ -29,6 +31,15 @@ func (g *Generic) ToJsonString() (string, error) {
 		return "", err
 	}
 	return 	fmt.Sprintf(string(jsonBytes)), nil
+}
+
+func (g *Generic) ToYamlString() (string, error) {
+
+	yamlBytes, err := yaml.Marshal(g)
+	if err != nil {
+		return "", err
+	}
+	return 	fmt.Sprintf(string(yamlBytes)), nil
 }
 
 
