@@ -17,13 +17,116 @@
 
 Retrieve your secrets from wherever they live. Vault/Cyberark/Thycotic/Keychain/Keyring/etc.
 
-# Current Providers
+## Introduction
+Tentacle provides a way to retrieve credentials from your secret manager in a standardized way.
+Tentacle has a CLI but can also be used as a Go library.
+
+Tentacle was designed to be used in automation.
+
+## Features
+
+- Single binary available for macOS and linux (windows comming soon). No external dependencies.
+- Simple commandline
+- Comprehensive configuration file
+- Supports multiple secret managment services
+- Allows aliasing multiple secret management systems (stage/prod credential storage)
+
+
+## Getting Started
+
+1. Download the latest release binary from the Release pages for your OS. (Mac, Windows and Linux available)
+2. Rename the downloaded binary to `tentacle`
+3. Run chmod +x tentacle
+4. Move the renamed binary into your PATH, eg. `/usr/bin/local`
+5. Run `tentacle --help` from a terminal to confirm it was installed correctly
+6. Add a configuration file to `~/tentacle.yaml`. See [Configuration](#configuration) section
+
+## Usage
+
+```bash
+$ tentacle help
+ ____  ____  __ _  ____  __    ___  __    ____
+(_  _)(  __)(  ( \(_  _)/ _\  / __)(  )  (  __)
+  )(   ) _) /    /  )( /    \( (__ / (_/\ ) _)
+ (__) (____)\_)__) (__)\_/\_/ \___)\____/(____)
+github.com/AnalogJ/tentacle                    darwin.amd64-1.0.0
+
+ NAME:
+   tentacle - Summary retrieval made simple
+
+USAGE:
+   tentacle-darwin-amd64 [global options] command [command options] [arguments...]
+
+VERSION:
+   1.0.0
+
+AUTHOR:
+   Jason Kulatunga <jason@thesparktree.com>
+
+COMMANDS:
+     help, h        Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --debug         Enable Debug mode, with extra logging (default: false)
+   --output value  Specify output type. Allowed: 'json', 'yaml', 'table', 'raw' (default: "yaml")
+   --help, -h      show help (default: false)
+   --version, -v   print the version (default: false)
+
+```
+
+## Actions
+
+### Get
+
+
+### List
+
+
+## Output formats
+
+
+## Configuration
+
+
+
+## Testing [![Circle CI](https://img.shields.io/circleci/project/github/AnalogJ/tentacle.svg?style=flat-square)](https://circleci.com/gh/AnalogJ/tentacle)
+Tentacle provides an extensive test-suite based on `go test`.
+You can run all the integration & unit tests with `go test`
+
+CircleCI is used for continuous integration testing: https://circleci.com/gh/AnalogJ/tentacle
+
+
+## Contributing
+If you'd like to help improve Tentacle, clone the project with Git and install dependencies by running:
+
+```
+$ git clone git://github.com/AnalogJ/tentacle
+$ dep -ensure
+```
+
+Work your magic and then submit a pull request. We love pull requests!
+
+If you find the documentation lacking, help us out and update this README.md.
+If you don't have the time to work on Drawbridge, but found something we should know about, please submit an issue.
+
+
+
+
+
+## Current Providers
+Tentacle supports retrieving secrets via API's as well as OS specific credential storage.
+
+### API Secret Managers
 
 - Cyberark
-- MacOS - keychain
 - Thycotic
 
-# Future Providers
+### OS Secret Storage
+
+- MacOS - keychain
+
+
+## Future Providers
 
 - Chrome
 - Firefox
@@ -40,7 +143,21 @@ Retrieve your secrets from wherever they live. Vault/Cyberark/Thycotic/Keychain/
 - Chef
 - keypass
 
-# References
+## Versioning
+We use SemVer for versioning. For the versions available, see the tags on this repository.
+
+## Authors
+Jason Kulatunga - Initial Development - @AnalogJ
+
+## License
+
+- Dual-Licensed
+    - GPL
+    - MIT - Contact jason@thesparktree.com for more information.
+- [Logo: Octopus by Alice Noir  from the Noun Project](https://thenounproject.com/search/?q=tentacle&i=593081)
+
+
+## References
 
 - https://github.com/keybase/go-keychain
 - https://github.com/99designs/keyring
@@ -58,7 +175,7 @@ Retrieve your secrets from wherever they live. Vault/Cyberark/Thycotic/Keychain/
 - https://thycotic.force.com/support/s/article/Accessing-Secret-Server-programmatically-Curl
 - https://thycotic.com/wp-content/uploads/2014/04/SS_WebServicesGuide.pdf
 
-# Possible Names
+## Possible Names
 - Seer
 - invoke
 - incant
