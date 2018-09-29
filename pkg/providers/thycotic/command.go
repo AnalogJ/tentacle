@@ -2,7 +2,6 @@ package thycotic
 
 import (
 	"gopkg.in/urfave/cli.v2"
-	"fmt"
 )
 
 func  (p *Provider) Command() *cli.Command {
@@ -17,10 +16,7 @@ func  (p *Provider) Command() *cli.Command {
 				Name:  "get",
 				Usage: "retrieve a specific secret in thycotic secret server",
 				Before: func (ctx *cli.Context) error{
-					if !ctx.IsSet("secretid") && !ctx.IsSet("secretpath"){
-						return fmt.Errorf("`secretid` or `secretpath` is required")
-					}
-					return nil
+					return p.CommandValidateRequireOneOf([]string{"secretid", "secretpath"}, ctx)
 				},
 				Action: func(c *cli.Context) error {
 					err := p.Authenticate()

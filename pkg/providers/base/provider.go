@@ -7,6 +7,7 @@ import (
 	"github.com/analogj/tentacle/pkg/errors"
 	"github.com/analogj/tentacle/pkg/credentials"
 	"encoding/json"
+	"strings"
 )
 
 type Provider struct {
@@ -23,15 +24,82 @@ func (p *Provider) Authenticate() error {
 }
 
 func (p *Provider) Get(queryData map[string]string) error {
-	return errors.NotImplementedError("Get function not implemented")
+	return errors.NotImplementedError("Get action is unsupported by this provider.")
 }
 
 func (p *Provider) List(queryData map[string]string)  ([]credentials.SummaryInterface, error) {
-	return nil, errors.NotImplementedError("List function not implemented")
+	return nil, errors.NotImplementedError("List action is unsupported by this provider.")
 }
 
 
 //utility/helper functions
+
+func (p *Provider) ValidateRequireOneOf(oneOf []string, data map[string]interface{}) error {
+
+	var oneSet = false
+	for _, flag := range oneOf {
+		if _, ok := data[flag]; ok {
+			oneSet = true
+			break
+		}
+	}
+
+	if !oneSet {
+		return errors.InvalidArgumentsError(fmt.Sprintf("One of `%s` is required", strings.Join(oneOf, "` or `")))
+	} else {
+		return nil
+	}
+}
+
+func (p *Provider) ValidateRequireAllOf(allOf []string, data map[string]interface{}) error {
+
+	var allSet = true
+	for _, flag := range allOf {
+		if _, ok := data[flag]; !ok {
+			allSet = false
+		}
+	}
+
+	if !allSet {
+		return errors.InvalidArgumentsError(fmt.Sprintf("`%s` are required", strings.Join(allOf, "` and `")))
+	} else {
+		return nil
+	}
+}
+
+func (p *Provider) CommandValidateRequireOneOf(oneOf []string, c *cli.Context) error {
+
+	var oneSet = false
+	for _, flag := range oneOf {
+		if c.IsSet(flag) {
+			 oneSet = true
+			 break
+		}
+	}
+
+	if !oneSet {
+		return errors.InvalidArgumentsError(fmt.Sprintf("One of `%s` is required", strings.Join(oneOf, "` or `")))
+	} else {
+		return nil
+	}
+}
+
+func (p *Provider) CommandValidateRequireAllOf(allOf []string, c *cli.Context) error {
+
+	var allSet = true
+	for _, flag := range allOf {
+		if !c.IsSet(flag) {
+			allSet = false
+		}
+	}
+
+	if !allSet {
+		return errors.InvalidArgumentsError(fmt.Sprintf("`%s` are required", strings.Join(allOf, "` and `")))
+	} else {
+		return nil
+	}
+}
+
 
 var reservedFlags = []string{ "output", "debug" }
 

@@ -10,12 +10,12 @@ providers:
   keyringalias:
     type: keyring
 
-
-  cyberarkalias:
-    type: cyberark
-    host: cyberark.corp.example.com
-    safe: my_safe
-    appid: my_app_id
+  conjur:
+    type: conjur
+    login: 'admin'
+    api_key: 'xxxxxx'
+    appliance_url: 'https://eval.conjur.org'
+    account: 'account@corp.company.com'
 
   thycoticalias:
     type: thycotic

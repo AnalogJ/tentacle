@@ -29,13 +29,13 @@ required = [
     "github.com/mitchellh/go-homedir",
     "github.com/fatih/color",
     "github.com/kvz/logstreamer",
+	"gopkg.in/yaml.v2",
 
 	# provider dependencies
 	"github.com/keybase/go-keychain",
 	"github.com/hoop33/go-cyberark",
 	"github.com/cyberark/conjur-api-go/conjurapi",
 	"github.com/tiaguinho/gosoap",
-	"gopkg.in/yaml.v2",
 
     # test dependencies
     "github.com/stretchr/testify/require"

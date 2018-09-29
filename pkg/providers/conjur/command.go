@@ -17,31 +17,33 @@ func  (p *Provider) Command() *cli.Command {
 				Name:  "get",
 				Usage: "retrieve a specific secret in CyberArk Conjur",
 				Before: func (ctx *cli.Context) error{
-					//if !ctx.IsSet("name"){
-					//	return fmt.Errorf("`name` is required argument")
-					//}
-					return nil
+					return p.CommandValidateRequireAllOf([]string{"variableid"}, ctx)
 				},
 				Action: func(c *cli.Context) error {
-					p.Authenticate()
+					err := p.Authenticate()
+					if err != nil{
+						return err
+					}
 					queryData := p.CommandProcessFlagsToQueryData(c)
 
 					secret, err := p.Get(queryData)
 					return p.CommandPrintCredentials(c, "get", secret, err)
 				},
 				Flags: []cli.Flag{
-					//&cli.StringFlag{
-					//	Name:    "name",
-					//	Aliases: []string{"account"},
-					//	Usage:   "Specify the cyberark secret name",
-					//},
+					&cli.StringFlag{
+						Name:    "variableid",
+						Usage:   "Specify the conjur secret id",
+					},
 				},
 			},
 			{
 				Name:  "list",
 				Usage: "list all available secrets in CybearArk Conjur",
 				Action: func(c *cli.Context) error {
-					p.Authenticate()
+					err := p.Authenticate()
+					if err != nil{
+						return err
+					}
 					queryData := p.CommandProcessFlagsToQueryData(c)
 
 					secrets, err := p.List(queryData)

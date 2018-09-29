@@ -116,7 +116,7 @@ If you don't have the time to work on Drawbridge, but found something we should 
 ## Current Providers
 Tentacle supports retrieving secrets via API's as well as OS specific credential storage.
 
-### API Secret Managers
+### Cloud
 
 - Cyberark
 - Thycotic
@@ -128,20 +128,33 @@ Tentacle supports retrieving secrets via API's as well as OS specific credential
 
 ## Future Providers
 
-- Chrome
-- Firefox
-- Conjur
+### Cloud
+- Dashlane
+- Keeper
+- RoboForm
+- Google SmartLock
 - Lastpass
-- OnePass
+- 1Password
+- AWS
+
+### Network
+- Conjur
 - Bitwarden
 - PasswordStore (Pass)
 - Vault
+- Chef
+
+### OS
 - Linux - Keyring
 - Linux - Secretservice
 - Windows - Password vault
-- AWS 
-- Chef
-- keypass
+- Mac - KeyChain
+
+### Local
+- Chrome
+- Firefox
+- keepass
+- gopass
 
 ## Versioning
 We use SemVer for versioning. For the versions available, see the tags on this repository.

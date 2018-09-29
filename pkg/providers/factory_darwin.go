@@ -6,6 +6,7 @@ import (
 	"github.com/analogj/tentacle/pkg/providers/thycotic"
 	"log"
 
+	"github.com/analogj/tentacle/pkg/providers/conjur"
 )
 
 func Create(alias string, config interface{}) (Interface, error) {
@@ -23,6 +24,10 @@ func Create(alias string, config interface{}) (Interface, error) {
 
 
 	//alphabetical list of common providers
+	case "conjur":
+		provider := new(conjur.Provider)
+		provider.Init(alias, config.(map[string]interface{}))
+		return provider, nil
 	case "cyberark":
 		provider := new(cyberark.Provider)
 		provider.Init(alias, config.(map[string]interface{}))
