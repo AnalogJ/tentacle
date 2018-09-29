@@ -31,13 +31,14 @@ type DependencyMissingError string
 func (str DependencyMissingError) Error() string {
 	return fmt.Sprintf("DependencyMissingError: %q", string(str))
 }
-
+// Raised when CLI arguments are missing or incorrect
 type InvalidArgumentsError string
 
 func (str InvalidArgumentsError) Error() string {
 	return fmt.Sprintf("InvalidArgumentsError: %q", string(str))
 }
 
+//Raised when functionality is not implmented.
 type NotImplementedError string
 
 func (str NotImplementedError) Error() string {

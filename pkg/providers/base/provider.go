@@ -20,7 +20,7 @@ type Provider struct {
 }
 
 func (p *Provider) Authenticate() error {
-	return errors.NotImplementedError("Authenticate function not implemented")
+	return errors.NotImplementedError("Authenticate action is unsupported by this provider.")
 }
 
 func (p *Provider) Get(queryData map[string]string) error {

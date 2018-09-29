@@ -21,6 +21,7 @@ type ClientOptionFunc func(*Client) error
 
 // Client is a client for the CyberArk Enterprise Password Vault
 type Client struct {
+u	HttpClient 			 *http.Client
 	host                 string
 	skipCertVerification bool
 	timeout              time.Duration
@@ -98,15 +99,18 @@ func (c *Client) PerformRequest(method string, path string, params url.Values, b
 		return nil, err
 	}
 
-	client := &http.Client{
-		Timeout: time.Second * c.timeout,
-		Transport: &http.Transport{
-			TLSClientConfig: &tls.Config{
-				InsecureSkipVerify: c.skipCertVerification,
+	if c.HttpClient == nil {
+		c.HttpClient = &http.Client{
+			Timeout: time.Second * c.timeout,
+			Transport: &http.Transport{
+				TLSClientConfig: &tls.Config{
+					InsecureSkipVerify: c.skipCertVerification,
+				},
 			},
-		},
+		}
 	}
-	resp, err := client.Do(req)
+
+	resp, err := c.HttpClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
