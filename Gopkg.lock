@@ -3,6 +3,16 @@
 
 [[projects]]
   branch = "master"
+  name = "github.com/analogj/go-lastpass"
+  packages = [
+    ".",
+    "security",
+    "security/crypt"
+  ]
+  revision = "f3dadddc189f8d3946f4b975d99920d7f9e98065"
+
+[[projects]]
+  branch = "master"
   name = "github.com/bgentry/go-netrc"
   packages = ["netrc"]
   revision = "9fd32a8b3d3d3f9d43c341bfe098430e07609480"
@@ -107,6 +117,12 @@
   version = "v1.2.0"
 
 [[projects]]
+  name = "github.com/pkg/errors"
+  packages = ["."]
+  revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
+  version = "v0.8.0"
+
+[[projects]]
   name = "github.com/pmezard/go-difflib"
   packages = ["difflib"]
   revision = "792786c7400a136282c1664665ae0a8db921c6c2"
@@ -162,6 +178,12 @@
 
 [[projects]]
   branch = "master"
+  name = "golang.org/x/crypto"
+  packages = ["pbkdf2"]
+  revision = "5295e8364332db77d75fce11f1d19c053919a9c9"
+
+[[projects]]
+  branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
   revision = "7138fd3d9dc8335c567ca206f4333fb75eb05d56"
@@ -200,6 +222,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "5f499457264e0de6fa8bbbe5b08d1828253b4c3b281d13a4c28a69b8c8d792df"
+  inputs-digest = "ec39451cf0e31df75a23e955909d5a740e17d3796abcae9759ce352e7f3d26fc"
   solver-name = "gps-cdcl"
   solver-version = 1

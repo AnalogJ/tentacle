@@ -21,7 +21,7 @@ type ClientOptionFunc func(*Client) error
 
 // Client is a client for the CyberArk Enterprise Password Vault
 type Client struct {
-u	HttpClient 			 *http.Client
+	HttpClient 			 *http.Client
 	host                 string
 	skipCertVerification bool
 	timeout              time.Duration

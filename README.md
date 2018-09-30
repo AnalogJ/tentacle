@@ -192,6 +192,9 @@ Jason Kulatunga - Initial Development - @AnalogJ
 - https://medium.com/learning-the-go-programming-language/writing-modular-go-programs-with-plugins-ec46381ee1a9
 - https://thycotic.force.com/support/s/article/Accessing-Secret-Server-programmatically-Curl
 - https://thycotic.com/wp-content/uploads/2014/04/SS_WebServicesGuide.pdf
+- https://github.com/robertknight/1pass
+- https://discussions.agilebits.com/discussion/89740/api-to-pull-1password-information
+- https://github.com/1Password/1password-teams-open-source
 
 ## Possible Names
 - Seer

@@ -31,6 +31,10 @@ func Create(alias string, config interface{}) (Interface, error) {
 		provider := new(cyberark.Provider)
 		provider.Init(alias, config.(map[string]interface{}))
 		return provider, nil
+	case "lastpass":
+		provider := new(lastpass.Provider)
+		provider.Init(alias, config.(map[string]interface{}))
+		return provider, nil
 	case "thycotic":
 		provider := new(thycotic.Provider)
 		provider.Init(alias, config.(map[string]interface{}))

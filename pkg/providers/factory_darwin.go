@@ -7,6 +7,7 @@ import (
 	"log"
 
 	"github.com/analogj/tentacle/pkg/providers/conjur"
+	"github.com/analogj/tentacle/pkg/providers/lastpass"
 )
 
 func Create(alias string, config interface{}) (Interface, error) {
@@ -30,6 +31,10 @@ func Create(alias string, config interface{}) (Interface, error) {
 		return provider, nil
 	case "cyberark":
 		provider := new(cyberark.Provider)
+		provider.Init(alias, config.(map[string]interface{}))
+		return provider, nil
+	case "lastpass":
+		provider := new(lastpass.Provider)
 		provider.Init(alias, config.(map[string]interface{}))
 		return provider, nil
 	case "thycotic":

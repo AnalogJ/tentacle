@@ -8,6 +8,7 @@ import (
 	"github.com/analogj/tentacle/pkg/credentials"
 	"encoding/json"
 	"strings"
+	"gopkg.in/yaml.v2"
 )
 
 type Provider struct {
@@ -196,6 +197,12 @@ func PrintCredentials(outputMode string, credentials []credentials.SummaryInterf
 			return err
 		}
 		fmt.Printf(string(jsonBytes))
+	case "yaml":
+		yamlBytes, err := yaml.Marshal(credentials)
+		if err != nil {
+			return err
+		}
+		fmt.Printf(string(yamlBytes))
 	case "raw":
 		return errors.InvalidArgumentsError("output mode raw is unsupported for list")
 	case "table":
