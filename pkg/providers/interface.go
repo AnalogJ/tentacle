@@ -16,6 +16,8 @@ type Interface interface {
 
 	Ie. ensure that required software is installed (eg. Java, CLI's) and that the file system is configured as
 	expected.
+
+	Init should not make any network calls
 	 */
 	Init(alias string, config map[string]interface{}) error
 

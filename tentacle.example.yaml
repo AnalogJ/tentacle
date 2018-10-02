@@ -1,5 +1,13 @@
 ---
 providers:
+
+  conjur:
+    type: conjur
+    login: 'admin'
+    api_key: 'xxxxxx'
+    appliance_url: 'https://eval.conjur.org'
+    account: 'account@corp.company.com'
+
   keychainalias:
     type: keychain
 
@@ -10,12 +18,10 @@ providers:
   keyringalias:
     type: keyring
 
-  conjur:
-    type: conjur
-    login: 'admin'
-    api_key: 'xxxxxx'
-    appliance_url: 'https://eval.conjur.org'
-    account: 'account@corp.company.com'
+  lastpass:
+    type: lastpass
+    username: 'xxx@corp.example.com'
+    password: 'xxxxxx'
 
   thycoticalias:
     type: thycotic
@@ -26,3 +32,4 @@ providers:
     # curl -v -H "Content-Type: application/x-www-form-urlencoded" -d "username={NAME}&password={PASSWORD}&organization=&domain=" --url "http://yoursecretserver.yourdomain.com/webservices/sswebservice.asmx/Authenticate"
     # and parsing the xml output for the token
     token: "token"
+

@@ -129,6 +129,12 @@
   version = "v1.0.0"
 
 [[projects]]
+  name = "github.com/seborama/govcr"
+  packages = ["."]
+  revision = "9e77e74cccb8f13c6d3e069f0a0f16b2e3ee54ae"
+  version = "2.4.1"
+
+[[projects]]
   name = "github.com/spf13/afero"
   packages = [
     ".",
@@ -162,9 +168,18 @@
   version = "v1.0.2"
 
 [[projects]]
+  name = "github.com/stretchr/objx"
+  packages = ["."]
+  revision = "477a77ecc69700c7cdeb1fa9e129548e1c1c393c"
+  version = "v0.1.1"
+
+[[projects]]
   name = "github.com/stretchr/testify"
   packages = [
+    ".",
     "assert",
+    "http",
+    "mock",
     "require"
   ]
   revision = "f35b8ab0b5a2cef36673838d662e249dd9c94686"
@@ -222,6 +237,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "ec39451cf0e31df75a23e955909d5a740e17d3796abcae9759ce352e7f3d26fc"
+  inputs-digest = "808733d059d1be3c91ba5cb8c5088a8e00e43119ba09cbd38f3391bbb7093275"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -39,7 +39,9 @@ required = [
 	"github.com/analogj/go-lastpass",
 
     # test dependencies
-    "github.com/stretchr/testify/require"
+    "github.com/stretchr/testify/require",
+    "github.com/stretchr/testify",
+    "github.com/seborama/govcr"
 ]
 
 

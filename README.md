@@ -121,7 +121,7 @@ Tentacle supports retrieving secrets via API's as well as OS specific credential
 1. Cyberark
 2. Thycotic
 3. Conjur
-
+4. Lastpass
 
 ### OS Secret Storage
 
@@ -131,20 +131,30 @@ Tentacle supports retrieving secrets via API's as well as OS specific credential
 ## Future Providers
 
 ### Network/Cloud
-- Dashlane
-- Keeper
-- RoboForm
-- Google SmartLock
-- Lastpass
-- 1Password
+- [1Password](https://1password.com/)
+- [Avecto Defendpoint](https://www.avecto.com/defendpoint)
 - AWS
-- SplashID Safe
-- Norton Identity Safe
-- Trend Micro Password Manager
-- Bitwarden
-- PasswordStore (Pass)
-- Vault
-- Chef
+- [BeyondTrust PowerBroker](https://www.beyondtrust.com/products/powerbroker-password-safe/)
+- [Bitwarden](https://bitwarden.com/)
+- [BomGar PAM](https://www.bomgar.com/)
+- [Chef Encrypted Databags](https://docs.chef.io/data_bags.html)
+- [Dashlane](https://www.dashlane.com/)
+- [Devolutions Password Server](https://devolutions.net/products/password-server)
+- [Google SmartLock](https://developers.google.com/identity/smartlock-passwords/case-studies)
+- [IT Glue Password Vault](https://itglue.com/features/password-vault/)
+- [Keeper](https://keepersecurity.com/)
+- [KronTech Single Connect](https://krontech.com/)
+- [Manage Engine Password Manager Pro](https://www.manageengine.com/products/passwordmanagerpro/)
+- [Norton Identity Safe](https://my.norton.com/extspa/idsafe)
+- [Passwordstate](https://www.clickstudios.com.au/)
+- [PasswordStore (Pass)](https://www.passwordstore.org/)
+- [Pleasant Password Server](http://www.pleasantsolutions.com/passwordserver)
+- [RoboForm](https://www.roboform.com/)
+- [SplashID Safe](https://splashid.com/)
+- [Teampass](https://github.com/nilsteampassnet/TeamPass) - Keepass for Teams
+- [Trend Micro Password Manager](https://pwm.trendmicro.com/)
+- [Vault](https://www.vaultproject.io/)
+- [XTon PAM](https://www.xtontech.com/overview/features/)
 
 ### OS
 - Linux - Keyring
