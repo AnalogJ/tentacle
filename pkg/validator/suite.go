@@ -17,15 +17,17 @@ type ProviderTestSuite struct {
 
 
 	// the following values must be set in the calling provider test file.
-	ProviderConfig			map[string]interface{}
-	Get_TestData     		TestData
-	GetById_TestData 		TestData
-	Get_Ssh_TestData      	TestData
-	Get_Text_TestData     	TestData
-	Get_UserPass_TestData 	TestData
+	ProviderConfig        map[string]interface{}
+	Get_TestData          GetRequestTestData
+	GetById_TestData      GetRequestTestData
+	Get_Ssh_TestData      GetRequestTestData
+	Get_Text_TestData     GetRequestTestData
+	Get_UserPass_TestData GetRequestTestData
+
+	List_TestData 		  ListRequestTestData
 }
 
-type TestData struct{
+type GetRequestTestData struct{
 	//query data is submitted to the .Get function during the test
 	QueryData map[string]string
 
@@ -34,6 +36,13 @@ type TestData struct{
 	MetaData map[string]string
 }
 
+type ListRequestTestData struct{
+	//query data is submitted to the .Get function during the test
+	QueryData map[string]string
+
+	//results should be the expected values returned by the test
+	Results []credentials.SummaryInterface
+}
 
 // Make sure that VariableThatShouldStartAtFive is set to five
 // before each test
@@ -232,4 +241,21 @@ func (suite *ProviderTestSuite)TestProvider_Get_UserPassCredential() {
 	for key, _ := range cred.GetMetaData() {
 		require.Equal(suite.T(), strings.ToLower(key), key) // all field name should be lowercase
 	}
+}
+
+func (suite *ProviderTestSuite)TestProvider_List() {
+
+	//setup
+	if enabled, ok := suite.Provider.Capabilities()[constants.CAP_LIST]; !ok || !enabled {
+		suite.T().Skip("skipping test, provider does not support it")
+	}
+	aerr := suite.Provider.Authenticate()
+	require.NoError(suite.T(), aerr)
+
+	//test
+	creds, err := suite.Provider.List(suite.List_TestData.QueryData)
+
+	//assert
+	require.NoError(suite.T(), err)
+	require.Equal(suite.T(), suite.List_TestData.Results, creds)
 }
