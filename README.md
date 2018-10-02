@@ -118,10 +118,10 @@ Tentacle supports retrieving secrets via API's as well as OS specific credential
 
 ### Network/Cloud
 
-1. Cyberark
-2. Thycotic
-3. Conjur
-4. Lastpass
+1. [Cyberark](https://www.cyberark.com/)
+1. [Conjur](https://www.conjur.org/)
+1. [Lastpass](https://www.lastpass.com)
+1. [Thycotic](https://thycotic.com/)
 
 ### OS Secret Storage
 
