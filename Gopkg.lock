@@ -46,6 +46,12 @@
   version = "v1.4.7"
 
 [[projects]]
+  name = "github.com/golang/mock"
+  packages = ["gomock"]
+  revision = "c34cdb4725f4c3844d095133c6e40e448b86589b"
+  version = "v1.1.1"
+
+[[projects]]
   branch = "master"
   name = "github.com/hashicorp/hcl"
   packages = [
@@ -180,7 +186,8 @@
     "assert",
     "http",
     "mock",
-    "require"
+    "require",
+    "suite"
   ]
   revision = "f35b8ab0b5a2cef36673838d662e249dd9c94686"
   version = "v1.2.2"
@@ -196,6 +203,12 @@
   name = "golang.org/x/crypto"
   packages = ["pbkdf2"]
   revision = "5295e8364332db77d75fce11f1d19c053919a9c9"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/net"
+  packages = ["context"]
+  revision = "4dfa2610cdf3b287375bbba5b8f2a14d3b01d8de"
 
 [[projects]]
   branch = "master"
@@ -237,6 +250,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "808733d059d1be3c91ba5cb8c5088a8e00e43119ba09cbd38f3391bbb7093275"
+  inputs-digest = "101744c6d2e3ed375e42de655d4f93509ff7e412b24e023042fa7ea010f873e6"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -3,18 +3,18 @@ package thycotic
 import (
 	"strconv"
 	"strings"
-
 	"github.com/analogj/tentacle/pkg/credentials"
-"github.com/analogj/tentacle/pkg/providers/base"
-"github.com/analogj/tentacle/pkg/providers/thycotic/api"
+	"github.com/analogj/tentacle/pkg/providers/base"
+	"github.com/analogj/tentacle/pkg/providers/thycotic/api"
 )
 
-type Provider struct {
+type provider struct {
 	*base.Provider
 	client *api.Client
 }
 
-func (p *Provider) Init(alias string, config map[string]interface{}) error {
+func New(alias string, config map[string]interface{}) (*provider, error) {
+	p := new(provider)
 	//validate the config and assign it to ProviderConfig
 	p.Provider = new(base.Provider)
 	p.ProviderConfig = config
@@ -24,10 +24,10 @@ func (p *Provider) Init(alias string, config map[string]interface{}) error {
 	p.client.Init(p.ProviderConfig["domain"].(string), p.ProviderConfig["server"].(string), p.ProviderConfig["token"].(string))
 
 	//TODO: validate the required configuration is present.
-	return nil
+	return p, nil
 }
 
-func (p *Provider) Authenticate() error {
+func (p *provider) Authenticate() error {
 
 
 
@@ -36,7 +36,7 @@ func (p *Provider) Authenticate() error {
 	return nil
 }
 
-func (p *Provider) Get(queryData map[string]string) (credentials.GenericInterface, error) {
+func (p *provider) Get(queryData map[string]string) (credentials.GenericInterface, error) {
 
 	var resp api.GetSecretResponse
 	var err error
@@ -56,7 +56,7 @@ func (p *Provider) Get(queryData map[string]string) (credentials.GenericInterfac
 	return p.populateCredential(queryData, resp), nil
 }
 
-func (p *Provider) List(queryData map[string]string) ([]credentials.SummaryInterface, error) {
+func (p *provider) List(queryData map[string]string) ([]credentials.SummaryInterface, error) {
 
 	resp, err := p.client.List(queryData["criteria"])
 	if err != nil {
@@ -68,7 +68,7 @@ func (p *Provider) List(queryData map[string]string) ([]credentials.SummaryInter
 }
 
 
-func (p *Provider) populateSummaryList(queryData map[string]string, result api.SearchSecretsResponse) []credentials.SummaryInterface {
+func (p *provider) populateSummaryList(queryData map[string]string, result api.SearchSecretsResponse) []credentials.SummaryInterface {
 	// As of now, theres no way to determine what type of credential we've recieved, always return a Text type.
 
 
@@ -91,7 +91,7 @@ func (p *Provider) populateSummaryList(queryData map[string]string, result api.S
 	return secrets
 }
 
-func (p *Provider) populateCredential(queryData map[string]string, result api.GetSecretResponse) credentials.GenericInterface {
+func (p *provider) populateCredential(queryData map[string]string, result api.GetSecretResponse) credentials.GenericInterface {
 	// As of now, theres no way to determine what type of credential we've recieved, always return a Text type.
 
 	metadata := map[string]string{}

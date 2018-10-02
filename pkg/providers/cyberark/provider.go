@@ -7,19 +7,20 @@ import (
 	"github.com/analogj/tentacle/pkg/credentials"
 )
 
-type Provider struct {
+type provider struct {
 	*base.Provider
 }
 
-func (p *Provider) Init(alias string, config map[string]interface{}) error {
+func New(alias string, config map[string]interface{}) (*provider, error) {
+	p := new(provider)
 	//validate the config and assign it to ProviderConfig
 	p.Provider = new(base.Provider)
 	p.ProviderConfig = config
 	p.Alias = alias
-	return nil
+	return p, nil
 }
 
-func (p *Provider) Get(queryData map[string]string) (credentials.GenericInterface, error) {
+func (p *provider) Get(queryData map[string]string) (credentials.GenericInterface, error) {
 
 
 	client, err := api.NewClient(
@@ -45,9 +46,5 @@ func (p *Provider) Get(queryData map[string]string) (credentials.GenericInterfac
 	log.Println(ret.UserName)
 	log.Println(ret.Content)
 
-	return nil, nil
-}
-
-func (p *Provider) List(queryData map[string]string) ([]credentials.SummaryInterface, error) {
 	return nil, nil
 }

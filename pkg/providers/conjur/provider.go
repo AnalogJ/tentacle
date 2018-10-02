@@ -8,22 +8,24 @@ import (
 	"github.com/analogj/tentacle/pkg/errors"
 )
 
-type Provider struct {
+type provider struct {
 	*base.Provider
 
 	client *conjurapi.Client
 }
 
-func (p *Provider) Init(alias string, config map[string]interface{}) error {
+func New(alias string, config map[string]interface{}) (*provider, error) {
+	p := new(provider)
+
 	//validate the config and assign it to ProviderConfig
 	p.Provider = new(base.Provider)
 	p.ProviderConfig = config
 	p.Alias = alias
 
-	return p.ValidateRequireAllOf([]string{"login", "api_key", "appliance_url", "account"}, config)
+	return p, p.ValidateRequireAllOf([]string{"login", "api_key", "appliance_url", "account"}, config)
 }
 
-func (p *Provider) Authenticate() error {
+func (p *provider) Authenticate() error {
 
 	config := conjurapi.LoadConfig()
 	config.ApplianceURL = p.ProviderConfig["appliance_url"].(string)
@@ -42,7 +44,7 @@ func (p *Provider) Authenticate() error {
 	return err
 }
 
-func (p *Provider) Get(queryData map[string]string) (credentials.GenericInterface, error) {
+func (p *provider) Get(queryData map[string]string) (credentials.GenericInterface, error) {
 	variableId, variableIdOk := queryData["variableid"];
 	if  !variableIdOk {
 		return nil, errors.InvalidArgumentsError("variableid is empty or invalid")
@@ -61,9 +63,5 @@ func (p *Provider) Get(queryData map[string]string) (credentials.GenericInterfac
 	}
 
 
-	return nil, nil
-}
-
-func (p *Provider) List(queryData map[string]string) ([]credentials.SummaryInterface, error) {
 	return nil, nil
 }

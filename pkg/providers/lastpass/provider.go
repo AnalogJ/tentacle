@@ -5,27 +5,40 @@ import (
 	"github.com/analogj/tentacle/pkg/credentials"
 	lastpassapi "github.com/analogj/go-lastpass"
 	"github.com/analogj/tentacle/pkg/errors"
+	"github.com/analogj/tentacle/pkg/constants"
 )
 
-type Provider struct {
+type provider struct {
 	*base.Provider
-
 	Client *lastpassapi.Client
 }
 
-func (p *Provider) Init(alias string, config map[string]interface{}) error {
+func New(alias string, config map[string]interface{}) (*provider, error) {
+	p := new(provider)
 	//validate the config and assign it to ProviderConfig
 	p.Provider = new(base.Provider)
 	p.ProviderConfig = config
 	p.Alias = alias
 
-	return p.ValidateRequireAllOf([]string{"username", "password"}, config)
+	return p, p.ValidateRequireAllOf([]string{"username", "password"}, config)
 }
 
-func (p *Provider) Authenticate() error {
+func (p *provider) Capabilities() map[string]bool {
+	return map[string]bool{
+		constants.CAP_GET: true,
+		constants.CAP_LIST: true,
+		constants.CAP_GET_BY_ID: true,
+		constants.CAP_CRED_USERPASS: true,
+	}
+}
+
+func (p *provider) Authenticate() error {
 
 	client := &lastpassapi.Client{}
 	client.Init()
+	if p.HttpClient != nil {
+		client.HttpClient = p.HttpClient
+	}
 
 	var multiFactor string
 	multiFactorVal, multiFactorOk := p.ProviderConfig["multifactor"]
@@ -46,7 +59,7 @@ func (p *Provider) Authenticate() error {
 	return err
 }
 
-func (p *Provider) Get(queryData map[string]string) (credentials.GenericInterface, error) {
+func (p *provider) Get(queryData map[string]string) (credentials.GenericInterface, error) {
 	id, idOk := queryData["id"];
 	if  !idOk {
 		return nil, errors.InvalidArgumentsError("id is empty or invalid")
@@ -70,7 +83,7 @@ func (p *Provider) Get(queryData map[string]string) (credentials.GenericInterfac
 	return userPassSecret, nil
 }
 
-func (p *Provider) List(queryData map[string]string) ([]credentials.SummaryInterface, error) {
+func (p *provider) List(queryData map[string]string) ([]credentials.SummaryInterface, error) {
 
 	accounts, err := p.Client.GetAccounts()
 	if err != nil {

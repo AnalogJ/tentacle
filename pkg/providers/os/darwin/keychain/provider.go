@@ -11,19 +11,20 @@ import (
 	"github.com/analogj/tentacle/pkg/errors"
 )
 
-type Provider struct {
+type provider struct {
 	*base.Provider
 }
 
-func (p *Provider) Init(alias string, config map[string]interface{}) error {
+func New(alias string, config map[string]interface{}) (*provider, error) {
+	p :=  new(provider)
 	//validate the config and assign it to ProviderConfig
 	p.Provider = new(base.Provider)
 	p.ProviderConfig = config
 	p.Alias = alias
-	return nil
+	return p, nil
 }
 
-func (p *Provider) Authenticate() error {
+func (p *provider) Authenticate() error {
 
 	if location, ok := p.ProviderConfig["location"]; ok {
 		//ensure that we can authenticate to this secret store.
@@ -46,7 +47,7 @@ func (p *Provider) Authenticate() error {
 	return nil
 }
 
-func (p *Provider) Get(queryData map[string]string) (credentials.GenericInterface, error) {
+func (p *provider) Get(queryData map[string]string) (credentials.GenericInterface, error) {
 
 	query := goKeychain.NewItem()
 	query.SetSecClass(goKeychain.SecClassGenericPassword)
@@ -96,7 +97,7 @@ func (p *Provider) Get(queryData map[string]string) (credentials.GenericInterfac
 	}
 }
 
-func (p *Provider) List(queryData map[string]string) ([]credentials.SummaryInterface, error) {
+func (p *provider) List(queryData map[string]string) ([]credentials.SummaryInterface, error) {
 	query := goKeychain.NewItem()
 	query.SetSecClass(goKeychain.SecClassGenericPassword)
 	query.SetMatchLimit(goKeychain.MatchLimitAll)

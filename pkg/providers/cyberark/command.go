@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func  (p *Provider) Command() *cli.Command {
+func  (p *provider) Command() *cli.Command {
 	return &cli.Command {
 		Name:      p.Alias,
 		Usage:     "Access secrets and passwords stored in cyberark vault",

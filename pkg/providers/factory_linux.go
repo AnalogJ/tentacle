@@ -16,28 +16,20 @@ func Create(alias string, config interface{}) (Interface, error) {
 
 	//os specific providers
 	//case "keychain":
-	//	provider := new(keychain.Provider)
+	//	provider := new(keychain.provider)
 	//	provider.Init(alias, config.(map[string]interface{}))
 	//	return provider, nil
 	//
 
 	//alphabetical list of common providers
 	case "conjur":
-		provider := new(conjur.Provider)
-		provider.Init(alias, config.(map[string]interface{}))
-		return provider, nil
+		return conjur.New(alias, config.(map[string]interface{}))
 	case "cyberark":
-		provider := new(cyberark.Provider)
-		provider.Init(alias, config.(map[string]interface{}))
-		return provider, nil
+		return cyberark.New(alias, config.(map[string]interface{}))
 	case "lastpass":
-		provider := new(lastpass.Provider)
-		provider.Init(alias, config.(map[string]interface{}))
-		return provider, nil
+		return lastpass.New(alias, config.(map[string]interface{}))
 	case "thycotic":
-		provider := new(thycotic.Provider)
-		provider.Init(alias, config.(map[string]interface{}))
-		return provider, nil
+		return thycotic.New(alias, config.(map[string]interface{}))
 
 	//fall back error message
 	default:

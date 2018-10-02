@@ -6,7 +6,7 @@ import (
 	"gopkg.in/urfave/cli.v2"
 )
 
-func  (p *Provider) Command() *cli.Command {
+func  (p *provider) Command() *cli.Command {
 	return &cli.Command {
 		Name:      p.Alias,
 		Usage:     "Access secrets and passwords stored on macOS keychain",

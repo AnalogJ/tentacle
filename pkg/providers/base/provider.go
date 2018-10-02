@@ -9,15 +9,22 @@ import (
 	"encoding/json"
 	"strings"
 	"gopkg.in/yaml.v2"
+	"net/http"
 )
 
+//Must be public because all other providers inherit from it.
 type Provider struct {
 	Alias          string
 	ProviderConfig map[string]interface{}
+	HttpClient 	   *http.Client
 
 	//Global Options
 	DebugMode	bool
 	OutputMode	string
+}
+
+func (p *Provider) Capabilities() map[string]bool {
+	return map[string]bool{}
 }
 
 func (p *Provider) Authenticate() error {
@@ -32,6 +39,9 @@ func (p *Provider) List(queryData map[string]string)  ([]credentials.SummaryInte
 	return nil, errors.NotImplementedError("List action is unsupported by this provider.")
 }
 
+func (p *Provider) SetHttpClient(httpClient *http.Client){
+	p.HttpClient = httpClient
+}
 
 //utility/helper functions
 
