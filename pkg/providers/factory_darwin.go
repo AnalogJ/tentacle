@@ -33,6 +33,7 @@ func Create(alias string, config interface{}) (Interface, error) {
 		return lastpass.New(alias, config.(map[string]interface{}))
 	case "thycotic":
 		return thycotic.New(alias, config.(map[string]interface{}))
+
 	//fall back error message
 	default:
 		log.Fatalf("%v type is not supported by tentacle", providerType)

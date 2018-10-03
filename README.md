@@ -157,18 +157,18 @@ Tentacle supports retrieving secrets via API's as well as OS specific credential
 - [XTon PAM](https://www.xtontech.com/overview/features/)
 
 ### OS
-- Linux - Keyring
-- Linux - Secretservice
-- Windows - Password vault
-- Mac - KeyChain
+- [Linux - Keyring](http://man7.org/linux/man-pages/man7/keyrings.7.html)
+- [Linux - Secretservice](https://community.kde.org/KDE_Utils/ksecretsservice)
+- [Windows - Credential Manager/ Password vault](https://support.microsoft.com/en-us/help/4026814/windows-accessing-credential-manager)
+- [Mac - KeyChain](https://support.apple.com/guide/keychain-access/what-is-keychain-access-kyca1083/mac)
 
 ### Local
-- Chrome
-- Firefox
-- keepass
-- gopass
-- Password Safe
-- Buttercup
+- [Chrome](https://support.google.com/chrome/answer/95606?hl=en&co=GENIE.Platform%3DDesktop)
+- [Firefox](https://support.mozilla.org/en-US/kb/password-manager-remember-delete-change-and-import)
+- [keepass](https://keepass.info/)
+- [gopass](https://github.com/gopasspw/gopass)
+- [Password Safe](https://pwsafe.org/)
+- [Buttercup](https://buttercup.pw/)
 
 
 ## Versioning

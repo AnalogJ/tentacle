@@ -16,7 +16,7 @@ func  (p *provider) Command() *cli.Command {
 				Name:  "get",
 				Usage: "retrieve a specific secret in thycotic secret server",
 				Before: func (ctx *cli.Context) error{
-					return p.CommandValidateRequireOneOf([]string{"secretid", "secretpath"}, ctx)
+					return p.CommandValidateRequireOneOf([]string{"id", "path"}, ctx)
 				},
 				Action: func(c *cli.Context) error {
 					err := p.Authenticate()
@@ -31,11 +31,11 @@ func  (p *provider) Command() *cli.Command {
 				},
 				Flags: []cli.Flag{
 					&cli.StringFlag{
-						Name:    "secretid",
+						Name:    "id",
 						Usage:   "Specify the thycotic secret id",
 					},
 					&cli.StringFlag{
-						Name:    "secretpath",
+						Name:    "path",
 						Usage:   "Specify the thycotic secret path",
 					},
 				},

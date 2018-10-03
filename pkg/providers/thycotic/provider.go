@@ -6,6 +6,7 @@ import (
 	"github.com/analogj/tentacle/pkg/credentials"
 	"github.com/analogj/tentacle/pkg/providers/base"
 	"github.com/analogj/tentacle/pkg/providers/thycotic/api"
+	"github.com/analogj/tentacle/pkg/constants"
 )
 
 type provider struct {
@@ -20,33 +21,46 @@ func New(alias string, config map[string]interface{}) (*provider, error) {
 	p.ProviderConfig = config
 	p.Alias = alias
 
+	verr := p.ValidateRequireAllOf([]string{"domain", "server", "token"}, config)
+	if verr != nil {
+		return nil, verr
+	}
+
 	p.client = new(api.Client)
 	p.client.Init(p.ProviderConfig["domain"].(string), p.ProviderConfig["server"].(string), p.ProviderConfig["token"].(string))
-
-	//TODO: validate the required configuration is present.
+	//if p.HttpClient != nil {
+	//	p.client.HttpClient = p.HttpClient
+	//}
 	return p, nil
 }
 
+func (p *provider) Capabilities() map[string]bool {
+	return map[string]bool{
+		constants.CAP_GET: true,
+		constants.CAP_LIST: true,
+		constants.CAP_GET_BY_ID: true,
+		constants.CAP_GET_BY_PATH: true,
+		constants.CAP_CRED_USERPASS: true,
+		constants.CAP_CRED_SSH: true,
+	}
+}
+
 func (p *provider) Authenticate() error {
-
-
-
-	p.client.Test()
-
-	return nil
+	_, err := p.client.Test()
+	return err
 }
 
 func (p *provider) Get(queryData map[string]string) (credentials.GenericInterface, error) {
 
 	var resp api.GetSecretResponse
 	var err error
-	if val, ok := queryData["secretid"]; ok {
+	if val, ok := queryData["id"]; ok {
 		resp, err = p.client.GetById(val)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		resp, err = p.client.GetByPath(queryData["secretpath"])
+		resp, err = p.client.GetByPath(queryData["path"])
 		if err != nil {
 			return nil, err
 		}
@@ -103,11 +117,10 @@ func (p *provider) populateCredential(queryData map[string]string, result api.Ge
 
 
 	// its kind of hard to determine what kind of secret this is, so lets just do some simple/naive processing
-	secretComponentsNumb := len(result.GetSecretResult.Secret.Items)
-
 	secretdata := map[string]string{}
 
 	for _, item := range result.GetSecretResult.Secret.Items {
+
 		if item.IsNotes && len(item.Value) >0 {
 			metadata["notes"] = item.Value
 		} else if item.IsFile {
@@ -122,20 +135,13 @@ func (p *provider) populateCredential(queryData map[string]string, result api.Ge
 			secretdata[strings.ToLower(item.FieldName)] = item.Value
 		}
 	}
+	username, hasUsername := secretdata["username"]
+	password, hasPassword := secretdata["password"]
 
-	_, hasUsername := secretdata["username"]
-	_, hasPassword := secretdata["password"]
+	sshKey, hasSshKey := secretdata["private key"]
+	sshPassphrase, _ := secretdata["private key passphrase"]
 
-	if secretComponentsNumb == 1 {
-		textSecret := new(credentials.Text)
-		textSecret.Init()
-		textSecret.Id = strconv.Itoa(result.GetSecretResult.Secret.Id)
-		textSecret.Name = result.GetSecretResult.Secret.Name
-		textSecret.Data = secretdata
-		textSecret.Metadata = metadata
-		textSecret.SetText(result.GetSecretResult.Secret.Items[0].Value)
-		return textSecret
-	} else if hasUsername && hasPassword {
+	if hasUsername && hasPassword {
 		//this is a username and password secret.
 		userpassSecret := new(credentials.UserPass)
 		userpassSecret.Init()
@@ -143,7 +149,19 @@ func (p *provider) populateCredential(queryData map[string]string, result api.Ge
 		userpassSecret.Name = result.GetSecretResult.Secret.Name
 		userpassSecret.Data = secretdata
 		userpassSecret.Metadata = metadata
+		userpassSecret.SetUsername(username)
+		userpassSecret.SetPassword(password)
 		return userpassSecret
+	} else if hasSshKey{
+		sshSecret := new(credentials.Ssh)
+		sshSecret.Init()
+		sshSecret.Id = strconv.Itoa(result.GetSecretResult.Secret.Id)
+		sshSecret.Name = result.GetSecretResult.Secret.Name
+		sshSecret.Data = secretdata
+		sshSecret.Metadata = metadata
+		sshSecret.SetKey(sshKey)
+		sshSecret.SetPassphrase(sshPassphrase)
+		return sshSecret
 	} else {
 		//this is an unknown secret type. Generic.
 		genericSecret := new(credentials.Generic)

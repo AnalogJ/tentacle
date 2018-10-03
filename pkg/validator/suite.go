@@ -17,14 +17,15 @@ type ProviderTestSuite struct {
 
 
 	// the following values must be set in the calling provider test file.
-	ProviderConfig        map[string]interface{}
-	Get_TestData          GetRequestTestData
-	GetById_TestData      GetRequestTestData
-	Get_Ssh_TestData      GetRequestTestData
-	Get_Text_TestData     GetRequestTestData
-	Get_UserPass_TestData GetRequestTestData
+	ProviderConfig        	map[string]interface{}
+	Get_TestData          	GetRequestTestData
+	GetById_TestData      	GetRequestTestData
+	GetByPath_TestData		GetRequestTestData
+	Get_Ssh_TestData      	GetRequestTestData
+	Get_Text_TestData     	GetRequestTestData
+	Get_UserPass_TestData 	GetRequestTestData
 
-	List_TestData 		  ListRequestTestData
+	List_TestData 		  	ListRequestTestData
 }
 
 type GetRequestTestData struct{
@@ -32,8 +33,8 @@ type GetRequestTestData struct{
 	QueryData map[string]string
 
 	//data and metadata should be the expected values returned by the test
-	Data map[string]string
-	MetaData map[string]string
+	Data     map[string]string
+	Metadata map[string]string
 }
 
 type ListRequestTestData struct{
@@ -124,7 +125,26 @@ func (suite *ProviderTestSuite)TestProvider_GetById() {
 	require.NoError(suite.T(), err)
 	require.Equal(suite.T(), suite.GetById_TestData.QueryData["id"], cred.GetSecretId())
 	require.Equal(suite.T(), suite.GetById_TestData.Data, cred.GetData())
-	require.Equal(suite.T(), suite.GetById_TestData.MetaData, cred.GetMetaData())
+	require.Equal(suite.T(), suite.GetById_TestData.Metadata, cred.GetMetadata())
+}
+
+func (suite *ProviderTestSuite)TestProvider_GetByPath() {
+
+	//setup
+	if enabled, ok := suite.Provider.Capabilities()[constants.CAP_GET_BY_PATH]; !ok || !enabled {
+		suite.T().Skip("skipping test, provider does not support it")
+	}
+	aerr := suite.Provider.Authenticate()
+	require.NoError(suite.T(), aerr)
+
+	//test
+	cred, err := suite.Provider.Get(suite.GetByPath_TestData.QueryData)
+
+	//assert
+	require.NoError(suite.T(), err)
+	require.NotEmpty(suite.T(), suite.GetByPath_TestData.QueryData["path"])
+	require.Equal(suite.T(), suite.GetByPath_TestData.Data, cred.GetData())
+	require.Equal(suite.T(), suite.GetByPath_TestData.Metadata, cred.GetMetadata())
 }
 
 func (suite *ProviderTestSuite)TestProvider_Get_GenericCredential() {
@@ -139,14 +159,14 @@ func (suite *ProviderTestSuite)TestProvider_Get_GenericCredential() {
 	//assert
 	require.NoError(suite.T(), err)
 	require.Equal(suite.T(), suite.Get_TestData.Data, cred.GetData())
-	require.Equal(suite.T(), suite.Get_TestData.MetaData, cred.GetMetaData())
+	require.Equal(suite.T(), suite.Get_TestData.Metadata, cred.GetMetadata())
 	require.NotEqual(suite.T(), "summary", cred.GetSecretType())
 
 	for key, _ := range cred.GetData() {
 		require.Equal(suite.T(), strings.ToLower(key), key) // all field name should be lowercase
 	}
 
-	for key, _ := range cred.GetMetaData() {
+	for key, _ := range cred.GetMetadata() {
 		require.Equal(suite.T(), strings.ToLower(key), key) // all field name should be lowercase
 	}
 
@@ -169,7 +189,7 @@ func (suite *ProviderTestSuite)TestProvider_Get_SshCredential() {
 	require.True(suite.T(), castOk, "should be able to cast credential interface to correct type (ssh)")
 	require.NoError(suite.T(), err)
 	require.Equal(suite.T(), suite.Get_Ssh_TestData.Data, sshCred.GetData())
-	require.Equal(suite.T(), suite.Get_Ssh_TestData.MetaData, sshCred.GetMetaData())
+	require.Equal(suite.T(), suite.Get_Ssh_TestData.Metadata, sshCred.GetMetadata())
 	require.Equal(suite.T(), "ssh", sshCred.GetSecretType())
 
 	require.NotEmpty(suite.T(), sshCred.Key())
@@ -177,7 +197,7 @@ func (suite *ProviderTestSuite)TestProvider_Get_SshCredential() {
 		require.Equal(suite.T(), strings.ToLower(key), key) // all field name should be lowercase
 	}
 
-	for key, _ := range cred.GetMetaData() {
+	for key, _ := range cred.GetMetadata() {
 		require.Equal(suite.T(), strings.ToLower(key), key) // all field name should be lowercase
 	}
 }
@@ -199,7 +219,7 @@ func (suite *ProviderTestSuite)TestProvider_Get_TextCredential() {
 	require.True(suite.T(), castOk, "should be able to cast credential interface to correct type (text)")
 	require.NoError(suite.T(), err)
 	require.Equal(suite.T(), suite.Get_Text_TestData.Data, textCred.GetData())
-	require.Equal(suite.T(), suite.Get_Text_TestData.MetaData, textCred.GetMetaData())
+	require.Equal(suite.T(), suite.Get_Text_TestData.Metadata, textCred.GetMetadata())
 	require.Equal(suite.T(), "text", textCred.GetSecretType())
 
 	require.NotEmpty(suite.T(), textCred.Text())
@@ -207,7 +227,7 @@ func (suite *ProviderTestSuite)TestProvider_Get_TextCredential() {
 		require.Equal(suite.T(), strings.ToLower(key), key) // all field name should be lowercase
 	}
 
-	for key, _ := range cred.GetMetaData() {
+	for key, _ := range cred.GetMetadata() {
 		require.Equal(suite.T(), strings.ToLower(key), key) // all field name should be lowercase
 	}
 }
@@ -229,7 +249,7 @@ func (suite *ProviderTestSuite)TestProvider_Get_UserPassCredential() {
 	require.True(suite.T(), castOk, "should be able to cast credential interface to correct type (ssh)")
 	require.NoError(suite.T(), err)
 	require.Equal(suite.T(), suite.Get_UserPass_TestData.Data, userPassCred.GetData())
-	require.Equal(suite.T(), suite.Get_UserPass_TestData.MetaData, userPassCred.GetMetaData())
+	require.Equal(suite.T(), suite.Get_UserPass_TestData.Metadata, userPassCred.GetMetadata())
 	require.Equal(suite.T(), "userpass", userPassCred.GetSecretType())
 
 	require.NotEmpty(suite.T(), userPassCred.Username())
@@ -238,7 +258,7 @@ func (suite *ProviderTestSuite)TestProvider_Get_UserPassCredential() {
 		require.Equal(suite.T(), strings.ToLower(key), key) // all field name should be lowercase
 	}
 
-	for key, _ := range cred.GetMetaData() {
+	for key, _ := range cred.GetMetadata() {
 		require.Equal(suite.T(), strings.ToLower(key), key) // all field name should be lowercase
 	}
 }
@@ -259,3 +279,9 @@ func (suite *ProviderTestSuite)TestProvider_List() {
 	require.NoError(suite.T(), err)
 	require.Equal(suite.T(), suite.List_TestData.Results, creds)
 }
+
+
+//TODO:
+// List with filter?
+// Get by Path?
+// to json yaml raw table etc

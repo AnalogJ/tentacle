@@ -34,7 +34,7 @@ func (s *Summary)GetSecretId() string {
 	return s.Id
 }
 
-func (s *Summary)GetMetaData() map[string]string {
+func (s *Summary) GetMetadata() map[string]string {
 	return s.Metadata
 }
 

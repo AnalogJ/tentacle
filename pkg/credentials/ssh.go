@@ -19,15 +19,29 @@ func (s *Ssh) Init() {
 
 func (s *Ssh)Key() string {
 
-	if x, found := s.Data["key"]; found {
+	if x, found := s.Data["private key"]; found {
 		return x
 	} else {
 		return ""
 	}
 }
-func (s *Ssh)SetKey(key string) {
-	s.Data["key"] = key
+func (s *Ssh) SetKey(key string) {
+	s.Data["private key"] = key
 }
+
+func (s *Ssh)Passphrase() string {
+
+	if x, found := s.Data["private key passphrase"]; found {
+		return x
+	} else {
+		return ""
+	}
+}
+
+func (s *Ssh)SetPassphrase(passphrase string){
+	s.Data["private key passphrase"] = passphrase
+}
+
 
 
 func (s *Ssh) ToJsonString() (string, error) {

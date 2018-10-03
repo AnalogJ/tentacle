@@ -7,7 +7,7 @@ type SummaryInterface interface {
 	//Getters
 	GetSecretType() string
 	GetSecretId() string
-	GetMetaData() (map[string]string)
+	GetMetadata() (map[string]string)
 
 	//Output
 	ToRawString() (string, error)
@@ -24,7 +24,7 @@ type GenericInterface interface {
 	GetSecretType() string
 	GetSecretId() string
 	GetData() (map[string]string)
-	GetMetaData() (map[string]string)
+	GetMetadata() (map[string]string)
 
 	//Output
 	ToRawString() (string, error)

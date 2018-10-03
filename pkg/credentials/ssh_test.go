@@ -39,7 +39,7 @@ func TestSsh_ToJsonString(t *testing.T) {
     "name": "test cred name",
     "description": "",
     "data": {
-        "key": "multiline\nkey\nvalue"
+        "private key": "multiline\nkey\nvalue"
     }
 }`, json)
 }
