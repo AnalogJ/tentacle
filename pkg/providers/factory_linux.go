@@ -2,7 +2,10 @@ package providers
 
 import (
 	"github.com/analogj/tentacle/pkg/utils"
+	"github.com/analogj/tentacle/pkg/providers/conjur"
 	"github.com/analogj/tentacle/pkg/providers/cyberark"
+	"github.com/analogj/tentacle/pkg/providers/lastpass"
+	"github.com/analogj/tentacle/pkg/providers/manageengine"
 	"github.com/analogj/tentacle/pkg/providers/thycotic"
 	"log"
 )
@@ -28,6 +31,8 @@ func Create(alias string, config interface{}) (Interface, error) {
 		return cyberark.New(alias, config.(map[string]interface{}))
 	case "lastpass":
 		return lastpass.New(alias, config.(map[string]interface{}))
+	case "manageengine":
+		return manageengine.New(alias, config.(map[string]interface{}))
 	case "thycotic":
 		return thycotic.New(alias, config.(map[string]interface{}))
 

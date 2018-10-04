@@ -1,0 +1,134 @@
+{
+  "Name": "TestManageEngineProvider_TestSuite/TestProvider_GetById",
+  "Path": "testdata/govcr-fixtures",
+  "Tracks": [
+    {
+      "Request": {
+        "Method": "GET",
+        "URL": {
+          "Scheme": "http",
+          "Opaque": "",
+          "User": null,
+          "Host": "demo.passwordmanagerpro.com",
+          "Path": "/restapi/json/v1/resources/913/accounts/989/password",
+          "RawPath": "",
+          "ForceQuery": false,
+          "RawQuery": "AUTHTOKEN=695B44C2-7EA5-4361-AADC-C241FB885B62",
+          "Fragment": ""
+        },
+        "Header": {},
+        "Body": ""
+      },
+      "Response": {
+        "Status": "200 ",
+        "StatusCode": 200,
+        "Proto": "HTTP/1.1",
+        "ProtoMajor": 1,
+        "ProtoMinor": 1,
+        "Header": {
+          "Content-Disposition": [
+            "attachment;"
+          ],
+          "Content-Type": [
+            "application/json;charset=UTF-8"
+          ],
+          "Date": [
+            "Wed, 03 Oct 2018 22:32:36 GMT"
+          ],
+          "Set-Cookie": [
+            "JSESSIONID=B579E3FEB2D98C8EFF4471D09B5A1FB4; Path=/; HttpOnly",
+            "pmpcc=7ed9a306-d2ae-4623-ba38-7177eccf6a9a;path=/;priority=high"
+          ],
+          "Strict-Transport-Security": [
+            "max-age=15768000; includeSubdomains"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Xss-Protection": [
+            "1"
+          ]
+        },
+        "Body": "eyJvcGVyYXRpb24iOnsibmFtZSI6IkdFVCBQQVNTV09SRCIsInJlc3VsdCI6eyJzdGF0dXMiOiJTdWNjZXNzIiwibWVzc2FnZSI6IlBhc3N3b3JkIGZldGNoZWQgc3VjY2Vzc2Z1bGx5In0sIkRldGFpbHMiOnsiUEFTU1dPUkQiOiJxYylWMjlXLSVnIn19fQ==",
+        "ContentLength": -1,
+        "TransferEncoding": [
+          "chunked"
+        ],
+        "Trailer": null,
+        "TLS": null
+      },
+      "ErrType": "",
+      "ErrMsg": ""
+    },
+    {
+      "Request": {
+        "Method": "GET",
+        "URL": {
+          "Scheme": "http",
+          "Opaque": "",
+          "User": null,
+          "Host": "demo.passwordmanagerpro.com",
+          "Path": "/restapi/json/v1/resources/913/accounts",
+          "RawPath": "",
+          "ForceQuery": false,
+          "RawQuery": "AUTHTOKEN=695B44C2-7EA5-4361-AADC-C241FB885B62",
+          "Fragment": ""
+        },
+        "Header": {
+          "Cookie": [
+            "JSESSIONID=B579E3FEB2D98C8EFF4471D09B5A1FB4; pmpcc=7ed9a306-d2ae-4623-ba38-7177eccf6a9a"
+          ]
+        },
+        "Body": ""
+      },
+      "Response": {
+        "Status": "200 ",
+        "StatusCode": 200,
+        "Proto": "HTTP/1.1",
+        "ProtoMajor": 1,
+        "ProtoMinor": 1,
+        "Header": {
+          "Content-Disposition": [
+            "attachment;"
+          ],
+          "Content-Type": [
+            "application/json;charset=UTF-8"
+          ],
+          "Date": [
+            "Wed, 03 Oct 2018 22:32:36 GMT"
+          ],
+          "Strict-Transport-Security": [
+            "max-age=15768000; includeSubdomains"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Xss-Protection": [
+            "1"
+          ]
+        },
+        "Body": "eyJvcGVyYXRpb24iOnsibmFtZSI6IkdFVCBSRVNPVVJDRSBBQ0NPVU5UTElTVCIsInJlc3VsdCI6eyJzdGF0dXMiOiJTdWNjZXNzIiwibWVzc2FnZSI6IlJlc291cmNlIGRldGFpbHMgd2l0aCBhY2NvdW50IGxpc3QgZmV0Y2hlZCBzdWNjZXNzZnVsbHkifSwiRGV0YWlscyI6eyJSRVNPVVJDRSBJRCI6IjkxMyIsIlJFU09VUkNFIE5BTUUiOiJaVGVzdCIsIlJFU09VUkNFIERFU0NSSVBUSU9OIjoiIiwiUkVTT1VSQ0UgVFlQRSI6IldpbmRvd3MiLCJETlMgTkFNRSI6Ilp0ZXN0IiwiRE9NQUlOIE5BTUUiOiJzb21ldGhpbmcuY29tIiwiUEFTU1dPUkQgUE9MSUNZIjoiU3Ryb25nIiwiREVQQVJUTUVOVCI6IiIsIkxPQ0FUSU9OIjoiIiwiUkVTT1VSQ0UgVVJMIjoiIiwiUkVTT1VSQ0UgT1dORVIiOiJwYWRtaW4iLCJDVVNUT00gRklFTEQiOlt7IkNVU1RPTUZJRUxEVFlQRSI6IkNoYXJhY3RlciIsIkNVU1RPTUZJRUxEQ09MVU1OTkFNRSI6IkNPTFVNTl9DSEFSNiIsIkNVU1RPTUZJRUxETEFCRUwiOiJHRFBSIiwiQ1VTVE9NRklFTERWQUxVRSI6IiJ9LHsiQ1VTVE9NRklFTERUWVBFIjoiQ2hhcmFjdGVyIiwiQ1VTVE9NRklFTERDT0xVTU5OQU1FIjoiQ09MVU1OX0NIQVIxIiwiQ1VTVE9NRklFTERMQUJFTCI6IkV4cG9ydCIsIkNVU1RPTUZJRUxEVkFMVUUiOiIifSx7IkNVU1RPTUZJRUxEVFlQRSI6Ik51bWVyaWMiLCJDVVNUT01GSUVMRENPTFVNTk5BTUUiOiJDT0xVTU5fTE9ORzEiLCJDVVNUT01GSUVMRExBQkVMIjoiTnVtZXJpYyBUZXN0IiwiQ1VTVE9NRklFTERWQUxVRSI6Ii0ifSx7IkNVU1RPTUZJRUxEVFlQRSI6IkNoYXJhY3RlciIsIkNVU1RPTUZJRUxEQ09MVU1OTkFNRSI6IkNPTFVNTl9DSEFSMiIsIkNVU1RPTUZJRUxETEFCRUwiOiJDaGFyIFRlc3QiLCJDVVNUT01GSUVMRFZBTFVFIjoiIn0seyJDVVNUT01GSUVMRFRZUEUiOiJQYXNzd29yZCIsIkNVU1RPTUZJRUxEQ09MVU1OTkFNRSI6IkNPTFVNTl9TQ0hBUjEiLCJDVVNUT01GSUVMRExBQkVMIjoiUGFzc3dvcmQgVGVzdCIsIkNVU1RPTUZJRUxEVkFMVUUiOiItIn0seyJDVVNUT01GSUVMRFRZUEUiOiJEYXRlIiwiQ1VTVE9NRklFTERDT0xVTU5OQU1FIjoiQ09MVU1OX0RBVEUxIiwiQ1VTVE9NRklFTERMQUJFTCI6IkRhdGUgdGVzdCIsIkNVU1RPTUZJRUxEVkFMVUUiOiItIn0seyJDVVNUT01GSUVMRFRZUEUiOiJGaWxlIiwiQ1VTVE9NRklFTERDT0xVTU5OQU1FIjoiQ09MVU1OX0ZJTEUyIiwiQ1VTVE9NRklFTERMQUJFTCI6IkNlcnRpZmNhdGUiLCJDVVNUT01GSUVMRFZBTFVFIjoiLSJ9LHsiQ1VTVE9NRklFTERUWVBFIjoiRmlsZSIsIkNVU1RPTUZJRUxEQ09MVU1OTkFNRSI6IkNPTFVNTl9GSUxFMSIsIkNVU1RPTUZJRUxETEFCRUwiOiJ0ZXN0MSIsIkNVU1RPTUZJRUxEVkFMVUUiOiItIn1dLCJBQ0NPVU5UIExJU1QiOlt7IkFVVE9MT0dPTlNUQVRVUyI6IlVzZXIgaXMgbm90IGFsbG93ZWQgdG8gYXV0b21hdGljYWxseSBsb2dnaW5nIGluIHRvIHJlbW90ZSBzeXN0ZW1zIGluIG1vYmlsZSIsIklTX1RJQ0tFVElEX1JFUURfQUNXIjoiZmFsc2UiLCJJU0ZBVlBBU1MiOiJmYWxzZSIsIlBBU1NXRElEIjoiOTg5IiwiSVNfVElDS0VUSURfUkVRRF9NQU5EQVRPUlkiOiJmYWxzZSIsIkFDQ09VTlQgSUQiOiI5ODkiLCJBVVRPTE9HT05MSVNUIjpbIldpbmRvd3MgUmVtb3RlIERlc2t0b3AiLCJSRFAgQ29uc29sZSBTZXNzaW9uIl0sIkFDQ09VTlQgTkFNRSI6InJvb3QiLCJQQVNTV09SRCBTVEFUVVMiOiIqKioqIiwiSVNfVElDS0VUSURfUkVRRCI6ImZhbHNlIiwiSVNSRUFTT05SRVFVSVJFRCI6ImZhbHNlIn0seyJBVVRPTE9HT05TVEFUVVMiOiJVc2VyIGlzIG5vdCBhbGxvd2VkIHRvIGF1dG9tYXRpY2FsbHkgbG9nZ2luZyBpbiB0byByZW1vdGUgc3lzdGVtcyBpbiBtb2JpbGUiLCJJU19USUNLRVRJRF9SRVFEX0FDVyI6ImZhbHNlIiwiSVNGQVZQQVNTIjoiZmFsc2UiLCJQQVNTV0RJRCI6Ijk5MCIsIklTX1RJQ0tFVElEX1JFUURfTUFOREFUT1JZIjoiZmFsc2UiLCJBQ0NPVU5UIElEIjoiOTkwIiwiQVVUT0xPR09OTElTVCI6WyJXaW5kb3dzIFJlbW90ZSBEZXNrdG9wIiwiUkRQIENvbnNvbGUgU2Vzc2lvbiJdLCJBQ0NPVU5UIE5BTUUiOiJ1c2VyIiwiUEFTU1dPUkQgU1RBVFVTIjoiKioqKiIsIklTX1RJQ0tFVElEX1JFUUQiOiJmYWxzZSIsIklTUkVBU09OUkVRVUlSRUQiOiJmYWxzZSJ9XX19fQ==",
+        "ContentLength": -1,
+        "TransferEncoding": [
+          "chunked"
+        ],
+        "Trailer": null,
+        "TLS": null
+      },
+      "ErrType": "",
+      "ErrMsg": ""
+    }
+  ]
+}

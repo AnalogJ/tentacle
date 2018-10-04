@@ -1,0 +1,1144 @@
+{
+  "Name": "TestConjurProvider_TestSuite/TestProvider_GetById",
+  "Path": "testdata/govcr-fixtures",
+  "Tracks": [
+    {
+      "Request": {
+        "Method": "POST",
+        "URL": {
+          "Scheme": "https",
+          "Opaque": "",
+          "User": null,
+          "Host": "eval.conjur.org",
+          "Path": "/authn/tentacle@mailinator.com/admin/authenticate",
+          "RawPath": "",
+          "ForceQuery": false,
+          "RawQuery": "",
+          "Fragment": ""
+        },
+        "Header": {
+          "Content-Type": [
+            "text/plain"
+          ]
+        },
+        "Body": "MnQwd2d6dzNhcDk4NmMxZnNucnc3M2F6OHowcjF6amN5ODAyeXpmZDZlMnd0cWpudjJ6OTRtMmM="
+      },
+      "Response": {
+        "Status": "200 OK",
+        "StatusCode": 200,
+        "Proto": "HTTP/1.1",
+        "ProtoMajor": 1,
+        "ProtoMinor": 1,
+        "Header": {
+          "Cache-Control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Wed, 03 Oct 2018 19:11:23 GMT"
+          ],
+          "Etag": [
+            "W/\"9a30708d8de735fb2a937ae526862141\""
+          ],
+          "Server": [
+            "Cowboy"
+          ],
+          "Via": [
+            "1.1 vegur"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Request-Id": [
+            "be14dbe2-e3ee-4eb4-a800-79e7de96382a"
+          ],
+          "X-Runtime": [
+            "0.027934"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ]
+        },
+        "Body": "eyJwcm90ZWN0ZWQiOiJleUpoYkdjaU9pSmpiMjVxZFhJdWIzSm5MM05zYjNOcGJHOHZkaklpTENKcmFXUWlPaUkxTm1ZeE5HVTRPVGRsWW1ZNFl6WTBNbVl4TURVM1pqZzFZVE5sT1dNeFlTSjkiLCJwYXlsb2FkIjoiZXlKemRXSWlPaUpoWkcxcGJpSXNJbWxoZENJNk1UVXpPRFU1TXpnNE0zMD0iLCJzaWduYXR1cmUiOiJmN29ybHc2dEl3V3pIS0t2eDhjRWxwbXN4NGt6RGF3Yk5ZTmNyYThOTnJyZVpySFhiQ0x3dFlSNlZrZW5JTk9zelJuZmYtQ3VVdzhEYlNETGp0LXpsTFNhSWpuT0dfUS0ySXBRaEdzS0NDMWpSbEpCRFRZVk1FM1FiYkFua2FrRmNDeTRndlU2TU1DNUs5NUhsUk0zUVpUeGhPSHptdVBaUWdOZVpIM25IVTN4XzgxNmVQT2REdUlZcHpUR3k5dEdfSFkwYkMxaUc3dHNSR3B3TThvSEpDdjhQcmJudWNkb0dmak5WMkJMYUxLdEc5NUtTSHI2b3pCejAxV1BtNERHdzZQM0R3V19CUXNNM0VCd2ppUFNEclRwV1hQcjhOb2FPbldYcUdMbFg4NmtmNGdRSU5QenJDZlZ3VVM0Uk9obE5QT21MQnAtRlJ5T25xY2xBYXlsWlRTaUlWaUhuMlR5MndyYWRxNTZLblBKcUpsTzl5VUNoRjlUNTZjNmlOVkUifQ==",
+        "ContentLength": -1,
+        "TransferEncoding": [
+          "chunked"
+        ],
+        "Trailer": null,
+        "TLS": {
+          "Version": 771,
+          "HandshakeComplete": true,
+          "DidResume": false,
+          "CipherSuite": 49199,
+          "NegotiatedProtocol": "",
+          "NegotiatedProtocolIsMutual": true,
+          "ServerName": "",
+          "PeerCertificates": [
+            {
+              "Raw": "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",
+              "RawTBSCertificate": "MIIE8aADAgECAhIDxHJtcY1oqUSkM0nQBkxEje4wDQYJKoZIhvcNAQELBQAwSjELMAkGA1UEBhMCVVMxFjAUBgNVBAoTDUxldCdzIEVuY3J5cHQxIzAhBgNVBAMTGkxldCdzIEVuY3J5cHQgQXV0aG9yaXR5IFgzMB4XDTE4MDkxNjIzMTMwMVoXDTE4MTIxNTIzMTMwMVowGjEYMBYGA1UEAxMPZXZhbC5jb25qdXIub3JnMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvdmhVn15C624URPAmh4elZCRfpKDbaNPc+ClUmQljG+N7r17WpB4iy6V3V2YPISIXwFv2AdDOxNnRZVAs/X2JT16hmNbUdEJPU0lETn/jMP9zfBcUi0gqazDnJpVX7stqq/0gmEpUwwpCHe5bhMJ6aw1v02VdGDlHJg5bjeE5Wh/GPk2glYlIC4Yp8ORm7XX+fBjt6CxiSMotift7iIQiWhmXf3wKSIszy0k6tKB++8V4J0D0oK/dMdyAp3CNA5isy4AMw17N21mXnF2QGpgGRNKxuDaB/CoeHksY/a5mPCADoiclowQmo8kFjJrLAS3b7F5Pj2JUHikRK3ZiZdbuQIDAQABo4IDFzCCAxMwDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBTNck1VXceqHcrROrqHdFj89jp4yjAfBgNVHSMEGDAWgBSoSmpjBH3duubRObemRWXv86jsoTBvBggrBgEFBQcBAQRjMGEwLgYIKwYBBQUHMAGGImh0dHA6Ly9vY3NwLmludC14My5sZXRzZW5jcnlwdC5vcmcwLwYIKwYBBQUHMAKGI2h0dHA6Ly9jZXJ0LmludC14My5sZXRzZW5jcnlwdC5vcmcvMBoGA1UdEQQTMBGCD2V2YWwuY29uanVyLm9yZzCB/gYDVR0gBIH2MIHzMAgGBmeBDAECATCB5gYLKwYBBAGC3xMBAQEwgdYwJgYIKwYBBQUHAgEWGmh0dHA6Ly9jcHMubGV0c2VuY3J5cHQub3JnMIGrBggrBgEFBQcCAjCBngyBm1RoaXMgQ2VydGlmaWNhdGUgbWF5IG9ubHkgYmUgcmVsaWVkIHVwb24gYnkgUmVseWluZyBQYXJ0aWVzIGFuZCBvbmx5IGluIGFjY29yZGFuY2Ugd2l0aCB0aGUgQ2VydGlmaWNhdGUgUG9saWN5IGZvdW5kIGF0IGh0dHBzOi8vbGV0c2VuY3J5cHQub3JnL3JlcG9zaXRvcnkvMIIBBAYKKwYBBAHWeQIEAgSB9QSB8gDwAHUAwRZK4Kdy0tQ5LcgKwQdw1PDEm96ZGkhAwfoHUWT2M2AAAAFl5N+PzAAABAMARjBEAiAA3nR+QonKoV8CBWzqUyRHACTLNNunXtrxnCTBoK3o1AIgQDpZ2ByKUVoTEub9vVcWJc3CULRiua+/AB4SCKgH+j8AdwApPFGWVMg5ZbqqUPxYB9S3b79Yeily3KTDDPTlRUf0eAAAAWXk34/gAAAEAwBIMEYCIQDP7J0Q63AQosu8akBdQ5hbIAz+IN/rFhCV3WCEi2Y5cQIhALLX9/DOpIml7wB17cANvRcKVnrCWXYk+78aPYhTsfWq",
+              "RawSubjectPublicKeyInfo": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvdmhVn15C624URPAmh4elZCRfpKDbaNPc+ClUmQljG+N7r17WpB4iy6V3V2YPISIXwFv2AdDOxNnRZVAs/X2JT16hmNbUdEJPU0lETn/jMP9zfBcUi0gqazDnJpVX7stqq/0gmEpUwwpCHe5bhMJ6aw1v02VdGDlHJg5bjeE5Wh/GPk2glYlIC4Yp8ORm7XX+fBjt6CxiSMotift7iIQiWhmXf3wKSIszy0k6tKB++8V4J0D0oK/dMdyAp3CNA5isy4AMw17N21mXnF2QGpgGRNKxuDaB/CoeHksY/a5mPCADoiclowQmo8kFjJrLAS3b7F5Pj2JUHikRK3ZiZdbuQIDAQAB",
+              "RawSubject": "MBoxGDAWBgNVBAMTD2V2YWwuY29uanVyLm9yZw==",
+              "RawIssuer": "MEoxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MSMwIQYDVQQDExpMZXQncyBFbmNyeXB0IEF1dGhvcml0eSBYMw==",
+              "Signature": "dRwbE85YV98yko/1uK8tnj9LRrWqhE0fFyA9Uh4IF8+HZ72/KdaJFUKy4W0d7C9rDmuAaHWMZT1OqphxGKnh0o4sYXSFGQ36o3bBchhI//naLQJyVHleLiMaN2Av5l6g+D8ZbJPF31b4tClHZkoMskFYLwoJ67hhqDeEJpk9KuealkNNSzzArqK43ynPwCZyXAqxD8QtKBvvpN24UxBzXT21ioBnWxEjF8I1tqrRpJk7skm8LTC6CbcvqXMLLBKrv/hZ44l0lQrVpkzMPZtDY1Ct35umV+kmDDgQ1IjCHoYaZ22Bhm4HvjQpTSvfILSyKQ2mrjXbGFRy2bVdBztoyg==",
+              "SignatureAlgorithm": 4,
+              "PublicKeyAlgorithm": 1,
+              "PublicKey": {
+                "N": "23966357102794763619206633311440839656943674954802151677486031896776586667452648734561782568455279728674421076306908105746430182158916475542448690489821572676436115238781138854513294473552756890875130927084451973464453544270699924239239687213354841345934578785594367976288131753321578947291537857852785741876286757197038708223776013715272543927195102084772264838417958495234788692968558213507099018290568686142196570431350910738109253812773615911107542163729952936974618971718584191483355405894568020944158157644988509632666062200287263007201177243515093457258058408645671208280366149965025906824637695383147218688953",
+                "E": 65537
+              },
+              "Version": 3,
+              "SerialNumber": 328184301966777586685200512236322338147822,
+              "Issuer": {
+                "Country": [
+                  "US"
+                ],
+                "Organization": [
+                  "Let's Encrypt"
+                ],
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "Let's Encrypt Authority X3",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      6
+                    ],
+                    "Value": "US"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      10
+                    ],
+                    "Value": "Let's Encrypt"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "Let's Encrypt Authority X3"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "Subject": {
+                "Country": null,
+                "Organization": null,
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "eval.conjur.org",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "eval.conjur.org"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "NotBefore": "2018-09-16T23:13:01Z",
+              "NotAfter": "2018-12-15T23:13:01Z",
+              "KeyUsage": 5,
+              "Extensions": [
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    15
+                  ],
+                  "Critical": true,
+                  "Value": "AwIFoA=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    37
+                  ],
+                  "Critical": false,
+                  "Value": "MBQGCCsGAQUFBwMBBggrBgEFBQcDAg=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    19
+                  ],
+                  "Critical": true,
+                  "Value": "MAA="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    14
+                  ],
+                  "Critical": false,
+                  "Value": "BBTNck1VXceqHcrROrqHdFj89jp4yg=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    35
+                  ],
+                  "Critical": false,
+                  "Value": "MBaAFKhKamMEfd265tE5t6ZFZe/zqOyh"
+                },
+                {
+                  "Id": [
+                    1,
+                    3,
+                    6,
+                    1,
+                    5,
+                    5,
+                    7,
+                    1,
+                    1
+                  ],
+                  "Critical": false,
+                  "Value": "MGEwLgYIKwYBBQUHMAGGImh0dHA6Ly9vY3NwLmludC14My5sZXRzZW5jcnlwdC5vcmcwLwYIKwYBBQUHMAKGI2h0dHA6Ly9jZXJ0LmludC14My5sZXRzZW5jcnlwdC5vcmcv"
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    17
+                  ],
+                  "Critical": false,
+                  "Value": "MBGCD2V2YWwuY29uanVyLm9yZw=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    32
+                  ],
+                  "Critical": false,
+                  "Value": "MIHzMAgGBmeBDAECATCB5gYLKwYBBAGC3xMBAQEwgdYwJgYIKwYBBQUHAgEWGmh0dHA6Ly9jcHMubGV0c2VuY3J5cHQub3JnMIGrBggrBgEFBQcCAjCBngyBm1RoaXMgQ2VydGlmaWNhdGUgbWF5IG9ubHkgYmUgcmVsaWVkIHVwb24gYnkgUmVseWluZyBQYXJ0aWVzIGFuZCBvbmx5IGluIGFjY29yZGFuY2Ugd2l0aCB0aGUgQ2VydGlmaWNhdGUgUG9saWN5IGZvdW5kIGF0IGh0dHBzOi8vbGV0c2VuY3J5cHQub3JnL3JlcG9zaXRvcnkv"
+                },
+                {
+                  "Id": [
+                    1,
+                    3,
+                    6,
+                    1,
+                    4,
+                    1,
+                    11129,
+                    2,
+                    4,
+                    2
+                  ],
+                  "Critical": false,
+                  "Value": "BIHyAPAAdQDBFkrgp3LS1DktyArBB3DU8MSb3pkaSEDB+gdRZPYzYAAAAWXk34/MAAAEAwBGMEQCIADedH5CicqhXwIFbOpTJEcAJMs026de2vGcJMGgrejUAiBAOlnYHIpRWhMS5v29VxYlzcJQtGK5r78AHhIIqAf6PwB3ACk8UZZUyDlluqpQ/FgH1Ldvv1h6KXLcpMMM9OVFR/R4AAABZeTfj+AAAAQDAEgwRgIhAM/snRDrcBCiy7xqQF1DmFsgDP4g3+sWEJXdYISLZjlxAiEAstf38M6kiaXvAHXtwA29FwpWesJZdiT7vxo9iFOx9ao="
+                }
+              ],
+              "ExtraExtensions": null,
+              "UnhandledCriticalExtensions": null,
+              "ExtKeyUsage": [
+                1,
+                2
+              ],
+              "UnknownExtKeyUsage": null,
+              "BasicConstraintsValid": true,
+              "IsCA": false,
+              "MaxPathLen": -1,
+              "MaxPathLenZero": false,
+              "SubjectKeyId": "zXJNVV3Hqh3K0Tq6h3RY/PY6eMo=",
+              "AuthorityKeyId": "qEpqYwR93brm0Tm3pkVl7/Oo7KE=",
+              "OCSPServer": [
+                "http://ocsp.int-x3.letsencrypt.org"
+              ],
+              "IssuingCertificateURL": [
+                "http://cert.int-x3.letsencrypt.org/"
+              ],
+              "DNSNames": [
+                "eval.conjur.org"
+              ],
+              "EmailAddresses": null,
+              "IPAddresses": null,
+              "URIs": null,
+              "PermittedDNSDomainsCritical": false,
+              "PermittedDNSDomains": null,
+              "ExcludedDNSDomains": null,
+              "PermittedIPRanges": null,
+              "ExcludedIPRanges": null,
+              "PermittedEmailAddresses": null,
+              "ExcludedEmailAddresses": null,
+              "PermittedURIDomains": null,
+              "ExcludedURIDomains": null,
+              "CRLDistributionPoints": null,
+              "PolicyIdentifiers": [
+                [
+                  2,
+                  23,
+                  140,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  3,
+                  6,
+                  1,
+                  4,
+                  1,
+                  44947,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "Raw": "MIIEkjCCA3qgAwIBAgIQCgFBQgAAAVOFc2oLheynCDANBgkqhkiG9w0BAQsFADA/MSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMTDkRTVCBSb290IENBIFgzMB4XDTE2MDMxNzE2NDA0NloXDTIxMDMxNzE2NDA0NlowSjELMAkGA1UEBhMCVVMxFjAUBgNVBAoTDUxldCdzIEVuY3J5cHQxIzAhBgNVBAMTGkxldCdzIEVuY3J5cHQgQXV0aG9yaXR5IFgzMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnNMM8FrlLke3cl03g7NoYzDq1zUmGSXhvb418XCSL7e4S0EFq6meNQhY7LEqxGiHC6PjdeTm86dicbp5gWAf15Gan/PQeGdxyGkOlZHP/uaZ6WA8SMx+yk13EiSdRxta67nsHjcAHJyse6cF6s5K671B5TaYucv9bTyWaN8jKkKQDIZ0Z8h/pZq4UmEUEz9l6YKHy9v6Dlb2honzhT+Xhq+w3Brvaw2VFn3EK6BlspkENnWAa6xK8xuQSXgvopZPKiAlKQTGdMDQMc2PMTiVFrqoM7hD8bEfwzB/onkxEz0tNvjj/PIzark5McWvxI0NHWQWM6r6hCm21AvA2H3DkwIDAQABo4IBfTCCAXkwEgYDVR0TAQH/BAgwBgEB/wIBADAOBgNVHQ8BAf8EBAMCAYYwfwYIKwYBBQUHAQEEczBxMDIGCCsGAQUFBzABhiZodHRwOi8vaXNyZy50cnVzdGlkLm9jc3AuaWRlbnRydXN0LmNvbTA7BggrBgEFBQcwAoYvaHR0cDovL2FwcHMuaWRlbnRydXN0LmNvbS9yb290cy9kc3Ryb290Y2F4My5wN2MwHwYDVR0jBBgwFoAUxKexpHsscfrb4UuQdf/EFWCFiRAwVAYDVR0gBE0wSzAIBgZngQwBAgEwPwYLKwYBBAGC3xMBAQEwMDAuBggrBgEFBQcCARYiaHR0cDovL2Nwcy5yb290LXgxLmxldHNlbmNyeXB0Lm9yZzA8BgNVHR8ENTAzMDGgL6AthitodHRwOi8vY3JsLmlkZW50cnVzdC5jb20vRFNUUk9PVENBWDNDUkwuY3JsMB0GA1UdDgQWBBSoSmpjBH3duubRObemRWXv86jsoTANBgkqhkiG9w0BAQsFAAOCAQEA3TPXEfNjWDjdGBX7CVW+dla5cEilaUcne8IkCJLxWh9KEik3JHRRHGJouM2VcGfl96S8TihRzZvoroed6ti6WqEBmtzw3Wodatg+VyOeph4EYpr/1wXKtx8/wApIvJSwtmVi4MFU5aMqrSDE6ea73Mj2tcMyo5jMd6jmeWUHK8so/joWUoHOUgwuX4Po1QYz+3dszkDqMp4fklxBwXRsW10KXzPMTZ+sOPAveyxindmjkW8lGy+QsRlGPfZ+G6Z6h7mjem0Y+iWlkYcV4PIWL1iwBi8saCbGS5jN2p8M+X+Q7UNKEkROb3N6KOqkqm57TH2H3eDJAkSnh6/DNFu0Qg==",
+              "RawTBSCertificate": "MIIDeqADAgECAhAKAUFCAAABU4VzaguF7KcIMA0GCSqGSIb3DQEBCwUAMD8xJDAiBgNVBAoTG0RpZ2l0YWwgU2lnbmF0dXJlIFRydXN0IENvLjEXMBUGA1UEAxMORFNUIFJvb3QgQ0EgWDMwHhcNMTYwMzE3MTY0MDQ2WhcNMjEwMzE3MTY0MDQ2WjBKMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNTGV0J3MgRW5jcnlwdDEjMCEGA1UEAxMaTGV0J3MgRW5jcnlwdCBBdXRob3JpdHkgWDMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCc0wzwWuUuR7dyXTeDs2hjMOrXNSYZJeG9vjXxcJIvt7hLQQWrqZ41CFjssSrEaIcLo+N15Obzp2JxunmBYB/XkZqf89B4Z3HIaQ6Vkc/+5pnpYDxIzH7KTXcSJJ1HG1rrueweNwAcnKx7pwXqzkrrvUHlNpi5y/1tPJZo3yMqQpAMhnRnyH+lmrhSYRQTP2XpgofL2/oOVvaGifOFP5eGr7DcGu9rDZUWfcQroGWymQQ2dYBrrErzG5BJeC+ilk8qICUpBMZ0wNAxzY8xOJUWuqgzuEPxsR/DMH+ieTETPS02+OP88jNquTkxxa/EjQ0dZBYzqvqEKbbUC8DYfcOTAgMBAAGjggF9MIIBeTASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIBhjB/BggrBgEFBQcBAQRzMHEwMgYIKwYBBQUHMAGGJmh0dHA6Ly9pc3JnLnRydXN0aWQub2NzcC5pZGVudHJ1c3QuY29tMDsGCCsGAQUFBzAChi9odHRwOi8vYXBwcy5pZGVudHJ1c3QuY29tL3Jvb3RzL2RzdHJvb3RjYXgzLnA3YzAfBgNVHSMEGDAWgBTEp7Gkeyxx+tvhS5B1/8QVYIWJEDBUBgNVHSAETTBLMAgGBmeBDAECATA/BgsrBgEEAYLfEwEBATAwMC4GCCsGAQUFBwIBFiJodHRwOi8vY3BzLnJvb3QteDEubGV0c2VuY3J5cHQub3JnMDwGA1UdHwQ1MDMwMaAvoC2GK2h0dHA6Ly9jcmwuaWRlbnRydXN0LmNvbS9EU1RST09UQ0FYM0NSTC5jcmwwHQYDVR0OBBYEFKhKamMEfd265tE5t6ZFZe/zqOyh",
+              "RawSubjectPublicKeyInfo": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnNMM8FrlLke3cl03g7NoYzDq1zUmGSXhvb418XCSL7e4S0EFq6meNQhY7LEqxGiHC6PjdeTm86dicbp5gWAf15Gan/PQeGdxyGkOlZHP/uaZ6WA8SMx+yk13EiSdRxta67nsHjcAHJyse6cF6s5K671B5TaYucv9bTyWaN8jKkKQDIZ0Z8h/pZq4UmEUEz9l6YKHy9v6Dlb2honzhT+Xhq+w3Brvaw2VFn3EK6BlspkENnWAa6xK8xuQSXgvopZPKiAlKQTGdMDQMc2PMTiVFrqoM7hD8bEfwzB/onkxEz0tNvjj/PIzark5McWvxI0NHWQWM6r6hCm21AvA2H3DkwIDAQAB",
+              "RawSubject": "MEoxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MSMwIQYDVQQDExpMZXQncyBFbmNyeXB0IEF1dGhvcml0eSBYMw==",
+              "RawIssuer": "MD8xJDAiBgNVBAoTG0RpZ2l0YWwgU2lnbmF0dXJlIFRydXN0IENvLjEXMBUGA1UEAxMORFNUIFJvb3QgQ0EgWDM=",
+              "Signature": "3TPXEfNjWDjdGBX7CVW+dla5cEilaUcne8IkCJLxWh9KEik3JHRRHGJouM2VcGfl96S8TihRzZvoroed6ti6WqEBmtzw3Wodatg+VyOeph4EYpr/1wXKtx8/wApIvJSwtmVi4MFU5aMqrSDE6ea73Mj2tcMyo5jMd6jmeWUHK8so/joWUoHOUgwuX4Po1QYz+3dszkDqMp4fklxBwXRsW10KXzPMTZ+sOPAveyxindmjkW8lGy+QsRlGPfZ+G6Z6h7mjem0Y+iWlkYcV4PIWL1iwBi8saCbGS5jN2p8M+X+Q7UNKEkROb3N6KOqkqm57TH2H3eDJAkSnh6/DNFu0Qg==",
+              "SignatureAlgorithm": 4,
+              "PublicKeyAlgorithm": 1,
+              "PublicKey": {
+                "N": "19797248476075437682355852246492227182925025209894527646389863306257272162327717438476096960751529894413137923782807258828237626757946953550223743258656059351948211427799114263948499232121738590221774214131983890556391436336270214266656447169277800971416884432628642288505627878176138101439755752196484972290641499489076846352390454201028735981960275647482014359370041238010607728611828345534572152635280172155598035959878659370929022966413402097129857505568509453268467065766156311136296802046438183697980908977865999500405760226706893415483460747503705792669060406182022181441316967415301631965711690685520847684499",
+                "E": 65537
+              },
+              "Version": 3,
+              "SerialNumber": 13298795840390663119752826058995181320,
+              "Issuer": {
+                "Country": null,
+                "Organization": [
+                  "Digital Signature Trust Co."
+                ],
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "DST Root CA X3",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      10
+                    ],
+                    "Value": "Digital Signature Trust Co."
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "DST Root CA X3"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "Subject": {
+                "Country": [
+                  "US"
+                ],
+                "Organization": [
+                  "Let's Encrypt"
+                ],
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "Let's Encrypt Authority X3",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      6
+                    ],
+                    "Value": "US"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      10
+                    ],
+                    "Value": "Let's Encrypt"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "Let's Encrypt Authority X3"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "NotBefore": "2016-03-17T16:40:46Z",
+              "NotAfter": "2021-03-17T16:40:46Z",
+              "KeyUsage": 97,
+              "Extensions": [
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    19
+                  ],
+                  "Critical": true,
+                  "Value": "MAYBAf8CAQA="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    15
+                  ],
+                  "Critical": true,
+                  "Value": "AwIBhg=="
+                },
+                {
+                  "Id": [
+                    1,
+                    3,
+                    6,
+                    1,
+                    5,
+                    5,
+                    7,
+                    1,
+                    1
+                  ],
+                  "Critical": false,
+                  "Value": "MHEwMgYIKwYBBQUHMAGGJmh0dHA6Ly9pc3JnLnRydXN0aWQub2NzcC5pZGVudHJ1c3QuY29tMDsGCCsGAQUFBzAChi9odHRwOi8vYXBwcy5pZGVudHJ1c3QuY29tL3Jvb3RzL2RzdHJvb3RjYXgzLnA3Yw=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    35
+                  ],
+                  "Critical": false,
+                  "Value": "MBaAFMSnsaR7LHH62+FLkHX/xBVghYkQ"
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    32
+                  ],
+                  "Critical": false,
+                  "Value": "MEswCAYGZ4EMAQIBMD8GCysGAQQBgt8TAQEBMDAwLgYIKwYBBQUHAgEWImh0dHA6Ly9jcHMucm9vdC14MS5sZXRzZW5jcnlwdC5vcmc="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    31
+                  ],
+                  "Critical": false,
+                  "Value": "MDMwMaAvoC2GK2h0dHA6Ly9jcmwuaWRlbnRydXN0LmNvbS9EU1RST09UQ0FYM0NSTC5jcmw="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    14
+                  ],
+                  "Critical": false,
+                  "Value": "BBSoSmpjBH3duubRObemRWXv86jsoQ=="
+                }
+              ],
+              "ExtraExtensions": null,
+              "UnhandledCriticalExtensions": null,
+              "ExtKeyUsage": null,
+              "UnknownExtKeyUsage": null,
+              "BasicConstraintsValid": true,
+              "IsCA": true,
+              "MaxPathLen": 0,
+              "MaxPathLenZero": true,
+              "SubjectKeyId": "qEpqYwR93brm0Tm3pkVl7/Oo7KE=",
+              "AuthorityKeyId": "xKexpHsscfrb4UuQdf/EFWCFiRA=",
+              "OCSPServer": [
+                "http://isrg.trustid.ocsp.identrust.com"
+              ],
+              "IssuingCertificateURL": [
+                "http://apps.identrust.com/roots/dstrootcax3.p7c"
+              ],
+              "DNSNames": null,
+              "EmailAddresses": null,
+              "IPAddresses": null,
+              "URIs": null,
+              "PermittedDNSDomainsCritical": false,
+              "PermittedDNSDomains": null,
+              "ExcludedDNSDomains": null,
+              "PermittedIPRanges": null,
+              "ExcludedIPRanges": null,
+              "PermittedEmailAddresses": null,
+              "ExcludedEmailAddresses": null,
+              "PermittedURIDomains": null,
+              "ExcludedURIDomains": null,
+              "CRLDistributionPoints": [
+                "http://crl.identrust.com/DSTROOTCAX3CRL.crl"
+              ],
+              "PolicyIdentifiers": [
+                [
+                  2,
+                  23,
+                  140,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  3,
+                  6,
+                  1,
+                  4,
+                  1,
+                  44947,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            }
+          ],
+          "VerifiedChains": null,
+          "SignedCertificateTimestamps": null,
+          "OCSPResponse": null,
+          "TLSUnique": "cTlhbX4Ji8Yq+lXO"
+        }
+      },
+      "ErrType": "",
+      "ErrMsg": ""
+    },
+    {
+      "Request": {
+        "Method": "GET",
+        "URL": {
+          "Scheme": "https",
+          "Opaque": "",
+          "User": null,
+          "Host": "eval.conjur.org",
+          "Path": "/secrets/tentacle@mailinator.com/variable/eval/secret",
+          "RawPath": "/secrets/tentacle@mailinator.com/variable/eval%2Fsecret",
+          "ForceQuery": false,
+          "RawQuery": "",
+          "Fragment": ""
+        },
+        "Header": {
+          "Authorization": [
+            "Token token=\"eyJwcm90ZWN0ZWQiOiJleUpoYkdjaU9pSmpiMjVxZFhJdWIzSm5MM05zYjNOcGJHOHZkaklpTENKcmFXUWlPaUkxTm1ZeE5HVTRPVGRsWW1ZNFl6WTBNbVl4TURVM1pqZzFZVE5sT1dNeFlTSjkiLCJwYXlsb2FkIjoiZXlKemRXSWlPaUpoWkcxcGJpSXNJbWxoZENJNk1UVXpPRFU1TXpnNE0zMD0iLCJzaWduYXR1cmUiOiJmN29ybHc2dEl3V3pIS0t2eDhjRWxwbXN4NGt6RGF3Yk5ZTmNyYThOTnJyZVpySFhiQ0x3dFlSNlZrZW5JTk9zelJuZmYtQ3VVdzhEYlNETGp0LXpsTFNhSWpuT0dfUS0ySXBRaEdzS0NDMWpSbEpCRFRZVk1FM1FiYkFua2FrRmNDeTRndlU2TU1DNUs5NUhsUk0zUVpUeGhPSHptdVBaUWdOZVpIM25IVTN4XzgxNmVQT2REdUlZcHpUR3k5dEdfSFkwYkMxaUc3dHNSR3B3TThvSEpDdjhQcmJudWNkb0dmak5WMkJMYUxLdEc5NUtTSHI2b3pCejAxV1BtNERHdzZQM0R3V19CUXNNM0VCd2ppUFNEclRwV1hQcjhOb2FPbldYcUdMbFg4NmtmNGdRSU5QenJDZlZ3VVM0Uk9obE5QT21MQnAtRlJ5T25xY2xBYXlsWlRTaUlWaUhuMlR5MndyYWRxNTZLblBKcUpsTzl5VUNoRjlUNTZjNmlOVkUifQ==\""
+          ]
+        },
+        "Body": ""
+      },
+      "Response": {
+        "Status": "200 OK",
+        "StatusCode": 200,
+        "Proto": "HTTP/1.1",
+        "ProtoMajor": 1,
+        "ProtoMinor": 1,
+        "Header": {
+          "Cache-Control": [
+            "private"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Disposition": [
+            "attachment"
+          ],
+          "Content-Transfer-Encoding": [
+            "binary"
+          ],
+          "Content-Type": [
+            "application/octet-stream"
+          ],
+          "Date": [
+            "Wed, 03 Oct 2018 19:11:23 GMT"
+          ],
+          "Etag": [
+            "W/\"73f3ad45b6619eeee916205b5828ed84\""
+          ],
+          "Server": [
+            "Cowboy"
+          ],
+          "Via": [
+            "1.1 vegur"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Request-Id": [
+            "107c9ff5-e801-46e4-b666-f7b2d455611f"
+          ],
+          "X-Runtime": [
+            "0.073656"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ]
+        },
+        "Body": "ZjI5NDY3NzhmN2E4NmM0MTljZjAwZWVi",
+        "ContentLength": -1,
+        "TransferEncoding": [
+          "chunked"
+        ],
+        "Trailer": null,
+        "TLS": {
+          "Version": 771,
+          "HandshakeComplete": true,
+          "DidResume": false,
+          "CipherSuite": 49199,
+          "NegotiatedProtocol": "",
+          "NegotiatedProtocolIsMutual": true,
+          "ServerName": "",
+          "PeerCertificates": [
+            {
+              "Raw": "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",
+              "RawTBSCertificate": "MIIE8aADAgECAhIDxHJtcY1oqUSkM0nQBkxEje4wDQYJKoZIhvcNAQELBQAwSjELMAkGA1UEBhMCVVMxFjAUBgNVBAoTDUxldCdzIEVuY3J5cHQxIzAhBgNVBAMTGkxldCdzIEVuY3J5cHQgQXV0aG9yaXR5IFgzMB4XDTE4MDkxNjIzMTMwMVoXDTE4MTIxNTIzMTMwMVowGjEYMBYGA1UEAxMPZXZhbC5jb25qdXIub3JnMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvdmhVn15C624URPAmh4elZCRfpKDbaNPc+ClUmQljG+N7r17WpB4iy6V3V2YPISIXwFv2AdDOxNnRZVAs/X2JT16hmNbUdEJPU0lETn/jMP9zfBcUi0gqazDnJpVX7stqq/0gmEpUwwpCHe5bhMJ6aw1v02VdGDlHJg5bjeE5Wh/GPk2glYlIC4Yp8ORm7XX+fBjt6CxiSMotift7iIQiWhmXf3wKSIszy0k6tKB++8V4J0D0oK/dMdyAp3CNA5isy4AMw17N21mXnF2QGpgGRNKxuDaB/CoeHksY/a5mPCADoiclowQmo8kFjJrLAS3b7F5Pj2JUHikRK3ZiZdbuQIDAQABo4IDFzCCAxMwDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBTNck1VXceqHcrROrqHdFj89jp4yjAfBgNVHSMEGDAWgBSoSmpjBH3duubRObemRWXv86jsoTBvBggrBgEFBQcBAQRjMGEwLgYIKwYBBQUHMAGGImh0dHA6Ly9vY3NwLmludC14My5sZXRzZW5jcnlwdC5vcmcwLwYIKwYBBQUHMAKGI2h0dHA6Ly9jZXJ0LmludC14My5sZXRzZW5jcnlwdC5vcmcvMBoGA1UdEQQTMBGCD2V2YWwuY29uanVyLm9yZzCB/gYDVR0gBIH2MIHzMAgGBmeBDAECATCB5gYLKwYBBAGC3xMBAQEwgdYwJgYIKwYBBQUHAgEWGmh0dHA6Ly9jcHMubGV0c2VuY3J5cHQub3JnMIGrBggrBgEFBQcCAjCBngyBm1RoaXMgQ2VydGlmaWNhdGUgbWF5IG9ubHkgYmUgcmVsaWVkIHVwb24gYnkgUmVseWluZyBQYXJ0aWVzIGFuZCBvbmx5IGluIGFjY29yZGFuY2Ugd2l0aCB0aGUgQ2VydGlmaWNhdGUgUG9saWN5IGZvdW5kIGF0IGh0dHBzOi8vbGV0c2VuY3J5cHQub3JnL3JlcG9zaXRvcnkvMIIBBAYKKwYBBAHWeQIEAgSB9QSB8gDwAHUAwRZK4Kdy0tQ5LcgKwQdw1PDEm96ZGkhAwfoHUWT2M2AAAAFl5N+PzAAABAMARjBEAiAA3nR+QonKoV8CBWzqUyRHACTLNNunXtrxnCTBoK3o1AIgQDpZ2ByKUVoTEub9vVcWJc3CULRiua+/AB4SCKgH+j8AdwApPFGWVMg5ZbqqUPxYB9S3b79Yeily3KTDDPTlRUf0eAAAAWXk34/gAAAEAwBIMEYCIQDP7J0Q63AQosu8akBdQ5hbIAz+IN/rFhCV3WCEi2Y5cQIhALLX9/DOpIml7wB17cANvRcKVnrCWXYk+78aPYhTsfWq",
+              "RawSubjectPublicKeyInfo": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvdmhVn15C624URPAmh4elZCRfpKDbaNPc+ClUmQljG+N7r17WpB4iy6V3V2YPISIXwFv2AdDOxNnRZVAs/X2JT16hmNbUdEJPU0lETn/jMP9zfBcUi0gqazDnJpVX7stqq/0gmEpUwwpCHe5bhMJ6aw1v02VdGDlHJg5bjeE5Wh/GPk2glYlIC4Yp8ORm7XX+fBjt6CxiSMotift7iIQiWhmXf3wKSIszy0k6tKB++8V4J0D0oK/dMdyAp3CNA5isy4AMw17N21mXnF2QGpgGRNKxuDaB/CoeHksY/a5mPCADoiclowQmo8kFjJrLAS3b7F5Pj2JUHikRK3ZiZdbuQIDAQAB",
+              "RawSubject": "MBoxGDAWBgNVBAMTD2V2YWwuY29uanVyLm9yZw==",
+              "RawIssuer": "MEoxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MSMwIQYDVQQDExpMZXQncyBFbmNyeXB0IEF1dGhvcml0eSBYMw==",
+              "Signature": "dRwbE85YV98yko/1uK8tnj9LRrWqhE0fFyA9Uh4IF8+HZ72/KdaJFUKy4W0d7C9rDmuAaHWMZT1OqphxGKnh0o4sYXSFGQ36o3bBchhI//naLQJyVHleLiMaN2Av5l6g+D8ZbJPF31b4tClHZkoMskFYLwoJ67hhqDeEJpk9KuealkNNSzzArqK43ynPwCZyXAqxD8QtKBvvpN24UxBzXT21ioBnWxEjF8I1tqrRpJk7skm8LTC6CbcvqXMLLBKrv/hZ44l0lQrVpkzMPZtDY1Ct35umV+kmDDgQ1IjCHoYaZ22Bhm4HvjQpTSvfILSyKQ2mrjXbGFRy2bVdBztoyg==",
+              "SignatureAlgorithm": 4,
+              "PublicKeyAlgorithm": 1,
+              "PublicKey": {
+                "N": "23966357102794763619206633311440839656943674954802151677486031896776586667452648734561782568455279728674421076306908105746430182158916475542448690489821572676436115238781138854513294473552756890875130927084451973464453544270699924239239687213354841345934578785594367976288131753321578947291537857852785741876286757197038708223776013715272543927195102084772264838417958495234788692968558213507099018290568686142196570431350910738109253812773615911107542163729952936974618971718584191483355405894568020944158157644988509632666062200287263007201177243515093457258058408645671208280366149965025906824637695383147218688953",
+                "E": 65537
+              },
+              "Version": 3,
+              "SerialNumber": 328184301966777586685200512236322338147822,
+              "Issuer": {
+                "Country": [
+                  "US"
+                ],
+                "Organization": [
+                  "Let's Encrypt"
+                ],
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "Let's Encrypt Authority X3",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      6
+                    ],
+                    "Value": "US"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      10
+                    ],
+                    "Value": "Let's Encrypt"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "Let's Encrypt Authority X3"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "Subject": {
+                "Country": null,
+                "Organization": null,
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "eval.conjur.org",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "eval.conjur.org"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "NotBefore": "2018-09-16T23:13:01Z",
+              "NotAfter": "2018-12-15T23:13:01Z",
+              "KeyUsage": 5,
+              "Extensions": [
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    15
+                  ],
+                  "Critical": true,
+                  "Value": "AwIFoA=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    37
+                  ],
+                  "Critical": false,
+                  "Value": "MBQGCCsGAQUFBwMBBggrBgEFBQcDAg=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    19
+                  ],
+                  "Critical": true,
+                  "Value": "MAA="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    14
+                  ],
+                  "Critical": false,
+                  "Value": "BBTNck1VXceqHcrROrqHdFj89jp4yg=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    35
+                  ],
+                  "Critical": false,
+                  "Value": "MBaAFKhKamMEfd265tE5t6ZFZe/zqOyh"
+                },
+                {
+                  "Id": [
+                    1,
+                    3,
+                    6,
+                    1,
+                    5,
+                    5,
+                    7,
+                    1,
+                    1
+                  ],
+                  "Critical": false,
+                  "Value": "MGEwLgYIKwYBBQUHMAGGImh0dHA6Ly9vY3NwLmludC14My5sZXRzZW5jcnlwdC5vcmcwLwYIKwYBBQUHMAKGI2h0dHA6Ly9jZXJ0LmludC14My5sZXRzZW5jcnlwdC5vcmcv"
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    17
+                  ],
+                  "Critical": false,
+                  "Value": "MBGCD2V2YWwuY29uanVyLm9yZw=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    32
+                  ],
+                  "Critical": false,
+                  "Value": "MIHzMAgGBmeBDAECATCB5gYLKwYBBAGC3xMBAQEwgdYwJgYIKwYBBQUHAgEWGmh0dHA6Ly9jcHMubGV0c2VuY3J5cHQub3JnMIGrBggrBgEFBQcCAjCBngyBm1RoaXMgQ2VydGlmaWNhdGUgbWF5IG9ubHkgYmUgcmVsaWVkIHVwb24gYnkgUmVseWluZyBQYXJ0aWVzIGFuZCBvbmx5IGluIGFjY29yZGFuY2Ugd2l0aCB0aGUgQ2VydGlmaWNhdGUgUG9saWN5IGZvdW5kIGF0IGh0dHBzOi8vbGV0c2VuY3J5cHQub3JnL3JlcG9zaXRvcnkv"
+                },
+                {
+                  "Id": [
+                    1,
+                    3,
+                    6,
+                    1,
+                    4,
+                    1,
+                    11129,
+                    2,
+                    4,
+                    2
+                  ],
+                  "Critical": false,
+                  "Value": "BIHyAPAAdQDBFkrgp3LS1DktyArBB3DU8MSb3pkaSEDB+gdRZPYzYAAAAWXk34/MAAAEAwBGMEQCIADedH5CicqhXwIFbOpTJEcAJMs026de2vGcJMGgrejUAiBAOlnYHIpRWhMS5v29VxYlzcJQtGK5r78AHhIIqAf6PwB3ACk8UZZUyDlluqpQ/FgH1Ldvv1h6KXLcpMMM9OVFR/R4AAABZeTfj+AAAAQDAEgwRgIhAM/snRDrcBCiy7xqQF1DmFsgDP4g3+sWEJXdYISLZjlxAiEAstf38M6kiaXvAHXtwA29FwpWesJZdiT7vxo9iFOx9ao="
+                }
+              ],
+              "ExtraExtensions": null,
+              "UnhandledCriticalExtensions": null,
+              "ExtKeyUsage": [
+                1,
+                2
+              ],
+              "UnknownExtKeyUsage": null,
+              "BasicConstraintsValid": true,
+              "IsCA": false,
+              "MaxPathLen": -1,
+              "MaxPathLenZero": false,
+              "SubjectKeyId": "zXJNVV3Hqh3K0Tq6h3RY/PY6eMo=",
+              "AuthorityKeyId": "qEpqYwR93brm0Tm3pkVl7/Oo7KE=",
+              "OCSPServer": [
+                "http://ocsp.int-x3.letsencrypt.org"
+              ],
+              "IssuingCertificateURL": [
+                "http://cert.int-x3.letsencrypt.org/"
+              ],
+              "DNSNames": [
+                "eval.conjur.org"
+              ],
+              "EmailAddresses": null,
+              "IPAddresses": null,
+              "URIs": null,
+              "PermittedDNSDomainsCritical": false,
+              "PermittedDNSDomains": null,
+              "ExcludedDNSDomains": null,
+              "PermittedIPRanges": null,
+              "ExcludedIPRanges": null,
+              "PermittedEmailAddresses": null,
+              "ExcludedEmailAddresses": null,
+              "PermittedURIDomains": null,
+              "ExcludedURIDomains": null,
+              "CRLDistributionPoints": null,
+              "PolicyIdentifiers": [
+                [
+                  2,
+                  23,
+                  140,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  3,
+                  6,
+                  1,
+                  4,
+                  1,
+                  44947,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "Raw": "MIIEkjCCA3qgAwIBAgIQCgFBQgAAAVOFc2oLheynCDANBgkqhkiG9w0BAQsFADA/MSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMTDkRTVCBSb290IENBIFgzMB4XDTE2MDMxNzE2NDA0NloXDTIxMDMxNzE2NDA0NlowSjELMAkGA1UEBhMCVVMxFjAUBgNVBAoTDUxldCdzIEVuY3J5cHQxIzAhBgNVBAMTGkxldCdzIEVuY3J5cHQgQXV0aG9yaXR5IFgzMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnNMM8FrlLke3cl03g7NoYzDq1zUmGSXhvb418XCSL7e4S0EFq6meNQhY7LEqxGiHC6PjdeTm86dicbp5gWAf15Gan/PQeGdxyGkOlZHP/uaZ6WA8SMx+yk13EiSdRxta67nsHjcAHJyse6cF6s5K671B5TaYucv9bTyWaN8jKkKQDIZ0Z8h/pZq4UmEUEz9l6YKHy9v6Dlb2honzhT+Xhq+w3Brvaw2VFn3EK6BlspkENnWAa6xK8xuQSXgvopZPKiAlKQTGdMDQMc2PMTiVFrqoM7hD8bEfwzB/onkxEz0tNvjj/PIzark5McWvxI0NHWQWM6r6hCm21AvA2H3DkwIDAQABo4IBfTCCAXkwEgYDVR0TAQH/BAgwBgEB/wIBADAOBgNVHQ8BAf8EBAMCAYYwfwYIKwYBBQUHAQEEczBxMDIGCCsGAQUFBzABhiZodHRwOi8vaXNyZy50cnVzdGlkLm9jc3AuaWRlbnRydXN0LmNvbTA7BggrBgEFBQcwAoYvaHR0cDovL2FwcHMuaWRlbnRydXN0LmNvbS9yb290cy9kc3Ryb290Y2F4My5wN2MwHwYDVR0jBBgwFoAUxKexpHsscfrb4UuQdf/EFWCFiRAwVAYDVR0gBE0wSzAIBgZngQwBAgEwPwYLKwYBBAGC3xMBAQEwMDAuBggrBgEFBQcCARYiaHR0cDovL2Nwcy5yb290LXgxLmxldHNlbmNyeXB0Lm9yZzA8BgNVHR8ENTAzMDGgL6AthitodHRwOi8vY3JsLmlkZW50cnVzdC5jb20vRFNUUk9PVENBWDNDUkwuY3JsMB0GA1UdDgQWBBSoSmpjBH3duubRObemRWXv86jsoTANBgkqhkiG9w0BAQsFAAOCAQEA3TPXEfNjWDjdGBX7CVW+dla5cEilaUcne8IkCJLxWh9KEik3JHRRHGJouM2VcGfl96S8TihRzZvoroed6ti6WqEBmtzw3Wodatg+VyOeph4EYpr/1wXKtx8/wApIvJSwtmVi4MFU5aMqrSDE6ea73Mj2tcMyo5jMd6jmeWUHK8so/joWUoHOUgwuX4Po1QYz+3dszkDqMp4fklxBwXRsW10KXzPMTZ+sOPAveyxindmjkW8lGy+QsRlGPfZ+G6Z6h7mjem0Y+iWlkYcV4PIWL1iwBi8saCbGS5jN2p8M+X+Q7UNKEkROb3N6KOqkqm57TH2H3eDJAkSnh6/DNFu0Qg==",
+              "RawTBSCertificate": "MIIDeqADAgECAhAKAUFCAAABU4VzaguF7KcIMA0GCSqGSIb3DQEBCwUAMD8xJDAiBgNVBAoTG0RpZ2l0YWwgU2lnbmF0dXJlIFRydXN0IENvLjEXMBUGA1UEAxMORFNUIFJvb3QgQ0EgWDMwHhcNMTYwMzE3MTY0MDQ2WhcNMjEwMzE3MTY0MDQ2WjBKMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNTGV0J3MgRW5jcnlwdDEjMCEGA1UEAxMaTGV0J3MgRW5jcnlwdCBBdXRob3JpdHkgWDMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCc0wzwWuUuR7dyXTeDs2hjMOrXNSYZJeG9vjXxcJIvt7hLQQWrqZ41CFjssSrEaIcLo+N15Obzp2JxunmBYB/XkZqf89B4Z3HIaQ6Vkc/+5pnpYDxIzH7KTXcSJJ1HG1rrueweNwAcnKx7pwXqzkrrvUHlNpi5y/1tPJZo3yMqQpAMhnRnyH+lmrhSYRQTP2XpgofL2/oOVvaGifOFP5eGr7DcGu9rDZUWfcQroGWymQQ2dYBrrErzG5BJeC+ilk8qICUpBMZ0wNAxzY8xOJUWuqgzuEPxsR/DMH+ieTETPS02+OP88jNquTkxxa/EjQ0dZBYzqvqEKbbUC8DYfcOTAgMBAAGjggF9MIIBeTASBgNVHRMBAf8ECDAGAQH/AgEAMA4GA1UdDwEB/wQEAwIBhjB/BggrBgEFBQcBAQRzMHEwMgYIKwYBBQUHMAGGJmh0dHA6Ly9pc3JnLnRydXN0aWQub2NzcC5pZGVudHJ1c3QuY29tMDsGCCsGAQUFBzAChi9odHRwOi8vYXBwcy5pZGVudHJ1c3QuY29tL3Jvb3RzL2RzdHJvb3RjYXgzLnA3YzAfBgNVHSMEGDAWgBTEp7Gkeyxx+tvhS5B1/8QVYIWJEDBUBgNVHSAETTBLMAgGBmeBDAECATA/BgsrBgEEAYLfEwEBATAwMC4GCCsGAQUFBwIBFiJodHRwOi8vY3BzLnJvb3QteDEubGV0c2VuY3J5cHQub3JnMDwGA1UdHwQ1MDMwMaAvoC2GK2h0dHA6Ly9jcmwuaWRlbnRydXN0LmNvbS9EU1RST09UQ0FYM0NSTC5jcmwwHQYDVR0OBBYEFKhKamMEfd265tE5t6ZFZe/zqOyh",
+              "RawSubjectPublicKeyInfo": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnNMM8FrlLke3cl03g7NoYzDq1zUmGSXhvb418XCSL7e4S0EFq6meNQhY7LEqxGiHC6PjdeTm86dicbp5gWAf15Gan/PQeGdxyGkOlZHP/uaZ6WA8SMx+yk13EiSdRxta67nsHjcAHJyse6cF6s5K671B5TaYucv9bTyWaN8jKkKQDIZ0Z8h/pZq4UmEUEz9l6YKHy9v6Dlb2honzhT+Xhq+w3Brvaw2VFn3EK6BlspkENnWAa6xK8xuQSXgvopZPKiAlKQTGdMDQMc2PMTiVFrqoM7hD8bEfwzB/onkxEz0tNvjj/PIzark5McWvxI0NHWQWM6r6hCm21AvA2H3DkwIDAQAB",
+              "RawSubject": "MEoxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MSMwIQYDVQQDExpMZXQncyBFbmNyeXB0IEF1dGhvcml0eSBYMw==",
+              "RawIssuer": "MD8xJDAiBgNVBAoTG0RpZ2l0YWwgU2lnbmF0dXJlIFRydXN0IENvLjEXMBUGA1UEAxMORFNUIFJvb3QgQ0EgWDM=",
+              "Signature": "3TPXEfNjWDjdGBX7CVW+dla5cEilaUcne8IkCJLxWh9KEik3JHRRHGJouM2VcGfl96S8TihRzZvoroed6ti6WqEBmtzw3Wodatg+VyOeph4EYpr/1wXKtx8/wApIvJSwtmVi4MFU5aMqrSDE6ea73Mj2tcMyo5jMd6jmeWUHK8so/joWUoHOUgwuX4Po1QYz+3dszkDqMp4fklxBwXRsW10KXzPMTZ+sOPAveyxindmjkW8lGy+QsRlGPfZ+G6Z6h7mjem0Y+iWlkYcV4PIWL1iwBi8saCbGS5jN2p8M+X+Q7UNKEkROb3N6KOqkqm57TH2H3eDJAkSnh6/DNFu0Qg==",
+              "SignatureAlgorithm": 4,
+              "PublicKeyAlgorithm": 1,
+              "PublicKey": {
+                "N": "19797248476075437682355852246492227182925025209894527646389863306257272162327717438476096960751529894413137923782807258828237626757946953550223743258656059351948211427799114263948499232121738590221774214131983890556391436336270214266656447169277800971416884432628642288505627878176138101439755752196484972290641499489076846352390454201028735981960275647482014359370041238010607728611828345534572152635280172155598035959878659370929022966413402097129857505568509453268467065766156311136296802046438183697980908977865999500405760226706893415483460747503705792669060406182022181441316967415301631965711690685520847684499",
+                "E": 65537
+              },
+              "Version": 3,
+              "SerialNumber": 13298795840390663119752826058995181320,
+              "Issuer": {
+                "Country": null,
+                "Organization": [
+                  "Digital Signature Trust Co."
+                ],
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "DST Root CA X3",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      10
+                    ],
+                    "Value": "Digital Signature Trust Co."
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "DST Root CA X3"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "Subject": {
+                "Country": [
+                  "US"
+                ],
+                "Organization": [
+                  "Let's Encrypt"
+                ],
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "Let's Encrypt Authority X3",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      6
+                    ],
+                    "Value": "US"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      10
+                    ],
+                    "Value": "Let's Encrypt"
+                  },
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "Let's Encrypt Authority X3"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "NotBefore": "2016-03-17T16:40:46Z",
+              "NotAfter": "2021-03-17T16:40:46Z",
+              "KeyUsage": 97,
+              "Extensions": [
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    19
+                  ],
+                  "Critical": true,
+                  "Value": "MAYBAf8CAQA="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    15
+                  ],
+                  "Critical": true,
+                  "Value": "AwIBhg=="
+                },
+                {
+                  "Id": [
+                    1,
+                    3,
+                    6,
+                    1,
+                    5,
+                    5,
+                    7,
+                    1,
+                    1
+                  ],
+                  "Critical": false,
+                  "Value": "MHEwMgYIKwYBBQUHMAGGJmh0dHA6Ly9pc3JnLnRydXN0aWQub2NzcC5pZGVudHJ1c3QuY29tMDsGCCsGAQUFBzAChi9odHRwOi8vYXBwcy5pZGVudHJ1c3QuY29tL3Jvb3RzL2RzdHJvb3RjYXgzLnA3Yw=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    35
+                  ],
+                  "Critical": false,
+                  "Value": "MBaAFMSnsaR7LHH62+FLkHX/xBVghYkQ"
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    32
+                  ],
+                  "Critical": false,
+                  "Value": "MEswCAYGZ4EMAQIBMD8GCysGAQQBgt8TAQEBMDAwLgYIKwYBBQUHAgEWImh0dHA6Ly9jcHMucm9vdC14MS5sZXRzZW5jcnlwdC5vcmc="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    31
+                  ],
+                  "Critical": false,
+                  "Value": "MDMwMaAvoC2GK2h0dHA6Ly9jcmwuaWRlbnRydXN0LmNvbS9EU1RST09UQ0FYM0NSTC5jcmw="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    14
+                  ],
+                  "Critical": false,
+                  "Value": "BBSoSmpjBH3duubRObemRWXv86jsoQ=="
+                }
+              ],
+              "ExtraExtensions": null,
+              "UnhandledCriticalExtensions": null,
+              "ExtKeyUsage": null,
+              "UnknownExtKeyUsage": null,
+              "BasicConstraintsValid": true,
+              "IsCA": true,
+              "MaxPathLen": 0,
+              "MaxPathLenZero": true,
+              "SubjectKeyId": "qEpqYwR93brm0Tm3pkVl7/Oo7KE=",
+              "AuthorityKeyId": "xKexpHsscfrb4UuQdf/EFWCFiRA=",
+              "OCSPServer": [
+                "http://isrg.trustid.ocsp.identrust.com"
+              ],
+              "IssuingCertificateURL": [
+                "http://apps.identrust.com/roots/dstrootcax3.p7c"
+              ],
+              "DNSNames": null,
+              "EmailAddresses": null,
+              "IPAddresses": null,
+              "URIs": null,
+              "PermittedDNSDomainsCritical": false,
+              "PermittedDNSDomains": null,
+              "ExcludedDNSDomains": null,
+              "PermittedIPRanges": null,
+              "ExcludedIPRanges": null,
+              "PermittedEmailAddresses": null,
+              "ExcludedEmailAddresses": null,
+              "PermittedURIDomains": null,
+              "ExcludedURIDomains": null,
+              "CRLDistributionPoints": [
+                "http://crl.identrust.com/DSTROOTCAX3CRL.crl"
+              ],
+              "PolicyIdentifiers": [
+                [
+                  2,
+                  23,
+                  140,
+                  1,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  3,
+                  6,
+                  1,
+                  4,
+                  1,
+                  44947,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            }
+          ],
+          "VerifiedChains": null,
+          "SignedCertificateTimestamps": null,
+          "OCSPResponse": null,
+          "TLSUnique": "cTlhbX4Ji8Yq+lXO"
+        }
+      },
+      "ErrType": "",
+      "ErrMsg": ""
+    }
+  ]
+}

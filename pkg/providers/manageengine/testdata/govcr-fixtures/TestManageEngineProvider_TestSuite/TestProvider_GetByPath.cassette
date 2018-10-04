@@ -1,0 +1,198 @@
+{
+  "Name": "TestManageEngineProvider_TestSuite/TestProvider_GetByPath",
+  "Path": "testdata/govcr-fixtures",
+  "Tracks": [
+    {
+      "Request": {
+        "Method": "GET",
+        "URL": {
+          "Scheme": "http",
+          "Opaque": "",
+          "User": null,
+          "Host": "demo.passwordmanagerpro.com",
+          "Path": "/restapi/json/v1/resources/getResourceIdAccountId",
+          "RawPath": "",
+          "ForceQuery": false,
+          "RawQuery": "ACCOUNTNAME=a\u0026AUTHTOKEN=695B44C2-7EA5-4361-AADC-C241FB885B62\u0026RESOURCENAME=wwwwwww",
+          "Fragment": ""
+        },
+        "Header": {},
+        "Body": ""
+      },
+      "Response": {
+        "Status": "200 ",
+        "StatusCode": 200,
+        "Proto": "HTTP/1.1",
+        "ProtoMajor": 1,
+        "ProtoMinor": 1,
+        "Header": {
+          "Content-Disposition": [
+            "attachment;"
+          ],
+          "Content-Type": [
+            "application/json;charset=UTF-8"
+          ],
+          "Date": [
+            "Wed, 03 Oct 2018 22:32:37 GMT"
+          ],
+          "Set-Cookie": [
+            "JSESSIONID=CE7F719DDBE6B3F58DFB31AEAE235068; Path=/; HttpOnly",
+            "pmpcc=633be94d-6b0d-4f2c-8bab-464500062f89;path=/;priority=high"
+          ],
+          "Strict-Transport-Security": [
+            "max-age=15768000; includeSubdomains"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Xss-Protection": [
+            "1"
+          ]
+        },
+        "Body": "eyJvcGVyYXRpb24iOnsibmFtZSI6IkdFVF9SRVNPVVJDRUFDQ09VTlRJRCIsInJlc3VsdCI6eyJzdGF0dXMiOiJTdWNjZXNzIiwibWVzc2FnZSI6IlJlc291cmNlIElEIGFuZCBhY2NvdW50IElEIGZldGNoZWQgc3VjY2Vzc2Z1bGx5IGZvciB0aGUgZ2l2ZW4gcmVzb3VyY2UgbmFtZSBhbmQgYWNjb3VudCBuYW1lLiJ9LCJEZXRhaWxzIjp7IlJFU09VUkNFSUQiOiIyMTI4IiwiQUNDT1VOVElEIjoiMjcxOSJ9fX0=",
+        "ContentLength": -1,
+        "TransferEncoding": [
+          "chunked"
+        ],
+        "Trailer": null,
+        "TLS": null
+      },
+      "ErrType": "",
+      "ErrMsg": ""
+    },
+    {
+      "Request": {
+        "Method": "GET",
+        "URL": {
+          "Scheme": "http",
+          "Opaque": "",
+          "User": null,
+          "Host": "demo.passwordmanagerpro.com",
+          "Path": "/restapi/json/v1/resources/2128/accounts/2719/password",
+          "RawPath": "",
+          "ForceQuery": false,
+          "RawQuery": "AUTHTOKEN=695B44C2-7EA5-4361-AADC-C241FB885B62",
+          "Fragment": ""
+        },
+        "Header": {
+          "Cookie": [
+            "JSESSIONID=CE7F719DDBE6B3F58DFB31AEAE235068; pmpcc=633be94d-6b0d-4f2c-8bab-464500062f89"
+          ]
+        },
+        "Body": ""
+      },
+      "Response": {
+        "Status": "200 ",
+        "StatusCode": 200,
+        "Proto": "HTTP/1.1",
+        "ProtoMajor": 1,
+        "ProtoMinor": 1,
+        "Header": {
+          "Content-Disposition": [
+            "attachment;"
+          ],
+          "Content-Type": [
+            "application/json;charset=UTF-8"
+          ],
+          "Date": [
+            "Wed, 03 Oct 2018 22:32:37 GMT"
+          ],
+          "Strict-Transport-Security": [
+            "max-age=15768000; includeSubdomains"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Xss-Protection": [
+            "1"
+          ]
+        },
+        "Body": "eyJvcGVyYXRpb24iOnsibmFtZSI6IkdFVCBQQVNTV09SRCIsInJlc3VsdCI6eyJzdGF0dXMiOiJTdWNjZXNzIiwibWVzc2FnZSI6IlBhc3N3b3JkIGZldGNoZWQgc3VjY2Vzc2Z1bGx5In0sIkRldGFpbHMiOnsiUEFTU1dPUkQiOiJiIn19fQ==",
+        "ContentLength": -1,
+        "TransferEncoding": [
+          "chunked"
+        ],
+        "Trailer": null,
+        "TLS": null
+      },
+      "ErrType": "",
+      "ErrMsg": ""
+    },
+    {
+      "Request": {
+        "Method": "GET",
+        "URL": {
+          "Scheme": "http",
+          "Opaque": "",
+          "User": null,
+          "Host": "demo.passwordmanagerpro.com",
+          "Path": "/restapi/json/v1/resources/2128/accounts",
+          "RawPath": "",
+          "ForceQuery": false,
+          "RawQuery": "AUTHTOKEN=695B44C2-7EA5-4361-AADC-C241FB885B62",
+          "Fragment": ""
+        },
+        "Header": {
+          "Cookie": [
+            "JSESSIONID=CE7F719DDBE6B3F58DFB31AEAE235068; pmpcc=633be94d-6b0d-4f2c-8bab-464500062f89"
+          ]
+        },
+        "Body": ""
+      },
+      "Response": {
+        "Status": "200 ",
+        "StatusCode": 200,
+        "Proto": "HTTP/1.1",
+        "ProtoMajor": 1,
+        "ProtoMinor": 1,
+        "Header": {
+          "Content-Disposition": [
+            "attachment;"
+          ],
+          "Content-Type": [
+            "application/json;charset=UTF-8"
+          ],
+          "Date": [
+            "Wed, 03 Oct 2018 22:32:37 GMT"
+          ],
+          "Strict-Transport-Security": [
+            "max-age=15768000; includeSubdomains"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Xss-Protection": [
+            "1"
+          ]
+        },
+        "Body": "eyJvcGVyYXRpb24iOnsibmFtZSI6IkdFVCBSRVNPVVJDRSBBQ0NPVU5UTElTVCIsInJlc3VsdCI6eyJzdGF0dXMiOiJTdWNjZXNzIiwibWVzc2FnZSI6IlJlc291cmNlIGRldGFpbHMgd2l0aCBhY2NvdW50IGxpc3QgZmV0Y2hlZCBzdWNjZXNzZnVsbHkifSwiRGV0YWlscyI6eyJSRVNPVVJDRSBJRCI6IjIxMjgiLCJSRVNPVVJDRSBOQU1FIjoid3d3d3d3dyIsIlJFU09VUkNFIERFU0NSSVBUSU9OIjoiIiwiUkVTT1VSQ0UgVFlQRSI6IkxpbnV4IiwiRE5TIE5BTUUiOiIiLCJET01BSU4gTkFNRSI6IiIsIlBBU1NXT1JEIFBPTElDWSI6IkJDUkEiLCJERVBBUlRNRU5UIjoiIiwiTE9DQVRJT04iOiIiLCJSRVNPVVJDRSBVUkwiOiIiLCJSRVNPVVJDRSBPV05FUiI6Imd1ZXN0IiwiQ1VTVE9NIEZJRUxEIjpbeyJDVVNUT01GSUVMRFRZUEUiOiJDaGFyYWN0ZXIiLCJDVVNUT01GSUVMRENPTFVNTk5BTUUiOiJDT0xVTU5fQ0hBUjYiLCJDVVNUT01GSUVMRExBQkVMIjoiR0RQUiIsIkNVU1RPTUZJRUxEVkFMVUUiOiIifSx7IkNVU1RPTUZJRUxEVFlQRSI6IkNoYXJhY3RlciIsIkNVU1RPTUZJRUxEQ09MVU1OTkFNRSI6IkNPTFVNTl9DSEFSMSIsIkNVU1RPTUZJRUxETEFCRUwiOiJFeHBvcnQiLCJDVVNUT01GSUVMRFZBTFVFIjoiWWVzIn0seyJDVVNUT01GSUVMRFRZUEUiOiJOdW1lcmljIiwiQ1VTVE9NRklFTERDT0xVTU5OQU1FIjoiQ09MVU1OX0xPTkcxIiwiQ1VTVE9NRklFTERMQUJFTCI6Ik51bWVyaWMgVGVzdCIsIkNVU1RPTUZJRUxEVkFMVUUiOiItIn0seyJDVVNUT01GSUVMRFRZUEUiOiJDaGFyYWN0ZXIiLCJDVVNUT01GSUVMRENPTFVNTk5BTUUiOiJDT0xVTU5fQ0hBUjIiLCJDVVNUT01GSUVMRExBQkVMIjoiQ2hhciBUZXN0IiwiQ1VTVE9NRklFTERWQUxVRSI6IiJ9LHsiQ1VTVE9NRklFTERUWVBFIjoiUGFzc3dvcmQiLCJDVVNUT01GSUVMRENPTFVNTk5BTUUiOiJDT0xVTU5fU0NIQVIxIiwiQ1VTVE9NRklFTERMQUJFTCI6IlBhc3N3b3JkIFRlc3QiLCJDVVNUT01GSUVMRFZBTFVFIjoiIn0seyJDVVNUT01GSUVMRFRZUEUiOiJEYXRlIiwiQ1VTVE9NRklFTERDT0xVTU5OQU1FIjoiQ09MVU1OX0RBVEUxIiwiQ1VTVE9NRklFTERMQUJFTCI6IkRhdGUgdGVzdCIsIkNVU1RPTUZJRUxEVkFMVUUiOiItIn0seyJDVVNUT01GSUVMRFRZUEUiOiJGaWxlIiwiQ1VTVE9NRklFTERDT0xVTU5OQU1FIjoiQ09MVU1OX0ZJTEUyIiwiQ1VTVE9NRklFTERMQUJFTCI6IkNlcnRpZmNhdGUiLCJDVVNUT01GSUVMRFZBTFVFIjoic3NsX2NlcnRpZmljYXRlLmNydCJ9LHsiQ1VTVE9NRklFTERUWVBFIjoiRmlsZSIsIkNVU1RPTUZJRUxEQ09MVU1OTkFNRSI6IkNPTFVNTl9GSUxFMSIsIkNVU1RPTUZJRUxETEFCRUwiOiJ0ZXN0MSIsIkNVU1RPTUZJRUxEVkFMVUUiOiItIn1dLCJBQ0NPVU5UIExJU1QiOlt7IkFVVE9MT0dPTlNUQVRVUyI6IlVzZXIgaXMgbm90IGFsbG93ZWQgdG8gYXV0b21hdGljYWxseSBsb2dnaW5nIGluIHRvIHJlbW90ZSBzeXN0ZW1zIGluIG1vYmlsZSIsIklTX1RJQ0tFVElEX1JFUURfQUNXIjoiZmFsc2UiLCJJU0ZBVlBBU1MiOiJmYWxzZSIsIlBBU1NXRElEIjoiMjcxOSIsIklTX1RJQ0tFVElEX1JFUURfTUFOREFUT1JZIjoiZmFsc2UiLCJBQ0NPVU5UIElEIjoiMjcxOSIsIkFVVE9MT0dPTkxJU1QiOlsiU1NIIiwiVGVsbmV0Il0sIkFDQ09VTlQgTkFNRSI6ImEiLCJQQVNTV09SRCBTVEFUVVMiOiIqKioqIiwiSVNfVElDS0VUSURfUkVRRCI6ImZhbHNlIiwiSVNSRUFTT05SRVFVSVJFRCI6ImZhbHNlIn1dfX19",
+        "ContentLength": -1,
+        "TransferEncoding": [
+          "chunked"
+        ],
+        "Trailer": null,
+        "TLS": null
+      },
+      "ErrType": "",
+      "ErrMsg": ""
+    }
+  ]
+}

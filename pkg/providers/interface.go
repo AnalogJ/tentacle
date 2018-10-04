@@ -34,6 +34,7 @@ type Interface interface {
 	`list` - specify if the `.List` function is defined for this provider.
 	`get` - specify if the `.Get` function is defined for this provider
 	`get_by_id` - specify the `.Get` function can be used with just an `id` property
+	`get_by_path` - specify the `.Get` function can be used with just an `path` property
 	`cred_userpass` - specify that the `.Get` function can return `UserPass` type credentials
 	`cred_text` - specify that the `.Get` function can return `Text` type credentials
 	`cred_ssh` - specify that the `.Get` function can return `SSH` type credentials

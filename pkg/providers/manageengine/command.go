@@ -1,7 +1,8 @@
-package conjur
+package manageengine
 
 import (
 	"gopkg.in/urfave/cli.v2"
+	"github.com/analogj/tentacle/pkg/errors"
 )
 
 
@@ -17,7 +18,14 @@ func  (p *provider) Command() *cli.Command {
 				Name:  "get",
 				Usage: "retrieve a specific secret in CyberArk Conjur",
 				Before: func (ctx *cli.Context) error{
-					return p.CommandValidateRequireOneOf([]string{"id"}, ctx)
+					idErr := p.CommandValidateRequireAllOf([]string{"id", "resourceid"}, ctx)
+					pathErr := p.CommandValidateRequireAllOf([]string{"path"}, ctx)
+
+					if idErr == nil || pathErr == nil {
+						return nil
+					} else {
+						return errors.InvalidArgumentsError("either path or accountId and resourceid must be specified")
+					}
 				},
 				Action: func(c *cli.Context) error {
 					err := p.Authenticate()
@@ -32,8 +40,16 @@ func  (p *provider) Command() *cli.Command {
 				Flags: []cli.Flag{
 					&cli.StringFlag{
 						Name:    "id",
-						Aliases: []string{"variableid"},
-						Usage:   "Specify the conjur secret id",
+						Usage:   "Specify the Manage Engine account id",
+					},
+					&cli.StringFlag{
+						Name:    "resourceid",
+						Usage:   "Specify the Manage Engine resource id",
+					},
+
+					&cli.StringFlag{
+						Name:    "path",
+						Usage:   "Specify the Manage Engine account path '{resource_name}/{account_name}'",
 					},
 				},
 			},
@@ -51,7 +67,10 @@ func  (p *provider) Command() *cli.Command {
 					return p.CommandPrintCredentials(c, "list", secrets, err)
 				},
 				Flags: []cli.Flag{
-
+					&cli.StringFlag{
+						Name:    "resourceid",
+						Usage:   "Specify the Manage Engine resource id",
+					},
 				},
 			},
 		},

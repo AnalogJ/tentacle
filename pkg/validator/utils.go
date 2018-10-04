@@ -34,11 +34,11 @@ func ProviderVcrSetup(t *testing.T) *http.Client {
 			// HTTP headers are case-insensitive
 			return strings.ToLower(key) == "user-agent" || strings.ToLower(key) == "authorization"
 		},
-		RequestFilterFunc: func(reqHeader http.Header, reqBody []byte) (*http.Header, *[]byte) {
-			reqHeader.Set("Authorization", "Basic UExBQ0VIT0xERVI6UExBQ0VIT0xERVI=") //placeholder:placeholder
-
-			return &reqHeader, &reqBody
-		},
+		//RequestFilterFunc: func(reqHeader http.Header, reqBody []byte) (*http.Header, *[]byte) {
+		//	reqHeader.Set("Authorization", "Basic UExBQ0VIT0xERVI6UExBQ0VIT0xERVI=") //placeholder:placeholder
+		//
+		//	return &reqHeader, &reqBody
+		//},
 
 		//this line ensures that we do not attempt to create new recordings.
 		//Comment this out if you would like to make recordings.

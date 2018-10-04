@@ -183,11 +183,11 @@ func (suite *ProviderTestSuite)TestProvider_Get_SshCredential() {
 
 	//test
 	cred, err := suite.Provider.Get(suite.Get_Ssh_TestData.QueryData)
+	require.NoError(suite.T(), err)
 	sshCred, castOk := cred.(*credentials.Ssh)
 
 	//assert
 	require.True(suite.T(), castOk, "should be able to cast credential interface to correct type (ssh)")
-	require.NoError(suite.T(), err)
 	require.Equal(suite.T(), suite.Get_Ssh_TestData.Data, sshCred.GetData())
 	require.Equal(suite.T(), suite.Get_Ssh_TestData.Metadata, sshCred.GetMetadata())
 	require.Equal(suite.T(), "ssh", sshCred.GetSecretType())
@@ -213,11 +213,11 @@ func (suite *ProviderTestSuite)TestProvider_Get_TextCredential() {
 
 	//test
 	cred, err := suite.Provider.Get(suite.Get_Text_TestData.QueryData)
+	require.NoError(suite.T(), err)
 	textCred, castOk := cred.(*credentials.Text)
 
 	//assert
 	require.True(suite.T(), castOk, "should be able to cast credential interface to correct type (text)")
-	require.NoError(suite.T(), err)
 	require.Equal(suite.T(), suite.Get_Text_TestData.Data, textCred.GetData())
 	require.Equal(suite.T(), suite.Get_Text_TestData.Metadata, textCred.GetMetadata())
 	require.Equal(suite.T(), "text", textCred.GetSecretType())
@@ -243,11 +243,11 @@ func (suite *ProviderTestSuite)TestProvider_Get_UserPassCredential() {
 
 	//test
 	cred, err := suite.Provider.Get(suite.Get_UserPass_TestData.QueryData)
+	require.NoError(suite.T(), err)
 	userPassCred, castOk := cred.(*credentials.UserPass)
 
 	//assert
-	require.True(suite.T(), castOk, "should be able to cast credential interface to correct type (ssh)")
-	require.NoError(suite.T(), err)
+	require.True(suite.T(), castOk, "should be able to cast credential interface to correct type (userpass)")
 	require.Equal(suite.T(), suite.Get_UserPass_TestData.Data, userPassCred.GetData())
 	require.Equal(suite.T(), suite.Get_UserPass_TestData.Metadata, userPassCred.GetMetadata())
 	require.Equal(suite.T(), "userpass", userPassCred.GetSecretType())

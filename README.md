@@ -121,6 +121,7 @@ Tentacle supports retrieving secrets via API's as well as OS specific credential
 1. [Cyberark](https://www.cyberark.com/)
 1. [Conjur](https://www.conjur.org/)
 1. [Lastpass](https://www.lastpass.com)
+1. [Manage Engine Password Manager Pro](https://www.manageengine.com/products/passwordmanagerpro/)
 1. [Thycotic](https://thycotic.com/)
 
 ### OS Secret Storage
@@ -144,7 +145,6 @@ Tentacle supports retrieving secrets via API's as well as OS specific credential
 - [IT Glue Password Vault](https://itglue.com/features/password-vault/)
 - [Keeper](https://keepersecurity.com/)
 - [KronTech Single Connect](https://krontech.com/)
-- [Manage Engine Password Manager Pro](https://www.manageengine.com/products/passwordmanagerpro/)
 - [Norton Identity Safe](https://my.norton.com/extspa/idsafe)
 - [Passwordstate](https://www.clickstudios.com.au/)
 - [PasswordStore (Pass)](https://www.passwordstore.org/)

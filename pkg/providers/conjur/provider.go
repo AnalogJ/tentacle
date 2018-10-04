@@ -6,6 +6,7 @@ import (
 	"github.com/cyberark/conjur-api-go/conjurapi"
 	"github.com/cyberark/conjur-api-go/conjurapi/authn"
 	"github.com/analogj/tentacle/pkg/errors"
+	"github.com/analogj/tentacle/pkg/constants"
 )
 
 type provider struct {
@@ -25,9 +26,20 @@ func New(alias string, config map[string]interface{}) (*provider, error) {
 	return p, p.ValidateRequireAllOf([]string{"login", "api_key", "appliance_url", "account"}, config)
 }
 
+func (p *provider) Capabilities() map[string]bool {
+	return map[string]bool{
+		constants.CAP_GET: true,
+		constants.CAP_GET_BY_ID: true,
+		constants.CAP_CRED_TEXT: true,
+	}
+}
+
 func (p *provider) Authenticate() error {
 
-	config := conjurapi.LoadConfig()
+	config, err := conjurapi.LoadConfig()
+	if err != nil {
+		return err
+	}
 	config.ApplianceURL = p.ProviderConfig["appliance_url"].(string)
 	config.Account = p.ProviderConfig["account"].(string)
 
@@ -39,19 +51,23 @@ func (p *provider) Authenticate() error {
 		},
 	)
 
+	if p.HttpClient != nil {
+		conjur.SetHttpClient(p.HttpClient)
+
+	}
 	p.client = conjur
 
 	return err
 }
 
 func (p *provider) Get(queryData map[string]string) (credentials.GenericInterface, error) {
-	variableId, variableIdOk := queryData["variableid"];
+
+	variableId, variableIdOk := queryData["id"]
 	if  !variableIdOk {
-		return nil, errors.InvalidArgumentsError("variableid is empty or invalid")
+		return nil, errors.InvalidArgumentsError("id is empty or invalid")
 	}
 
 	respBytes, err := p.client.RetrieveSecret(variableId)
-
 	textSecret := new(credentials.Text)
 	textSecret.Init()
 	textSecret.Id = variableId
@@ -62,6 +78,5 @@ func (p *provider) Get(queryData map[string]string) (credentials.GenericInterfac
 		return nil, err
 	}
 
-
-	return nil, nil
+	return textSecret, nil
 }

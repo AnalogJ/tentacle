@@ -23,6 +23,12 @@ providers:
     username: 'xxx@corp.example.com'
     password: 'xxxxxx'
 
+  mealias:
+    type: manageengine
+    #scheme: http # optional
+    host: 'demo.passwordmanagerpro.com' # could also be 'hostname:port'
+    token: '695B44C2-7EA5-4361-AADC-C241FB885B62'
+
   thycoticalias:
     type: thycotic
     domain: "YOUR_AD_DOMAIN"
