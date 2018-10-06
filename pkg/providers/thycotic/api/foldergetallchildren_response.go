@@ -8,7 +8,7 @@ type FolderGetAllChildrenResponse struct {
 
 type FolderGetAllChildrenResult struct {
 	Success bool
-	Errors []string
+	Errors []string `xml:"Errors>string"`
 	Folders []Folder `xml:"Folders>Folder"`
 }
 

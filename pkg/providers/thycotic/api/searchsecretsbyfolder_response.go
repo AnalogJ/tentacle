@@ -6,7 +6,7 @@ type SearchSecretsByFolderResponse struct {
 
 
 type SearchSecretsByFolderResult struct {
-	Errors []string
+	Errors []string `xml:"Errors>string"`
 	SecretSummaries []SecretSummary `xml:"SecretSummaries>SecretSummary"`
 }
 

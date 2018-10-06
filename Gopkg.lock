@@ -12,6 +12,11 @@
   revision = "f3dadddc189f8d3946f4b975d99920d7f9e98065"
 
 [[projects]]
+  name = "github.com/analogj/gosoap"
+  packages = ["."]
+  revision = "87568ebaf5b47fecf2a784a1afb3bffe75cc2879"
+
+[[projects]]
   branch = "master"
   name = "github.com/bgentry/go-netrc"
   packages = ["netrc"]
@@ -199,12 +204,6 @@
   version = "v1.2.2"
 
 [[projects]]
-  name = "github.com/tiaguinho/gosoap"
-  packages = ["."]
-  revision = "eda446c474d0360cfd4a67108653f75239994b8f"
-  version = "v1.1.0"
-
-[[projects]]
   branch = "master"
   name = "golang.org/x/crypto"
   packages = [
@@ -212,6 +211,16 @@
     "ssh/terminal"
   ]
   revision = "5295e8364332db77d75fce11f1d19c053919a9c9"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/net"
+  packages = [
+    "html",
+    "html/atom",
+    "html/charset"
+  ]
+  revision = "146acd28ed5894421fb5aac80ca93bc1b1f46f87"
 
 [[projects]]
   branch = "master"
@@ -225,9 +234,23 @@
 [[projects]]
   name = "golang.org/x/text"
   packages = [
+    "encoding",
+    "encoding/charmap",
+    "encoding/htmlindex",
+    "encoding/internal",
+    "encoding/internal/identifier",
+    "encoding/japanese",
+    "encoding/korean",
+    "encoding/simplifiedchinese",
+    "encoding/traditionalchinese",
+    "encoding/unicode",
     "internal/gen",
+    "internal/tag",
     "internal/triegen",
     "internal/ucd",
+    "internal/utf8internal",
+    "language",
+    "runes",
     "transform",
     "unicode/cldr",
     "unicode/norm"
@@ -250,6 +273,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "1a289077145cf54bf3d4ad24dd3a7c35623415c9e805396ac9414219ab080c2d"
+  inputs-digest = "acaab6a340a8709bb16d4df7447ef21353256797b91a50b37678e3c4fdaeeee1"
   solver-name = "gps-cdcl"
   solver-version = 1

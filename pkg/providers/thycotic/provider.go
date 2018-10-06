@@ -46,6 +46,11 @@ func (p *provider) Capabilities() map[string]bool {
 }
 
 func (p *provider) Authenticate() error {
+
+	if p.HttpClient != nil {
+		p.client.HttpClient = p.HttpClient
+	}
+
 	_, err := p.client.Test()
 	return err
 }

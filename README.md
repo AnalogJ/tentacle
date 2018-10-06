@@ -205,6 +205,9 @@ Jason Kulatunga - Initial Development - @AnalogJ
 - https://github.com/robertknight/1pass
 - https://discussions.agilebits.com/discussion/89740/api-to-pull-1password-information
 - https://github.com/1Password/1password-teams-open-source
+- https://www.gartner.com/reviews/market/privileged-access-management-solutions
+- https://www.bomgar.com/docs/privileged-identity/documents/privileged-identity-programmers-guide-5-5-3-1.pdf
+- https://www.beyondtrust.com/partners/become-a-partner/
 
 ## Possible Names
 - Seer

@@ -8,6 +8,6 @@ type DownloadFileAttachmentByItemIdResponse struct {
 
 type DownloadFileAttachmentByItemIdResult struct {
 	FileName string
-	Errors []string
+	Errors []string `xml:"Errors>string"`
 	FileAttachment string
 }

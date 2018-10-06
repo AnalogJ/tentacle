@@ -13,7 +13,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/tiaguinho/gosoap"
+	"github.com/analogj/gosoap"
+
+	terrors "github.com/analogj/tentacle/pkg/errors"
 )
 
 type Client struct {
@@ -25,6 +27,7 @@ type Client struct {
 	Token string //Secret Server token
 
 
+	HttpClient *http.Client
 	//FolderCache
 	FolderCache *folderNode
 }
@@ -37,14 +40,21 @@ func (c *Client) Init(domain string, server string, token string) {
 	folderCache := new(folderNode)
 	folderCache.Init("-1", "root")
 	c.FolderCache = folderCache
+
+	if c.HttpClient == nil {
+		c.HttpClient = &http.Client{}
+	}
 }
 
 func (c *Client) Test() (WhoAmIResponse, error) {
 
 	resp := WhoAmIResponse{}
 	err := c.soapRequest("WhoAmI", map[string]string{"token": c.Token }, &resp)
-	return resp, err
-}
+	if err != nil {
+		return resp, err
+	}
+
+	return resp, handleErrors(resp.WhoAmIResult.Errors)}
 
 func (c *Client) GetFolderSubfolders(folderId string) (FolderGetAllChildrenResponse, error){
 
@@ -55,8 +65,11 @@ func (c *Client) GetFolderSubfolders(folderId string) (FolderGetAllChildrenRespo
 			"token": c.Token,
 		},
 		&resp)
+	if err != nil {
+		return resp, err
+	}
 
-	return resp, err
+	return resp, handleErrors(resp.FolderGetAllChildrenResult.Errors)
 }
 
 func (c *Client) GetFolderSecrets(folderId string) (SearchSecretsByFolderResponse, error){
@@ -73,8 +86,11 @@ func (c *Client) GetFolderSecrets(folderId string) (SearchSecretsByFolderRespons
 		},
 		&resp)
 
-	return resp, err
-}
+	if err != nil {
+		return resp, err
+	}
+
+	return resp, handleErrors(resp.SearchSecretsByFolderResult.Errors)}
 
 
 func (c *Client) List(searchTerm string) (SearchSecretsResponse, error) {
@@ -88,8 +104,11 @@ func (c *Client) List(searchTerm string) (SearchSecretsResponse, error) {
 			"token": c.Token,
 		},
 		&resp)
-	return resp, err
+	if err != nil {
+		return resp, err
+	}
 
+	return resp, handleErrors(resp.SearchSecretsResult.Errors)
 }
 
 func (c *Client) GetById(secretId string) (GetSecretResponse, error){
@@ -103,8 +122,11 @@ func (c *Client) GetById(secretId string) (GetSecretResponse, error){
 		},
 		&resp)
 
-	return resp, err
-}
+	if err != nil {
+		return resp, err
+	}
+
+	return resp, handleErrors(resp.GetSecretResult.Errors)}
 
 func (c *Client) GetByPath(secretPath string) (GetSecretResponse, error){
 
@@ -130,6 +152,13 @@ func (c *Client) GetSecretAttachment(secretId string, secretAttachmentId string)
 	if err != nil {
 		return "", err
 	}
+
+	//check response error
+	rerr := handleErrors(resp.DownloadFileAttachmentByItemIdResult.Errors)
+	if rerr != nil {
+		return "", rerr
+	}
+
 	decodedBytes, derr := base64.StdEncoding.DecodeString(resp.DownloadFileAttachmentByItemIdResult.FileAttachment)
 	return string(decodedBytes), derr
 }
@@ -157,31 +186,38 @@ func (c * Client) soapRequest(method string, params map[string]string, response 
 	if err != nil {
 		return err
 	}
+	soap.HttpClient = c.HttpClient
 
-	err = soap.Call(method, params)
+	soapParams := make(map[string]interface{})
+
+	for key, val := range params {
+		soapParams[key] = val
+	}
+
+	err = soap.Call(method, soapParams)
 	if err != nil {
 		return err
 	}
 
-	//fmt.Printf("################################\n[DEBUG] Request %v\n%#v\nResponse Body: %#v\n###########################", method, params, string(soap.Body))
+//fmt.Printf("################################\n[DEBUG] Request %v\n%#v\nResponse Body: %#v\n###########################", method, params, string(soap.Body))
 
 	err = soap.Unmarshal(response)
 	if err != nil {
 		return err
 	}
+
 	return nil
 }
 
 
 func (c *Client)performRequest(xmlpayloadsource string, contentLengthraw int) ([]byte, error) {
 	contentLength := strconv.Itoa(contentLengthraw)
-	client := &http.Client{}
 	method := "POST"
 
 	req, err := http.NewRequest(method, fmt.Sprintf("https://%s/webservices/sswebservice.asmx", c.Server), bytes.NewBuffer([]byte(xmlpayloadsource)))
 	req.Header.Set("Content-Type", "application/soap+xml; charset=utf-8")
 	req.Header.Set("Content-Length", contentLength)
-	resp, err := client.Do(req)
+	resp, err := c.HttpClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
@@ -261,6 +297,23 @@ func (c *Client) getFolderNodeForPathComponents(currentFolderPathComponents []st
 		}
 	}
 
+}
 
+func handleErrors(errorList []string) error {
+	if errorList == nil || len(errorList) == 0 {
+		return nil
+	}
+
+	errStr := ""
+
+	for _, err := range errorList {
+		errStr += err
+	}
+
+	if len(strings.TrimSpace(errStr)) == 0 {
+		return nil
+	}
+
+	return terrors.ProviderError(errStr)
 
 }

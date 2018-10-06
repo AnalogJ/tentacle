@@ -44,3 +44,9 @@ type NotImplementedError string
 func (str NotImplementedError) Error() string {
 	return fmt.Sprintf("NotImplementedError: %q", string(str))
 }
+
+// Raised when the Provider returns an error
+type ProviderError string
+func (str ProviderError) Error() string {
+	return fmt.Sprintf("ProviderError: %q", string(str))
+}

@@ -6,7 +6,7 @@ type GetSecretResponse struct {
 }
 
 type GetSecretResult struct {
-	Errors []string
+	Errors []string `xml:"Errors>string"`
 	Secret Secret
 }
 

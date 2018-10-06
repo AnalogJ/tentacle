@@ -9,6 +9,6 @@ type UserInfoResult struct {
 	DisplayName string
 	DomainId int
 	DomainName string
-	Errors []string
+	Errors []string `xml:"Errors>string"`
 	KnownAs string
 }
