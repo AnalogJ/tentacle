@@ -11,7 +11,7 @@ import (
 )
 
 //TODO: set to true when development is complete and no new recordings need to be created (CI mode enabled)
-const DISABLE_RECORDINGS = true
+const DISABLE_RECORDINGS = false
 
 
 func ProviderVcrSetup(t *testing.T) *http.Client {

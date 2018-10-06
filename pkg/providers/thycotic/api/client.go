@@ -54,7 +54,8 @@ func (c *Client) Test() (WhoAmIResponse, error) {
 		return resp, err
 	}
 
-	return resp, handleErrors(resp.WhoAmIResult.Errors)}
+	return resp, handleErrors(resp.WhoAmIResult.Errors)
+}
 
 func (c *Client) GetFolderSubfolders(folderId string) (FolderGetAllChildrenResponse, error){
 
