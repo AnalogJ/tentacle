@@ -61,3 +61,11 @@ required = [
 [[constraint]]
   name = "github.com/stretchr/testify"
   version = "1.2.2"
+
+[[constraint]]
+  name = "github.com/cyberark/conjur-api-go"
+  revision = "4048051bcddf61cfa8b5840d0ec2f80c76cde811" # until they release a new version (0.5.0+)
+
+[[constraint]]
+  name = "github.com/analogj/gosoap"
+  revision = "87568ebaf5b47fecf2a784a1afb3bffe75cc2879" # until they release a new version (1.1.0+)
