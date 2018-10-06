@@ -11,7 +11,7 @@ import (
 )
 
 //TODO: set to true when development is complete and no new recordings need to be created (CI mode enabled)
-const DISABLE_RECORDINGS = false
+const DISABLE_RECORDINGS = true
 
 
 func ProviderVcrSetup(t *testing.T) *http.Client {
@@ -30,6 +30,7 @@ func ProviderVcrSetup(t *testing.T) *http.Client {
 		Logging:      true,
 		CassettePath: path.Join("testdata", "govcr-fixtures"),
 		Client:       &insecureClient,
+
 		ExcludeHeaderFunc: func(key string) bool {
 			// HTTP headers are case-insensitive
 			return strings.ToLower(key) == "user-agent" || strings.ToLower(key) == "authorization"
