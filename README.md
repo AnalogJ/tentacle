@@ -132,23 +132,23 @@ Tentacle supports retrieving secrets via API's as well as OS specific credential
 ## Future Providers
 
 ### Network/Cloud
-- [1Password](https://1password.com/)
-- [Avecto Defendpoint](https://www.avecto.com/defendpoint)
+- [1Password](https://1password.com/) - :no_entry: no API
+- [Avecto Defendpoint](https://www.avecto.com/defendpoint) - :dollar:
 - AWS
-- [BeyondTrust PowerBroker](https://www.beyondtrust.com/products/powerbroker-password-safe/)
-- [Bitwarden](https://bitwarden.com/)
-- [BomGar PAM](https://www.bomgar.com/)
+- [BeyondTrust PowerBroker](https://www.beyondtrust.com/products/powerbroker-password-safe/) - [partner program](https://www.beyondtrust.com/partners/)
+- [Bitwarden](https://bitwarden.com/) - [open source](https://github.com/jcs/rubywarden/blob/master/API.md)
+- [BomGar PAM](https://www.bomgar.com/) - :dollar: [api docs](https://www.bomgar.com/docs/privileged-access/how-to/integrations/api/authentication.htm)
 - [Chef Encrypted Databags](https://docs.chef.io/data_bags.html)
-- [Dashlane](https://www.dashlane.com/)
-- [Devolutions Password Server](https://devolutions.net/products/password-server)
-- [Google SmartLock](https://developers.google.com/identity/smartlock-passwords/case-studies)
-- [IT Glue Password Vault](https://itglue.com/features/password-vault/)
-- [Keeper](https://keepersecurity.com/)
+- [Dashlane](https://www.dashlane.com/) - :no_entry: [example api](https://gist.github.com/roblabla/4a43d0a5fc3769c815ab) [example cli](https://github.com/masterzen/dashlane-cli)
+- [Devolutions Password Server](https://devolutions.net/products/password-server) - :dollar: [python sdk](https://github.com/Devolutions/dps-sdk-python)
+- [Google SmartLock](https://developers.google.com/identity/smartlock-passwords/case-studies) - :no_entry: only for android
+- [IT Glue Password Vault](https://itglue.com/features/password-vault/) - :dollar:
+- [Keeper](https://keepersecurity.com/) - :dollar: [cli/sdk](https://github.com/Keeper-Security/commander)
 - [KronTech Single Connect](https://krontech.com/)
 - [Norton Identity Safe](https://my.norton.com/extspa/idsafe)
-- [Passwordstate](https://www.clickstudios.com.au/)
+- [Passwordstate](https://www.clickstudios.com.au/) - :dollar: [api docs](https://www.clickstudios.com.au/about/application-programming-interface.aspx)
 - [PasswordStore (Pass)](https://www.passwordstore.org/)
-- [Pleasant Password Server](http://www.pleasantsolutions.com/passwordserver)
+- [Pleasant Password Server](http://www.pleasantsolutions.com/passwordserver) - [example client](https://github.com/bva/vault-pps-plugin/blob/master/pleasant/pleasant.go)
 - [RoboForm](https://www.roboform.com/)
 - [SplashID Safe](https://splashid.com/)
 - [Teampass](https://github.com/nilsteampassnet/TeamPass) - Keepass for Teams
