@@ -208,6 +208,7 @@ Jason Kulatunga - Initial Development - @AnalogJ
 - https://www.gartner.com/reviews/market/privileged-access-management-solutions
 - https://www.bomgar.com/docs/privileged-identity/documents/privileged-identity-programmers-guide-5-5-3-1.pdf
 - https://www.beyondtrust.com/partners/become-a-partner/
+- https://discussions.agilebits.com/discussion/30286/mrcs-convert-to-1password-utility/p1?new=1
 
 ## Possible Names
 - Seer
